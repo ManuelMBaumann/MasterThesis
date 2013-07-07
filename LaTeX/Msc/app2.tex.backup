@@ -1,0 +1,98 @@
+\chapter{Implementation issues}
+\section{The truncated conjugant gradient (CG) method}
+\label{CGapp}
+In order to obtain a new search direction in the $k$-th iteration of the Newton-based method discussed in Section \ref{optAdj}, we need to solve the Newton equation,
+\begin{align}
+ \label{CG_Newtoneqn}
+ \nabla^2 \hat{\mathcal J}(u_k)s_k  = - \nabla \hat{\mathcal J}(u_k),
+\end{align}
+for the search direction $s_k$. Note that \eqref{CG_Newtoneqn} is a linear system of equations and the Hessian $\nabla^2 \hat{\mathcal J}(u_k)$ is by definition a symmetric matrix. For simplicity, let us denote $A := \nabla^2 \hat{\mathcal J}(u_k)$, $x := s_k$ and $b := - \nabla \hat{\mathcal J}(u_k)$ such that \eqref{CG_Newtoneqn} is equal to $A x = b$. In order to motivate the usage of the CG algorithm to solve \eqref{CG_Newtoneqn}, we use the theorem \cite[Theorem 38.2]{Tre97} that states that in the $i$-th iteration of CG, the error $e^{(i)} = x^* - x^{(i)}$ is minimized in the $A$-norm, i.e.
+\begin{align*}
+ x^{(i)} = \argmin_{x \in \mathcal{K}_i} \|e^{(i)}\|_A = \argmin_{x \in \mathcal{K}_i} \| x^* - x \|_A,
+\end{align*}
+where $x^{(i)}$ is the $i$-th iterate of the CG algorithm and $x^*$ is the (unknown) exact solution of linear system, i.e. $Ax^* = b$. Furthermore, the CG method minimizes in stpe $i$ over the so-called Krylov space of dimension $i$,
+\begin{align*}
+\mathcal{K}_i := \text{span }\{b, Ab, ..., A^{i-1}b \}.
+\end{align*}
+
+The following short calculation shows that minimizing the error $e^{(i)}$ in the $A$-norm is equivalent to minimizing the second-order Taylor expansion of the cost function $\hat{\mathcal J}$,
+\begin{align*}
+\|e^{(i)}\|_A^2 &= (e^{(i)})^T A e^{(i)} = (x^* - x^{(i)})^T A (x^* - x^{(i)})\\
+ &= (x^{(i)})^T A x^{(i)} - 2 (x^{(i)})^T A x^* + (x^*)^T A x^* \\
+ &= (x^{(i)})^T A x^{(i)} - 2 (x^{(i)})^T b + (x^*)^T b =: 2 T_{\hat{\mathcal{J}}}(x^{(i)}) + (x^*)^T b,
+\end{align*}
+where $(x^*)^T b$ is a constant term and after back-substitution of $A, x, b$ we see that $T_{\hat{\mathcal{J}}}(x) = \frac{1}{2} x^T A x - x^T b$ is except for a constant term equal to the second-order Taylor expansion of the objective function $\hat{\mathcal J}$. Therefore, the CG algorithm can be interpreted as an iterative process for minimizing the quadratic approximation of the cost function which motivates its usage in optimization, cf. \cite{Tre97}. This is also the reason why the update formula in line 19 of Algorithm \ref{alg:serCG} reminds of a line-serch algorithm. In fact, it is derived in \cite{Tre97} that $T_{\hat{\mathcal J}}$ is minimized in step $i$ over the Krylov space $\mathcal{K}_i$.
+
+Furthermore, the version of the CG algorithm we present in Algorithm \ref{alg:serCG} is truncated when the following condition is fulfilled,
+\begin{align}
+ \label{CGcond}
+ \|\nabla^2 \hat{\mathcal J}(u_k)s_k + \nabla \hat{\mathcal J}(u_k)\|_2 \leq \eta_k \|\nabla\hat{\mathcal J}(u_k)\|_2,
+\end{align}
+where $\eta_k \in (0,1)$ and the left-hand side is the residual of the Newton equation \eqref{CG_Newtoneqn}. For the numerical test in Section \ref{NumTests_Hess} and \ref{Newton_red_chapter}, we use $\eta_k = 0.01$ or, as suggested in \cite{H08}, $\eta_k = \min \{0.01, \| \nabla \hat{\mathcal J}(u_k)\|_2 \}$.
+
+Note that in Algorithm \ref{alg:serCG}, we choose the method of steepest descent in the case that the Hessian is not positive definite (line 12).
+\begin{algorithm}[H]
+\caption{The truncated CG algorithm for solving the Newton equation \mbox{$\nabla^2 \hat{\mathcal J}(u_k) s_k = - \nabla \hat{\mathcal J}(u_k)$}, \cite{H08}}
+\label{alg:serCG}
+\begin{algorithmic}[1]
+\STATE \textbf{INPUT: } Function handle that evaluates the matrix-vector product $\nabla^2 \hat{\mathcal J}(u_k) \cdot v$, right-hand side $-\nabla \hat{\mathcal J}(u_k)$, \texttt{MAXITER}, tolerance $\eta_k$
+\STATE \textbf{OUTPUT: } Solution of Newton's equation $s_k$
+\STATE Set $s_k = 0, p_k^{(0)} = r_k^{(0)} = - \nabla \hat{\mathcal J}(u_k)$
+\FOR{$i=0,1,2,...,$\texttt{MAXITER}}
+\IF{$\|r_k^{(i)}\|_2 < \eta_k \|r_k^{(0)}\|_2$}
+\IF{$i = 0$}
+\STATE $s_k =  -\nabla \hat{\mathcal J}(u_k)$ \quad \textit{\% Steepest descent direction}
+\RETURN
+\ENDIF
+\ENDIF
+\STATE Compute $q_k^{(i)} = \nabla^2 \hat{\mathcal J}(u_k) \cdot p_k^{(i)}$
+\IF{$(p_k^{(i)})^T q_k^{(i)} < 0 $}
+\IF{$i = 0$}
+\STATE $s_k =  -\nabla \hat{\mathcal J}(u_k)$ \quad \textit{\% Steepest descent direction}
+\RETURN
+\ENDIF
+\ENDIF
+\STATE Compute $\gamma_k^{(i)} =  \|r_k^{(i)}\|^2_2 / (p_k^{(i)})^T q_k^{(i)} $
+\STATE Update solution, $s_k = s_k + \gamma_k^{(i)} q_k^{(i)}$% \quad \textit{// Update solution}
+\STATE Compute $r_k^{(i+1)} = r_k^{(i)} - \gamma_k^{(i)} q_k^{(i)}$
+\STATE Compute $\beta_k^{(i)} = \|r_k^{(i+1)}\|_2^2 / \|r_k^{(i)}\|_2^2$
+\STATE Compute $p_k^{(i+1)} = r_k^{(i+1)} + \beta_k^{(i)} p_k^{(i)}$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+\newpage
+\section{Armijo line-search}
+\label{Armapp}
+Suppose the search direction $s$ is known (we omit the index $k$ since the situation is the same at each iteration) we need to minimize the objective function $\mathcal{J}(y(u),u)$ along the descent direction $s$. This means we are looking for an optimal step length $\alpha^*$ in the direction of $s$, i.e. 
+\begin{align}
+\label{line-search}
+\alpha^* = \argmin_{\alpha \in \mathbb{R}_+} \mathcal{J}(y(u + \alpha \cdot s), u + \alpha \cdot s).
+\end{align}
+An update of $u$ can then be computed according to formula \eqref{update_u}. Since $\mathcal{J}(y(\cdot),\cdot)$ is a multi-dimensional function, we will only find a local minimum along the direction of $s$. The Armijo algorithm \ref{alg:Armijo} belongs to the family of line-search algorithms that iteratively solve the optimization problem \eqref{line-search} along the search direction $s$. An overview of other line-search algorithms can for instance be found in \cite{Rao09,Bart}.
+\begin{algorithm}[H]
+\caption{Armijo line-search algorithm, \cite{Rao09}}
+\label{alg:Armijo}
+\begin{algorithmic}[1]
+\STATE \textbf{INPUT: } initial point $u_0$, search direction $s$, $tol > 0$
+\STATE \textbf{OUTPUT: } optimal step size $\alpha^*$ in direction $s$
+\STATE Solve $c(y_0,u_0)$ for $y_0$
+\STATE Compute $\mathcal{J}_0 = \mathcal{J}(y_0,u_0)$
+\STATE Set $\alpha = 1$ and set $u = u_0 + \alpha \cdot s$
+\STATE Solve $c(y,u)$ for $y$
+\WHILE{$\mathcal{J}(y,u) > \mathcal{J}_0 + tol \cdot \alpha \cdot s^T \nabla \mathcal{J}(y_0,u_0)$}
+\STATE Set $\alpha := \alpha/2$
+\STATE Set $u = u_0 + \alpha \cdot s$
+\STATE Solve $c(y,u)$ for $y$
+\STATE Compute $\mathcal{J}(y,u)$
+\ENDWHILE
+\STATE We have found $\alpha^* = \alpha$
+\end{algorithmic}
+\end{algorithm}
+The In practice, we used $tol = 10^{-4}$.
+\newpage
+\section{\textsc{Matlab} code}
+The numerical test calculations for the POD-DEIM model of Burger's equation presented in Section \ref{BurgersPODDEIM} as well as the optimal control algorithm discussed in Section \ref{fullOrderControl} and Section \ref{redOptimalControl} have been implemented in \textsc{Matlab}. The code is freely accessible via
+\begin{center}
+\url{https://github.com/ManuelMBaumann/MasterThesis}
+\end{center}
+and can be used for further improvement or demonstration at any time. 

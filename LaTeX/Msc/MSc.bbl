@@ -1,0 +1,317 @@
+\begin{thebibliography}{10}
+
+\bibitem{A05}
+A.~C. Antoulas.
+\newblock {\em Approximation of Large-Scale Dynamical Systems (Advances in
+  Design and Control)}.
+\newblock Society for Industrial and Applied Mathematics, Philadelphia, PA,
+  USA, 2005.
+
+\bibitem{A00_diss}
+J.~Atwell.
+\newblock {\em Proper Orthogonal Decomposition for Reduced Order Control of
+  Partial Differential Equations}.
+\newblock PhD thesis, Virginia Polytechnic Institute and State University,
+  2000.
+
+\bibitem{BS}
+Z.~Bai and D.~Skoogh.
+\newblock Krylov {S}ubspace {T}echniques for {R}educed-{Order} {M}odeling of
+  {N}onlinear {D}ynamical {S}ystems.
+\newblock {\em Appl. Numer. Math}, 43:9--44, 2002.
+
+\bibitem{B06}
+G.~B{\"a}rwolff.
+\newblock {\em Numerik f{\"u}r Ingenieure, Physiker und Informatiker: f{\"u}r
+  Bachelor und Diplom}.
+\newblock F{\"u}r Bachelor und Diplom. Spektrum Akademischer Verlag, 2006.
+
+\bibitem{B13}
+M.~Baumann.
+\newblock Model order reduction for nonlinear dynamical systems.
+\newblock {\em Literature Study at TU Delft}, 2013.
+
+\bibitem{BC03}
+A.~D. Belegundu and T.~R. Chandrupatla.
+\newblock {\em Optimization Concepts and applications in Engineering}.
+\newblock Prentice Hall, 2003.
+
+\bibitem{MBR00}
+E.~G. Birgin, J.~M. Martinez, and M.~Raydan.
+\newblock Nonmonotone spectral projected gradient methods on convex sets.
+\newblock {\em SIAM J. Optim.}, 10:1196--1211, 2000.
+
+\bibitem{BMR12}
+E.~G. Birgin, J.~M. Martínez, and M.~Raydan.
+\newblock Spectral projected gradient methods: Review and perspectives.
+\newblock {\em Journal of Statistical Software}, 2012.
+
+\bibitem{B75}
+A.E. Bryson and Y.C. Ho.
+\newblock {\em Applied Optimal Control: Optimization, Estimation, and Control}.
+\newblock Halsted Press book'. Hemisphere Publishing Company, 1975.
+
+\bibitem{Cha11}
+S.~Chaturantabut.
+\newblock {\em Nonlinear Model Reduction via Discrete Empirical Interpolation}.
+\newblock PhD thesis, Rice University, 2011.
+
+\bibitem{CS10}
+S.~Chaturantabut and D.~Sorensen.
+\newblock Application of {POD} and {DEIM} on dimension reduction of non-linear
+  miscible viscous fingering in porous media.
+\newblock {\em Mathematical and Computer Modelling of Dynamical Systems},
+  17:337--353, 2010.
+
+\bibitem{DEIM}
+S.~Chaturantabut and D.~Sorensen.
+\newblock Nonlinear {M}odel {R}eduction via {D}iscrete {E}mpirical
+  {I}nterpolation.
+\newblock {\em SIAM J. Sci. Comput.}, 32:2737--2764, 2010.
+
+\bibitem{CW}
+Y.~Chen and J.~White.
+\newblock A {Q}audratic {M}ethod for {N}onlinear {M}odel {O}rder {R}eduction.
+\newblock URL:
+  \url{http://www.physics.purdue.edu/quantum/files/chen\_mor\_icmsm2000.pdf}.
+
+\bibitem{CM79}
+A.~J. Chorin and J.~E. Marsden.
+\newblock {\em A Mathematical Introduction to Fluid Mechanics}.
+\newblock Springer New York/Berlin/Heidelberg/Tokyo, 1979.
+
+\bibitem{C12}
+A.J. Chorin and J.E. Marsden.
+\newblock {\em A Mathematical Introduction to Fluid Mechanics}.
+\newblock Texts in Applied Mathematics Series. Springer London, Limited, 2012.
+
+\bibitem{DS96}
+J.E. Dennis and R.B. Schnabel.
+\newblock {\em Numerical Methods for Nonlinear Equations and Unconstrained
+  Optimization}.
+\newblock SIAM, Philadelphia, 1996.
+
+\bibitem{FEMbook}
+K.~Eriksson, D.~Estep, P.~Hansbo, and C.~Johnson.
+\newblock {\em Computational Differential Equations}.
+\newblock Studentlitteratur, 2008.
+
+\bibitem{PODold}
+P.M. Fitzsimons and C.~Rui.
+\newblock Determining low dimensional models of distributed systems.
+\newblock {\em Advances in Robust and Nonlinear Control Systems}, 53, 1993.
+
+\bibitem{GU12}
+J.~Ghiglieri and S.~Ulbrich.
+\newblock {O}ptimal {F}low {C}ontrol {B}ased on {POD} and {MPC} and an
+  {A}pplication to the {C}ancellation of {T}ollmien-{S}chlichting {W}aves.
+\newblock {\em Optimization Methods and Software}, 00(00):1--34, January 2012.
+
+\bibitem{G96}
+G.H. Golub and C.F. Van~Loan.
+\newblock {\em Matrix Computations}.
+\newblock Johns Hopkins Studies in the Mathematical Sciences. Johns Hopkins
+  University Press, 1996.
+
+\bibitem{HM03}
+J.~Haslinger and R.~Mäkinen.
+\newblock {\em Introduction to Shape Optimization: Theory, Approximation and
+  Computation}.
+\newblock Society for Industrial and Applied Mathematic, 2003.
+
+\bibitem{H10}
+S.B. Hazra.
+\newblock {\em Large-scale PDE-constrained Optimization in Applications}.
+\newblock Lecture Notes in Applied and Computational Mechanics, 49. Springer
+  Berlin Heidelberg, 2010.
+
+\bibitem{H08}
+M.~Heinkenschloss.
+\newblock Numerical solution of implicitly constrained optimization problems.
+\newblock Technical report, Department of Computational and Applied
+  Mathematics, Rice University, 2008.
+
+\bibitem{MS07}
+L.~Henning, D.~Kuzmin, V.~Mehrmann, M.~Schmidt, A.~Sokolov, and S.~Turek.
+\newblock Flow {C}ontrol on the {B}asis of a \textsc{Featflow-Matlab}
+  {C}oupling.
+\newblock {\em Notes on Numerical Fluid Mechanics and Multidisciplinary
+  Design}, 95:325--338, 2007.
+
+\bibitem{J03}
+Y.~Jaluria and K.K.E. Torrance.
+\newblock {\em Computational heat transfer}.
+\newblock Series in Computational and Physical Processes in Mechanics and
+  Thermal Sciences Series. Taylor \& Francis Group, 2003.
+
+\bibitem{PCA}
+I.T. Jolliffe.
+\newblock {\em Principal Component Analysis}.
+\newblock Springer Series in Statistics. Springer, 2002.
+
+\bibitem{K99}
+C.T. Kelley.
+\newblock {\em Iterative Methods for Optimization}.
+\newblock SIAM, Philadelphia, 1999.
+
+\bibitem{KGVB05}
+G.~Kerschen, J.-C. Golinval, A.~Vakakis, and L.~Bergman.
+\newblock The {M}ethod of {P}roper {O}rthogonal {D}ecomposition for {D}ynamical
+  {C}haracterization and {O}rder {R}eduction of {M}echanical {S}ystems: {A}n
+  {O}verview.
+\newblock {\em Nonlinear Dynamics}, 41:147--169, 2005.
+
+\bibitem{KV99}
+K.~Kunisch and S.~Volkwein.
+\newblock Control of the {B}urgers {E}quation by a {Reduced}-{Order} {A}pproach
+  {U}sing {P}roper {O}rthogonal {D}ecomposition.
+\newblock {\em Journal of Optimization Theory and Applications}, 102:345--371,
+  1999.
+
+\bibitem{L02}
+S.~Lall, J.E. Marsden, and S.~Glava\v{s}ki.
+\newblock A subspace approach to balanced truncation for model order reduction
+  of nonlinear control systems.
+\newblock {\em International Journal of Robust and Nonlinear Control},
+  12:519--535, 2002.
+
+\bibitem{L12}
+G.~Leugering, S.~Engell, and A.~Griewank.
+\newblock {\em Constrained optimization and optimal control for partial
+  differential equations}.
+\newblock International series of numerical mathematics. Springer Basel, 2012.
+
+\bibitem{L71}
+J.L. Lions.
+\newblock {\em Optimal control of systems governed by partial differential
+  equations}.
+\newblock Grundlehren der mathematischen Wissenschaften. Springer-Verlag, 1971.
+
+\bibitem{M04}
+V.~Mehrmann.
+\newblock Kontrolltheorie.
+\newblock {\em Lecture Notes, Technical University of Berlin}, 2004.
+
+\bibitem{MP01}
+B.~Mohammadi and O.~Pironneau.
+\newblock {\em Applied Shape Optimization for Fluids}.
+\newblock Oxford University Press, 2001.
+
+\bibitem{Imm}
+H.~B. Nielsen.
+\newblock {IMMOPTIBOX}. {A} {M}atlab toolbox for optimization and data fitting.
+\newblock Informatics and Mathematical Modelling, Technical University of
+  Denmark, DTU, 2005.
+\newblock \url{http://www.imm.dtu.dk/~hbn/immoptibox}.
+
+\bibitem{NW06}
+J.~Nocedal and S.J. Wright.
+\newblock {\em Numerical Optimization}.
+\newblock Springer Verlag, Berlin, Heidelberg, New York, second edition, 2006.
+
+\bibitem{P98}
+A.F. Peterson, S.L. Ray, and R.~Mittra.
+\newblock {\em Computational Methods for Electromagnetics}.
+\newblock IEEE Press Series on Electromagnetic Wave Theory. Wiley, 1998.
+
+\bibitem{Polderman1998}
+J.W. Polderman and J.C. Willems.
+\newblock {\em Introduction to Mathematical Systems Theory: A Behavioral
+  Approach}.
+\newblock Texts in Applied Mathematics Series. Springer-Verlag, 1998.
+
+\bibitem{Rao09}
+S.~S. Rao.
+\newblock {\em Engineering Optimization: Theory and Practice}.
+\newblock Wiley, fourth edition, 2009.
+
+\bibitem{R12}
+T.~Reis.
+\newblock Model order reduction.
+\newblock {\em Lecture notes, University Hamburg}, 2012.
+
+\bibitem{RK03}
+J.~C. De~Los Reyes and K.~Kunisch.
+\newblock A comparison of algorithms for control constrained optimal control of
+  the {B}urgers equation.
+\newblock {\em CALCOLO}, 41:203--225, 2004.
+
+\bibitem{RT07}
+J.~C. De~Los Reyes and F.~Tr\"oltzsch.
+\newblock Optimal control of the stationary {N}avier-{S}tokes equations with
+  mixed control-state constraints.
+\newblock {\em SIAM Journal on Control and Optimization}, 46:604--629, 2007.
+
+\bibitem{SCDA08}
+P.~Sarma, W.H. Chen, L.J. Durlofsky, and K.~Aziz.
+\newblock Production {O}ptimization with {A}djoint {M}odels under {N}onlinear
+  {C}ontrol-{S}tate {P}ath {I}nequality {C}onstraints.
+\newblock {\em SPE Reservoir Evaluation \& Engineering}, 11(2):326--339, April
+  2008.
+
+\bibitem{SVR08}
+W.~H.~A. Schilders, H.A. van~der Vorst, and J.~Rommes.
+\newblock {\em Model Order Reduction}.
+\newblock Springer, 2008.
+
+\bibitem{SN13}
+R.~Stefanescu and I.~M. Navon.
+\newblock {POD}/{DEIM} nonlinear model order reduction of an {ADI} implicit
+  shallow water equations model.
+\newblock {\em Journal of Computational Physics}, 237:95--114, 2013.
+
+\bibitem{S86}
+G.~Strang.
+\newblock {\em Introduction to Applied Mathematics}.
+\newblock Wellesley-Cambridge Press, 1986.
+
+\bibitem{T05}
+A.~Taflove and S.C. Hagness.
+\newblock {\em Computational Electrodynamics: The Finite- Difference Time-
+  Domain Method}.
+\newblock The Artech House antenna and propagation library. Artech House,
+  Incorporated, 2005.
+
+\bibitem{Tre97}
+L.N. Trefethen and III David~Bau.
+\newblock {\em Numerical Linear Algebra}.
+\newblock Miscellaneous Bks. Society for Industrial and Applied Mathematics,
+  1997.
+
+\bibitem{TSH01}
+H.L. Trentelman, A.A. Stoorvogel, and M.~Hautus.
+\newblock {\em Control theory for linear systems}.
+\newblock Springer London, 2001.
+
+\bibitem{T10}
+F.~Tr{\"o}ltzsch.
+\newblock {\em Optimal Control of Partial Differential Equations: Theory,
+  Methods, and Applications}.
+\newblock Graduate Studies in Mathematics. American Mathematical Society, 2010.
+
+\bibitem{Bart}
+T.~van~den Boom and B.~De Schutter.
+\newblock \textit{Optimization in Systems and Control}.
+\newblock Lecture Notes for the Course SC4091, TU Delft, 2012.
+
+\bibitem{V08}
+S.~Volkwein.
+\newblock Proper orthogonal decomposition: Applications in optimization and
+  control.
+\newblock Lecture notes, University of Konstanz, 2008.
+\newblock URL :
+  \url{http://www.math.uni-konstanz.de/numerik/personen/volkwein/teaching/Lecture-Notes-Volkwein.pdf}.
+
+\bibitem{V11}
+S.~Volkwein.
+\newblock Model reduction using proper orthogonal decomposition.
+\newblock Lecture notes, University of Konstanz, 2011.
+\newblock URL:
+  \url{http://www.math.uni-konstanz.de/numerik/personen/volkwein/teaching/POD-Vorlesung.pdf}.
+
+\bibitem{W01}
+P.~Wesseling.
+\newblock {\em Principles of Computational Fluid Dynamics}.
+\newblock Springer Berlin/Heidelberg/New York, 2001.
+
+\end{thebibliography}

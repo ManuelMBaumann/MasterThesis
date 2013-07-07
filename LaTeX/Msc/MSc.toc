@@ -1,0 +1,49 @@
+\changetocdepth {2}
+\changetocdepth {2}
+\select@language {english}
+\contentsline {chapter}{Contents}{i}{section*.3}
+\contentsline {chapter}{List of Figures}{iii}{section*.4}
+\contentsline {chapter}{List of Tables}{iv}{section*.5}
+\contentsline {chapter}{List of Algorithms}{v}{chapter*.6}
+\contentsline {chapter}{Acknowledgements}{vii}{chapter*.7}
+\contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Previous work}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Research Goals}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}Chapter outline}{3}{section.1.4}
+\contentsline {chapter}{\chapternumberline {2}Model order reduction for nonlinear dynamical systems}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}The Proper Orthogonal Decomposition (POD)}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Optimality of the POD basis}{6}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}The projected reduced-order model}{7}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}The Discrete Empirical Interpolation Method (DEIM)}{8}{section.2.2}
+\contentsline {section}{\numberline {2.3}Application: POD-DEIM for the unsteady Burgers' equation}{11}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Approximation error}{16}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Use of POD-DEIM for parameter studies}{17}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Computational speedup for POD and POD-DEIM}{18}{subsection.2.3.3}
+\contentsline {chapter}{\chapternumberline {3}Optimal control of partial differential equations}{21}{chapter.3}
+\contentsline {section}{\numberline {3.1}Newton-type methods using adjoint techniques for derivative computation}{22}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Using adjoint equations for gradient computation}{23}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Using adjoint equations for Hessian computation}{24}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Gradient-based optimization techniques}{26}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}The Broyden\IeC {\textendash }Fletcher\IeC {\textendash }Goldfarb\IeC {\textendash }Shanno (BFGS) method}{26}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}The spectral projected gradient (SPG) method}{28}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Application: Optimal control of Burgers' equation}{30}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Numerical results for a Newton-type method using adjoints}{33}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Numerical results for gradient-based optimization methods}{38}{subsection.3.3.2}
+\contentsline {chapter}{\chapternumberline {4}Implementation and analysis of a POD-DEIM reduced model for the optimal control of Burgers' equation}{39}{chapter.4}
+\contentsline {section}{\numberline {4.1}A POD-DEIM reduced model for optimal control of Burgers' equation}{40}{section.4.1}
+\contentsline {section}{\numberline {4.2}A Newton-type method for the POD-DEIM reduced model}{41}{section.4.2}
+\contentsline {section}{\numberline {4.3}Low-dimensional control using individual control points}{45}{section.4.3}
+\contentsline {section}{\numberline {4.4}Performance and error analysis}{46}{section.4.4}
+\contentsline {chapter}{\chapternumberline {5}Summary and Future research}{53}{chapter.5}
+\contentsline {section}{\numberline {5.1}Overview and main results}{53}{section.5.1}
+\contentsline {section}{\numberline {5.2}Outlook on future research questions}{54}{section.5.2}
+\contentsline {chapter}{Bibliography}{57}{section*.38}
+\contentsline {appendix}{\chapternumberline {A}Numerical solution of Burgers' equation}{65}{appendix.A}
+\contentsline {section}{\numberline {A.1}Spacial discretization via the finite element method}{65}{section.A.1}
+\contentsline {section}{\numberline {A.2}Time integration with the implicit Euler method}{67}{section.A.2}
+\contentsline {appendix}{\chapternumberline {B}Implementation issues}{69}{appendix.B}
+\contentsline {section}{\numberline {B.1}The truncated conjugant gradient (CG) method}{69}{section.B.1}
+\contentsline {section}{\numberline {B.2}Armijo line search}{71}{section.B.2}
+\contentsline {section}{\numberline {B.3}\textsc {Matlab} code}{72}{section.B.3}
+\contentsline {appendix}{\chapternumberline {C}Notation}{73}{appendix.C}

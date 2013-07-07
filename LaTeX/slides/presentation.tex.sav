@@ -1,0 +1,369 @@
+\documentclass{beamer}
+\usepackage{beamerthemesplit}
+\setbeamertemplate{footline}[number frame]
+\usetheme{Darmstadt}%CopenhagenMadridJuanLesPins
+%\setbeamercolor{structure}{fg=green!60!blue}
+\usepackage{graphicx,euscript}
+%\usepackage[dvips]{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{hyphenat}
+\usepackage{stmaryrd}
+\usepackage{color}
+\usepackage{caption}
+\usepackage{marvosym}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathcomp}
+%\usepackage{graphics}
+\usepackage{subfigure}
+\usepackage{dsfont}
+\usepackage{epsfig}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage[curves]{struktex}
+\usepackage[ruled]{algorithm}
+\usepackage{algorithmic}
+
+\beamertemplatenavigationsymbolsempty
+\title[Nonlinear Model Order Reduction for Optimal Control]{\bf Nonlinear Model Order Reduction for Optimal Control of Burgers' Equation}
+\titlegraphic{\includegraphics[scale=0.09]{TU_Delft_logo1.png} \hspace{1cm}
+   \includegraphics[scale=0.5]{cosse_logo.jpg}}
+\subtitle{- \textsc{Master thesis} -}
+\author{Manuel M. Baumann}
+\date{July 15, 2013}
+\begin{document}
+
+\frame{
+\titlepage
+}
+
+\frame{
+\frametitle{Table of Contents}
+\tableofcontents
+}
+
+\section[Introduction]{What is Model Order Reduction (MOR) ?}
+\subsection*{}
+\frame{
+\frametitle{Nonlinear dynamical systems}
+Consider the nonlinear dynamical system
+\begin{equation}
+\begin{split}
+\label{nonlinSys}
+\dot{\mathbf{y}}(t) &= A \mathbf{y}(t) + \mathbf{F}(t,\mathbf{y}(t)), \quad \mathbf{y}(t) \in \mathbb{R}^{\color{blue} N \color{black}}\\
+\mathbf{y}(t) &= \mathbf{y}_0
+\end{split}
+\end{equation}
+\setbeamercovered{transparent}
+\begin{itemize}
+  \uncover<2->{\item arises in many applications, e.g. mechanical systems, fluid dynamics, neuron modeling, ...}
+  \uncover<3->{\item the matrix $A$ represents the linear dynamical behavior and the function $\mathbf{F}$ represents the nonlinear part}
+  \uncover<4->{\item often \color{blue} large \color{black} dimension of \eqref{nonlinSys} leads to \textit{huge} computational work}
+\end{itemize}
+}
+\frame{
+\frametitle{The idea of model order reduction}
+Approximate the state via
+\begin{align*}
+\mathbf{y}(t) \approx U_\ell \tilde{\mathbf{y}}(t), \quad U_\ell \in \mathbb{R}^{N \times \color{blue} \ell \color{black}}, \tilde{\mathbf{y}} \in \mathbb{R}^{\color{blue} \ell \color{black}},
+\end{align*}
+where the matrix $U_\ell$ consists of orthonormal columns, the so-called \textit{principal components} of $\mathbf{y}$, and \color{blue}$\ell \ll N$\color{black}.\\
+\vspace{0.7cm}
+\color{red}Galerkin projection \color{black} of the original full-order system leads to a reduced $\ell \times \ell$ system of equations:
+\begin{align*}
+&U_\ell^T (U_\ell \dot{\tilde{\mathbf{y}}} - A U_\ell \tilde{\mathbf{y}} - \mathbf{F}(t,U_\ell \tilde{\mathbf{y}})) = 0 \\ &\Rightarrow \quad \dot{\tilde{\mathbf{y}}} = \underbrace{U_\ell^T A U_\ell}_{=:\tilde{A}}\tilde{\mathbf{y}} +  U_\ell^T \mathbf{F}(t,U_\ell\tilde{\mathbf{y}})
+\end{align*}
+}
+\frame{
+\frametitle{Two questions are left...}
+Considering the reduced model
+\begin{align*}
+\dot{\tilde{\mathbf{y}}}(t) = \tilde{A} \tilde{\mathbf{y}}(t) + U_\ell^T \mathbf{F}(t,U_\ell\tilde{\mathbf{y}}(t))
+\end{align*}
+two questions are left:\\
+\hspace{0.4cm}
+\setbeamercovered{transparent}
+\begin{enumerate}
+  \uncover<2->{\item How to obtain the matrix $U_\ell$ of principal components ?}
+  \uncover<3->{\item Note that $U_\ell \tilde{\mathbf{y}}(t) \in \mathbb{R}^{\color{blue} N \color{black}}$ is still \color{blue} large\color{black}. How do we evaluate $\mathbf{F}(t,U_\ell\tilde{\mathbf{y}}(t))$ efficiently ?}
+\end{enumerate}
+}
+\section[POD-DEIM algorithm]{The POD-DEIM method}
+\subsection{Proper Orthogonal Decomposition (POD)}
+\frame{
+\frametitle{The Proper Orthogonal Decomposition (POD)}
+During the numerical simulation, build up the matrix
+\begin{align*}
+Y := [\mathbf{y}(t_1),...,\mathbf{y}(t_{n_s})] \in \mathbb{R}^{N \times \color{red} n_s \color{black}},
+\end{align*}
+with $n_s$ being the \color{red} number of snapshots\color{black}.\\
+\vspace{0.5cm}
+Perform a Singular Value Decomposition (SVD)
+\begin{align*}
+Y = U \Sigma V^T
+\end{align*}
+and let $U_\ell := \texttt{U(:,1:\color{blue}l\color{black})}$ consist of those left singular vectors of $Y$ that correspond to the \color{blue} $\ell$ largest singular values \color{black} in $\Sigma$.
+}
+\subsection{Discrete Empirical Interpolation Method (DEIM)}
+\frame{
+\frametitle{The Discrete Empirical Interpolation Method (DEIM)}
+Consider the nonlinearity
+\begin{align*}
+\mathbf{N} := \underbrace{U_\ell^T}_{\ell \times \color{blue}N\color{black}} \underbrace{\mathbf{F}(t,U_\ell\tilde{\mathbf{y}}(t))}_{\color{blue}N\color{black} \times 1}
+\end{align*}
+The approximation
+\begin{align*}
+\mathbf{F} \approx W \mathbf{c}, \quad W \in \mathbb{R}^{N \times \color{red}m\color{black}}, \mathbf{c} \in \mathbb{R}^{\color{red}m\color{black}}
+\end{align*}
+is over determined. Therefore, find projection $\mathcal{P}$ such that:
+\begin{align*}
+\mathcal{P}^T \mathbf{F} = (\mathcal{P}^T W)\mathbf{c} \quad &\Rightarrow \quad \mathbf{F} \approx W \mathbf{c} = W (\mathcal{P}^T W)^{-1} \mathcal{P}^T \mathbf{F} \\
+\quad &\Rightarrow \quad \mathbf{N} \approx U_\ell^T W \underbrace{(\mathcal{P}^T W)}_{\color{red}m\color{black} \times \color{red}m\color{black}}^{-1} \mathcal{P}^T \mathbf{F}(t,U_\ell \mathbf{\tilde y}(t))
+\end{align*}
+}
+\frame{
+\frametitle{The Discrete Empirical Interpolation Method (DEIM)}
+Consider the nonlinearity
+\begin{align*}
+\mathbf{N} := \underbrace{U_\ell^T}_{\ell \times \color{blue}N\color{black}} \underbrace{\mathbf{F}(t,U_\ell\tilde{\mathbf{y}}(t))}_{\color{blue}N\color{black} \times 1}
+\end{align*}
+The approximation
+\begin{align*}
+\mathbf{F} \approx W \mathbf{c}, \quad W \in \mathbb{R}^{N \times \color{red}m\color{black}}, \mathbf{c} \in \mathbb{R}^{\color{red}m\color{black}}
+\end{align*}
+is over determined. Therefore, find projection $\mathcal{P}$ such that:
+\begin{align*}
+\mathcal{P}^T \mathbf{F} = (\mathcal{P}^T W)\mathbf{c} \quad &\Rightarrow \quad \mathbf{F} \approx W \mathbf{c} = W (\mathcal{P}^T W)^{-1} \mathcal{P}^T \mathbf{F} \\
+\quad &\Rightarrow \quad \mathbf{N} \approx U_\ell^T W \underbrace{(\mathcal{P}^T W)}_{\color{red}m\color{black} \times \color{red}m\color{black}}^{-1} \color{green} \mathcal{P}^T \mathbf{F}(t,U_\ell \mathbf{\tilde y}(t))\color{black}
+\end{align*}
+}
+\frame{
+\begin{algorithm}[H]
+\caption{The DEIM algorithm, \cite{DEIM}}
+\label{alg:DEIM}
+\begin{algorithmic}[1]
+\STATE \textbf{INPUT: } $\{\mathbf{w}_i\}_{i=1}^m \subset \mathbb{R}^N$  linear independent
+\STATE \textbf{OUTPUT: } $\vec \wp = [\wp_1,...,\wp_m]^T \in \mathbb{R}^m, \ \mathcal{P} \in \mathbb{R}^{N \times m}$
+\STATE $[|\rho|,\color{red}\wp_1\color{black}] = \max \{|\mathbf{w}_1|\}$
+\STATE $W = [\mathbf{w}_1], \color{red}\mathcal{P} = [\mathbf{e}_{\wp_1}]\color{black}, \vec \wp = [\wp_1]$
+\FOR{$i = 2$ to $m$}
+\STATE Solve $(\mathcal{P}^T W) \mathbf{c} = \mathcal{P}^T \mathbf{w}_i$ for $\mathbf{c}$
+\STATE $\mathbf{r} = \mathbf{w}_i - W \mathbf{c}$
+\STATE $[|\rho|,\color{red}\wp_i\color{black}] = \max \{|\mathbf{r}|\}$
+\STATE $W \leftarrow [W \ \mathbf{w}_i], \color{red} \mathcal{P} \leftarrow [\mathcal{P} \ \mathbf{e}_{\wp_i}]\color{black}, \vec \wp \leftarrow \begin{bmatrix} \vec \wp \\ \wp_i \end{bmatrix}$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+Therefore, $\color{green}\mathcal{P}^T \mathbf{F}\color{black}$ is equal to $[\mathbf{F}_{\wp_1},...,\mathbf{F}_{\wp_m}]^T$.
+}
+\subsection{Application: MOR for Burgers' equation}
+\frame{
+\begin{block}{The nonlinear 1D Burgers' model}
+\begin{equation*}
+\begin{split}
+y_t + \left( \frac{1}{2}y^2 - \nu y_x\right)_x = f&, \quad (x,t) \in (0,L) \times (0,T), \\
+y(t,0) = y(t,L) = 0&, \quad t \in (0,T), \\
+y(0,x) = y_0(x)&, \quad x \in (0,L).
+\end{split}
+\end{equation*}
+\end{block}
+\vspace{0.4cm}
+FEM-discretization in space leads to:
+\begin{align*}
+M \dot{\mathbf{y}}(t) &= -\frac{1}{2} B \mathbf{y}^2(t) - \nu C \mathbf{y}(t) + \mathbf{f}, \quad t > 0 \\
+\mathbf{y}(0) &= \mathbf{y}_0
+\end{align*}
+}
+\frame{
+\frametitle{POD-DEIM for Burgers' equation}
+
+}
+\frame{
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figures/l3.eps}\\
+\end{figure}
+}
+\frame{
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figures/l5.eps}\\
+\end{figure}
+}
+\frame{
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figures/l7.eps}\\
+\end{figure}
+}
+\frame{
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figures/l9.eps}\\
+\end{figure}
+}
+\frame{
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figures/l11.eps}\\
+\end{figure}
+}
+\frame{
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figures/l13.eps}\\
+\end{figure}
+}
+\frame{
+\frametitle{Computational Speedup}
+\begin{table}[H]
+\tiny
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\cline{1-10}
+ & \multicolumn{3}{ c| }{$\nu = 0.01$} & \multicolumn{3}{ c| }{$\nu = 0.001$}& \multicolumn{3}{ c| }{$\nu = 0.0001$}\\ \cline{2-10}
+ & Full & POD & DEIM & Full & POD & DEIM & Full & POD & DEIM \\ \cline{1-10}
+$N$/$\ell$/$m$ & $80$ &$ 11 $&$(11,13)$ & $200$&$35 $& $(35,40)$  & $800$&$40 $& $(40,55)$ \\ \cline{1-10}
+$t_{setup}[s]$        & -      &0.003      &0.011       & -    &0.009&0.021 & -& 0.0729&0.182\\ \cline{1-10}
+$t_{PDEsol}[s]$   &  0.068     &0.047      &0.040       & 0.232&0.12&0.055 & 4.416&0.276&0.085\\ \cline{1-10}
+$\bar{e}[10^{-4}]$   & -      &6.13       &6.46        & -    &6.12&6.85 & -&7.43& 7.66\\ \cline{1-10}
+$S_P^{(1)}$           & -      &1.35       &1.34        & -    &1.74&3.03 & -&12.54&16.52\\ \cline{1-10}
+$S_P^{(2)}$           & -      &1.44       &1.71        & -    &1.88&4.21 & -&\color{red}15.85\color{black}&\color{red}51.85\color{black}\\ \cline{1-10}
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+%\includegraphics{figures/PODDEIM_Sp2.eps}
+\subfigure{\includegraphics[width=0.49\textwidth]{figures/PODDEIM_Sp2}}\hfill
+\subfigure{\includegraphics[width=0.49\textwidth]{figures/PODDEIM_Tsol}}
+\end{figure}
+}
+\section[Optimal Control]{PDE-constrained optimization}
+\frame{
+todo
+}
+\subsection{A Newton-type method}
+\frame{
+todo
+}
+\subsection{First order methods: BFGS and SPG}
+\frame{
+}
+\section[Burgers' equation]{Optimal Control for the reduced order Burgers' equation}
+\subsection*{}
+\frame{
+\begin{block}{Optimal Control problem for Burgers' equation}
+Minimize
+\begin{align}
+\label{minJ}
+\min_{\color{red} u\color{black}} \frac{1}{2} \int_0^T \int_0^L [y(t,x) - \color{blue} z(t,x)\color{black}]^2 + \omega \color{red} u^2(t,x)\color{black} \ dx \ dt,
+\end{align}
+where $y$ is a solution to the nonlinear Burgers' equation
+\begin{equation}
+\label{Burgers2}
+\begin{split}
+y_t + \left( \frac{1}{2}y^2 - \nu y_x\right)_x = f + \color{red} u\color{black}&, \quad (x,t) \in (0,L) \times (0,T), \\
+y(t,0) = y(t,L) = 0&, \quad t \in (0,T), \\
+y(0,x) = y_0(x)&, \quad x \in (0,L).
+\end{split}
+\end{equation}
+\end{block}
+\begin{itemize}
+  \item $\color{red} u \color{black}$ is the control that determines $y$
+  \item $\color{blue} z \color{black}$ is the desired state
+\end{itemize}
+}
+\frame{
+\frametitle{Control goal}
+We want to control the solution of Burgers' equation in such a way that it stays in the desired state $z(t,\cdot) = y_0, \forall t$:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{../MSc/plots/desiredState}
+\caption{Uncontrolled and desired state for $\nu = 0.01$.}\label{desState}
+\end{figure}
+}
+\frame{
+\frametitle{Discretization}
+\begin{block}{The full-order discretized optimal control problem}
+Minimize
+\begin{align}
+\label{minJ}
+\min_{\color{red} u\color{black}} \frac{1}{2} \int_0^T \int_0^L [y(t,x) - \color{blue} z(t,x)\color{black}]^2 + \omega \color{red} u^2(t,x)\color{black} \ dx \ dt,
+\end{align}
+where $y$ is a solution to the nonlinear Burgers' equation
+\begin{equation}
+\label{Burgers2}
+\begin{split}
+y_t + \left( \frac{1}{2}y^2 - \nu y_x\right)_x = f + \color{red} u\color{black}&, \quad (x,t) \in (0,L) \times (0,T), \\
+y(t,0) = y(t,L) = 0&, \quad t \in (0,T), \\
+y(0,x) = y_0(x)&, \quad x \in (0,L).
+\end{split}
+\end{equation}
+\end{block}
+
+}
+\frame{
+todo
+}
+
+\section[Outlook]{Summary and future research}
+\subsection*{}
+\frame{
+\frametitle{Overview and main results}
+\begin{itemize}
+  \item Optimal Control of Burgers' equation using POD-DEIM leads to a \color{blue}speedup of $\sim 100$ \color{black} for small $\nu$,
+  \item For the reduced model, all derivatives need to be computed in terms of the \color{blue}reduced variable\color{black}. This can be quite hard in practice.
+  \item
+\end{itemize}
+}
+\subsection*{}
+\frame{
+\frametitle{Future research questions}
+\begin{itemize}
+  \item Apply model order reduction to \color{blue}PDE-constrained optimization \color{black} problems,
+  \item Application to more evolved problem like the \color{blue}backward-facing step\color{black},
+  \item Analyze \color{blue}speed-up \color{black} of POD-DEIM in more detail,
+  \item Consider different approaches for computing the \color{blue}projection space $V_k$\color{black}.
+\end{itemize}
+}
+\section*{}
+\frame{
+\begin{center}
+This Master project is supervised by Marielba Rojas and \\ Martin van Gijzen.\\
+\end{center}
+\vspace{0.8cm}
+\setbeamercovered{transparent}
+\uncover<2->{
+\begin{center}
+\textbf{Thank you for your attention!}\\
+\vspace{0.2cm}
+Are there any questions or remarks?
+\vspace{0.7cm}
+\end{center}
+\begin{center}
+\url{https://github.com/ManuelMBaumann/MasterThesis}
+\end{center}
+}}
+\section*{Literature}
+\frame{
+\frametitle{Further information can be found in...}
+%\bibliographystyle{amsalpha}
+%\bibliography{LitStudy.bib}
+\begin{thebibliography}{10}
+\small\setlength{\parskip}{0cm}
+\bibitem[Chaturantabut, Sorensen, 2010]{DEIM}
+S. Chaturantabut and D. Sorensen
+\newblock {\em Nonlinear Model Reduction via Discrete Empirical Interpolation}.
+\newblock SIAM Journal of Scientific Computing, 2010.
+\bibitem[Heinkenschloss, 2008]{2}
+M. Heinkenschloss
+\newblock {\em Numerical solution of implicitly constrained optimization problems}.
+\newblock Technical report, Department of Computational and Applied Mathematics, Rice University, 2008.
+\bibitem[Kunisch, Volkwein, 1999]{3}
+K. Kunisch and S. Volkwein
+\newblock {\em Control of the {B}urgers {E}quation by a {Reduced}-{Order} {A}pproach
+	{U}sing {P}roper {O}rthogonal {D}ecomposition}.
+\newblock Journal of Optimization Theory and Applications, 1999.
+\end{thebibliography}
+}
+\end{document} 

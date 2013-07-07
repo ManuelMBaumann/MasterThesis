@@ -1,0 +1,14 @@
+\contentsline {algorithm}{\numberline {2.1}{\ignorespaces The DEIM algorithm, \cite {DEIM}\relax }}{9}{algorithm.2.1}
+\contentsline {algorithm}{\numberline {3.1}{\ignorespaces Truncated Newton-CG method with Armijo line search, \cite {H08}\relax }}{23}{algorithm.3.1}
+\contentsline {algorithm}{\numberline {3.2}{\ignorespaces Computing $\nabla \mathcal {\mathaccentV {hat}05EJ}(u)$ via adjoints, \cite {H08}\relax }}{24}{algorithm.3.2}
+\contentsline {algorithm}{\numberline {3.3}{\ignorespaces Computing the product $\nabla ^2 \mathcal {\mathaccentV {hat}05EJ}(u) \cdot v$ via adjoints, \cite {H08}\relax }}{26}{algorithm.3.3}
+\contentsline {algorithm}{\numberline {3.4}{\ignorespaces Broyden\IeC {\textendash }Fletcher\IeC {\textendash }Goldfarb\IeC {\textendash }Shanno (BFGS) method, \cite [Section 6.15]{Rao09}\relax }}{28}{algorithm.3.4}
+\contentsline {algorithm}{\numberline {3.5}{\ignorespaces Spectral projected gradient (SPG) method, \cite {MBR00}\relax }}{30}{algorithm.3.5}
+\contentsline {algorithm}{\numberline {3.6}{\ignorespaces Algorithm \ref {alg:Adj1} applied to the full-order discrete Burgers' equation\relax }}{34}{algorithm.3.6}
+\contentsline {algorithm}{\numberline {3.7}{\ignorespaces Algorithm \ref {alg:Adj2} applied to the full-order discrete Burgers' equation\relax }}{35}{algorithm.3.7}
+\contentsline {algorithm}{\numberline {4.1}{\ignorespaces Algorithm \ref {alg:Adj1} applied to the reduced Burgers' model\relax }}{41}{algorithm.4.1}
+\contentsline {algorithm}{\numberline {4.2}{\ignorespaces Algorithm \ref {alg:Adj2} applied to the reduced Burgers' model\relax }}{42}{algorithm.4.2}
+\contentsline {algorithm}{\numberline {4.3}{\ignorespaces Optimal control: Iterative improvement of the reduced model\relax }}{44}{algorithm.4.3}
+\contentsline {algorithm}{\numberline {A.1}{\ignorespaces Euler implicit with Newton's method\relax }}{67}{algorithm.A.1}
+\contentsline {algorithm}{\numberline {B.1}{\ignorespaces The truncated CG algorithm for solving the Newton equation \unhbox \voidb@x \hbox {$\nabla ^2 \mathaccentV {hat}05E{\mathcal J}(u_k) s_k = - \nabla \mathaccentV {hat}05E{\mathcal J}(u_k)$}, \cite {H08}\relax }}{70}{algorithm.B.1}
+\contentsline {algorithm}{\numberline {B.2}{\ignorespaces Armijo line search algorithm, \cite {Rao09}\relax }}{71}{algorithm.B.2}

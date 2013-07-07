@@ -1,0 +1,17 @@
+\select@language {english}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {table}{\numberline {2.1}{\ignorespaces Comparison between POD and POD-DEIM for different values of $\nu $.\relax }}{19}{table.caption.15}
+\addvspace {10pt}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Choice of parameters for the numerical results in Figure \ref {optFull} and \ref {optFullu}.\relax }}{36}{table.caption.18}
+\addvspace {10pt}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Results of the Newton-type optimization method \ref {alg:Opt} for $\nu = \{0.01, 0.001, 0.0001\}$.\relax }}{49}{table.caption.28}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Results of the Newton-type optimization method \ref {alg:Opt} using a low-dimensional control with $n_c = 3$ and $\nu = \{0.01, 0.001, 0.0001\}$.\relax }}{50}{table.caption.29}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Results of three different optimization algorithms and $\nu = 0.0001, n_c = 3$.\relax }}{50}{table.caption.30}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Number of evaluations of the cost function and the gradient for the first-order methods in the setting of Table \ref {time_messure3}.\relax }}{51}{table.caption.31}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Results of the SPG method and a bounded control $-2 \leq u \leq 2$.\relax }}{51}{table.caption.32}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}

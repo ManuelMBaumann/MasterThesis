@@ -1,0 +1,505 @@
+\chapter{Optimal control of partial differential equations}
+We consider the following optimization problem,
+\begin{align}
+\label{optControl}
+\min_u \mathcal{J}(y(u),u),
+\end{align}
+where $y$ is the solution to a (nonlinear) partial differential equation,
+\begin{align}
+\label{optControl_const}
+c(y,u) = 0,
+\end{align}
+and $\mathcal{J}$ is called the \textit{cost function} or the \textit{objective function}. Since in order to evaluate \eqref{optControl} as a function of the control $u$ we first need to solve the constraining PDE \eqref{optControl_const}, the optimization problem \eqref{optControl}-\eqref{optControl_const} is often referred to as an \textit{implicitly-constrained optimization problem}, cf. \cite{H10}. Standard references for the numerical solution of optimization problems can be found in \cite{DS96,K99,NW06}. In general, one distinguishes between gradient-based and Newton-type methods which use information of the first and second derivative of the cost function, respectively.
+
+An alternative way to look at \eqref{optControl}-\eqref{optControl_const} is to consider the following constrained optimization problem,
+\begin{equation}
+\label{allgControl}
+\begin{split}
+\min_u \ &\mathcal{J}(y,u) ,\\
+\text{subject to } \ &c(y,u) = 0,
+\end{split}
+\end{equation}
+where $y$ is called the \textit{state} and $u$ is considered to be the \textit{control} or the \textit{input} of the problem \eqref{allgControl}. Again, the scalar function $\mathcal{J}$ is usually called the \textit{cost function} and the \textit{constraint} $c$ is given by a nonlinear partial differential equation. Note, that $y \in \mathbb{R}^{n_y}$ and $u \in \mathbb{R}^{n_u}$ are typically high-dimensional and, therefore, the (given) functions $\mathcal{J}$ and $c$ map as follows,
+\begin{align*}
+\mathcal{J} : \mathbb{R}^{n_y} \times \mathbb{R}^{n_u} \rightarrow \mathbb{R}, \quad c : \mathbb{R}^{n_y} \times \mathbb{R}^{n_u} \rightarrow \mathbb{R}^{n_y}.
+\end{align*}
+As it is stated in \eqref{allgControl}, we seek for an optimal control $u^* = \text{arg }\min_{u} \ \mathcal{J}(y,u)$ that minimizes the cost function $\mathcal{J}$ and at the same time fulfills the PDE $c$. In more detail, the control $u$ will appear on the right-hand side of the constraining partial differential equation $c$ such that the solution $y$ will depend on $u$. We will therefore sometimes write $y(u)$ in order to indicate that the solution to the PDE is only unique after $u$ is specified. A standard reference for optimal control of partial differential equations is given by \cite{T10}.
+\section{Gradient-based optimization techniques}
+For an easier notation, let us introduce
+\begin{align}
+\label{easyJ}
+\hat{\mathcal{J}}(u) := \mathcal{J}(y(u),u)
+\end{align}
+The unconstrained optimization problem \eqref{optControl} then becomes,
+\begin{align}
+\label{minhatJ}
+\min_u \hat{\mathcal{J}}(u),
+\end{align}
+where $\hat{\mathcal{J}} : \mathbb{R}^{n_u} \rightarrow \mathbb{R}$.
+
+solve Newton equation iteratively
+\begin{align}
+\label{Newtoneqn_J}
+\nabla^2 \hat{\mathcal{J}}(u_k) s_k = -\nabla \hat{\mathcal{J}}(u_k),
+\end{align}
+which can be solved via BFGS/SPQ... gradient via Algorithm \ref{alg:Adj1} + approx Hess
+\subsection{The Broyden–Fletcher–Goldfarb–Shanno (BFGS) method}
+quasi-Newton method. solve \eqref{Newtoneqn_J} without computing the Hessian but using an approximation,
+\begin{align}
+ \label{approxHess}
+ H_k \approx \nabla^2 \hat{\mathcal{J}}(u_k)
+\end{align}
+Start with $H_0 = I$ and improve approximation of Hessian iteratively by an update,
+\begin{align*}
+ H_{k+1} = H_k + (\Delta H)_k.
+\end{align*}
+derivation: 2nd order Taylor approximation of $\hat{\mathcal J}(\cdot)$,
+\begin{align*}
+T_{k+1}(u) = \hat{\mathcal{J}}(u_k) + \nabla \hat{\mathcal{J}}(u_k) (u-u_{k+1}) + \frac{1}{2} (u-u_{k+1})^T H_{k+1}(u-u_{k+1})
+\end{align*}
+Conditions:
+\begin{align*}
+\nabla T_{k+1}(u) = \nabla \hat{\mathcal{J}}(u), \quad \text{at } u = u_k \text{ and } u = u_{k+1}
+\end{align*}
+Let $s := u-u_{k+1}$ and consider $T_{k+1}$ as a function of $s$.
+First condition,
+\begin{align*}
+\nabla T_{k+1}(0) = \nabla \hat{\mathcal{J}}(u_{k+1})
+\end{align*}
+always fulfilled by Taylor.
+
+Second condition,
+\begin{align*}
+\nabla T_{k+1}(-\alpha_k^* s_k) = \nabla \hat{\mathcal{J}}(u_{k+1}) - \alpha_k H_{k+1}s_k \stackrel{!}{=} \nabla \hat{\mathcal J}(u_k)
+\end{align*}
+Leads to the so-called \textit{Secant equation}
+\begin{align*}
+H_{k+1} p_k = y_k,
+\end{align*}
+where $p_k := u_{k+1} - u_k$ and $y_k := \hat{\mathcal{J}}(u_{k+1}) - \hat{\mathcal{J}}(u_k)$.
+
+Since there is no unique solution,
+\begin{equation}
+\begin{split}
+\label{minBFGS}
+H_{k+1} = \argmin_H \|H - H_k\| \\
+s.t. \quad H = H^T, H p_k = y_k
+\end{split}
+\end{equation}
+In \cite{Rao09}, solution to \eqref{minBFGS} results in update
+\begin{align*}
+(\Delta H)_k = \frac{y_k y_k^T}{y_k^T p_k} - \frac{H_k p_k p_k^T H_k}{p_k^T B_k p_k}
+\end{align*}
+\begin{algorithm}[H]
+\caption{Broyden–Fletcher–Goldfarb–Shanno (BFGS) method, \cite[Section 6.15]{Rao09}}
+\label{alg:BFGS}
+\begin{algorithmic}[1]
+\STATE Set initial control $u_0 = 0$, $H_0 = I$ and $tol > 0$, \texttt{MAXIT} $\in \mathbb{N}$
+\FOR{$k = 0$ to \texttt{MAXIT}}
+\STATE Solve $c(y_k,u_k) = 0$ for $y_k$
+\STATE Compute $\nabla \hat{\mathcal{J}}(u_k)$ via algorithm \ref{alg:Adj1}
+\IF{$\|\nabla \hat{\mathcal{J}}(u_k)\| < tol$}
+\RETURN
+\ENDIF
+\STATE Solve the Newton equation using the approximate Hessian, $H_k s_k = -\nabla \hat{\mathcal{J}}(u_k)$
+\STATE Obtain $\alpha_k^* = \argmin_{\alpha_k \in \mathbb{R}_+} \mathcal{J}(y(u_k + \alpha_k s_k),u_k + \alpha s_k)$ using an appropriate line-search algorithm
+\STATE Set new control, $u_{k+1} = u_k + \alpha_k^* s_k$
+\STATE Set $p_k = \alpha_k^* s_k$
+\STATE Set $y_k = \hat{\mathcal{J}}(u_{k+1}) - \hat{\mathcal{J}}(u_k)$
+\STATE Compute $H_{k+1} = H_k + \frac{y_k y_k^T}{y_k^T p_k} - \frac{H_k p_k p_k^T H_k}{p_k^T B_k p_k}$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+Since $H_0$ equals identity, first iteration is gradient descent.
+
+Linear system in line $8$ easy to solve since formula for inverse is known:
+\begin{align}
+\label{Hessinv_approx}
+H^{-1}_{k+1} = H^{-1}_k + \frac{(p_k y_k + y_k^T H^{-1}_k y_k) (p_k p_k^T)}{(p_k^T y_k)^2} - \frac{H^{-1}_k y_k p_k^T p_k y_k^T H^{-1}_k}{p_k^T y_k}
+\end{align}
+Matlab implementation \cite{IMM}
+\subsection{The spectral projected gradient (SPG) method}
+Solve
+\begin{align}
+\label{minhatJ_bound}
+\min_u \hat{\mathcal{J}}(u), \quad \text{subject to } u \in \Omega_c
+\end{align}
+bound, for $u_l < u_r$ we want $u_l \leq u \leq u_r$. Note that the control $u$ can be a multi-dimensional vector. In this case, the inequalities of the bound constraint are understood componentwise and the domain $\Omega_c$ is understood to be a hypercube. We will denote the Euclidean projector onto $\Omega_c$ by $\mathcal{P}_{\Omega_c}$. Note that this projection can be implemented efficiently via,
+\begin{center}
+\texttt{proj(u) = min(max(u,ul),ur);}
+\end{center}
+derivation \cite{MBR00,BMR12}:
+
+\begin{algorithm}[H]
+\caption{Spectral projected gradient (SPG) method, \cite{MBR00}}
+\label{alg:SPG}
+\begin{algorithmic}[1]
+\STATE Set initial control $u_0 \in \Omega_c$, $\lambda_0 \in [\lambda_{min},\lambda_{max}]$, and $tol > 0$, \texttt{MAXIT} $\in \mathbb{N}$
+\FOR{$k = 0$ to \texttt{MAXIT}}
+\IF{$\|\mathcal{P}_{\Omega_c}(u_k - \nabla \hat{\mathcal{J}}(u_k)) - u_k\|_\infty \leq tol$}
+\RETURN
+\ENDIF
+\STATE Compute search direction, $d_k = \mathcal{P}_{\Omega_c}(u_k - \lambda_k \nabla \hat{\mathcal{J}}(u_k)) - u_k$
+\STATE Perform nonmonotone line-search as described in \cite[Algorithm 2.2]{BMR12}, obtain step length $\alpha_k^*$
+\STATE Set $u_{k+1} = u_k + \alpha_k^* d_k$
+\STATE Set $p_k = u_{k+1} - u_k$
+\STATE Set $y_k = \nabla \hat{\mathcal{J}}(u_{k+1}) - \nabla \hat{\mathcal{J}}(u_k)$
+\IF{$p_k^Ty_k \leq 0$}
+\STATE Set $\lambda_{k+1} = \lambda_{max}$
+\ELSE
+\STATE Set $\lambda_{k+1} = \max \{\lambda_{min}, \min \{ p_k^T p_k / p_k^T y_k, \lambda_{max} \} \}$
+\ENDIF
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+\section{Newton-type methods using adjoint techniques for derivative computation}
+\label{optAdj}
+A different approach to solve the optimization problem \eqref{minhatJ} is by solving iteratively the so-called Newton equation
+\begin{align*}
+\nabla^2 \hat{\mathcal{J}}(u_k) s_k = -\nabla \hat{\mathcal{J}}(u_k),
+\end{align*}
+where an initial control $u_0$ has to be chosen. In \eqref{Newtoneqn_J}, we also introduced the \textit{search direction} $s_k$. Note that \eqref{Newtoneqn_J} is a system of linear equations for the unknown search direction $s_k$. The new control is determined in an iterative process via a line-search in direction of $s_k$, i.e.
+\begin{align}
+\label{gen_line}
+u_{k+1} = u_k + \alpha^*_k \cdot s_k,
+\end{align}
+where the optimal step size $\alpha^*_k \in \mathbb{R}_+$ has to be determined by a suitable line-search algorithm such that
+\begin{align}
+\alpha^*_k = \argmin_{\alpha_k \in \mathbb{R}_+} \mathcal{J}(y(u_k + \alpha_k \cdot s_k), u_k + \alpha_k \cdot s_k).
+\end{align}
+Note that in order to evaluate the objective function $\mathcal{J}$ we need to compute the corresponding state $y$ which in our setting requires to solve the constraining PDE $c$. In Appendix \ref{Armapp} we present the Armijo line-search algorithm in order to solve \eqref{gen_line}, as it has been proposed in \cite{H08}. The optimization algorithm presented in this section will solve the Newton equation \eqref{Newtoneqn_J} by a truncated version of the conjugate gradient (CG) method, see Appendix \ref{CGapp}.  We will present how the gradient and the Hessian of the cost function  $\hat{\mathcal{J}}$ can be computed efficiently by so-called adjoint equations. An overview of the described optimization loop is presented in Algorithm \ref{alg:Opt}.
+\begin{algorithm}[H]
+\caption{Newton-CG method with Armijo line-search, \cite{H08}}
+\label{alg:Opt}
+\begin{algorithmic}[1]
+\STATE Set initial control $u_0 = 0$, and $tol > 0$, \texttt{MAXIT} $\in \mathbb{N}$
+\FOR{$k = 0$ to \texttt{MAXIT}}
+\STATE Solve $c(y_k,u_k) = 0$ for $y_k$
+\STATE Compute $\nabla \hat{\mathcal{J}}(u_k)$ via algorithm \ref{alg:Adj1}
+\IF{$\|\nabla \hat{\mathcal{J}}(u_k)\| < tol$}
+\RETURN
+\ENDIF
+\STATE Compute $\nabla^2 \hat{\mathcal{J}}(u_k)$ via algorithm \ref{alg:Adj2}
+\STATE Solve the Newton equation $\nabla^2 \hat{\mathcal{J}}(u_k) s_k = -\nabla \hat{\mathcal{J}}(u_k)$ via the conjugate gradient method, see Appendix \ref{CGapp}
+\STATE Obtain $\alpha_k^* = \argmin_{\alpha_k \in \mathbb{R}_+} \mathcal{J}(y(u_k + \alpha_k s_k),u_k + \alpha s_k)$ via Armijo line-search, see Appendix \ref{Armapp}
+\STATE Set $u_{k+1} = u_k + \alpha_k^* s_k$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Using adjoint equations for gradient computation}
+In order to derive an efficient numerical method to compute the gradient of $\hat{\mathcal{J}}$, let us introduce the Lagrangian function $\mathcal{L}$ which converts the constrained optimization problem \eqref{allgControl} into an unconstrained optimization problem. The Lagrangian function is defined via
+\begin{align}
+\label{genLagr}
+&\mathcal{L} : \mathbb{R}^{n_y} \times \mathbb{R}^{n_u}  \times \mathbb{R}^{n_y} \rightarrow \mathbb{R} \nonumber \\
+&\mathcal{L}(y,u,\lambda)= \mathcal{J}(y,u) + \lambda^T c(y,u),
+\end{align}
+where $\lambda$ is a new variable called the \textit{Lagrange multiplier}. It is well-known that for all optimal points $(y^*,u^*)$ to the original constrained problem \eqref{allgControl}, there exists a $\lambda^*$ such that $(y^*,u^*, \lambda^*)$ is a stationary point of the Lagrangian function \eqref{genLagr}, cf. \cite{S86}. Stationary points of \eqref{genLagr} fulfill the first order optimality conditions (zero-gradient condition),
+\begin{align}
+\label{opt1}
+\nabla_y \mathcal{L}(y,u,\lambda) &= 0,\\
+\label{opt2}
+\nabla_u \mathcal{L}(y,u,\lambda) &= 0,\\
+\label{opt3}
+\nabla_\lambda \mathcal{L}(y,u,\lambda) &= 0,
+\end{align}
+where the subscripts are used to denote partial derivatives with respect to the indicated variable. Note, that from \eqref{opt3} the original constraint $c(y,u) = 0$ follows directly. Furthermore, we will use \eqref{opt1} in order to derive the so-called \textit{adjoint equation} which determines the auxiliary variable $\lambda$. In the following, we will describe an efficient way to compute $\nabla \hat{\mathcal{J}}(u)$ which appears on the right-hand side of \eqref{genLagr} in Algorithm \ref{alg:Opt}. Therefore, we will use the conditions \eqref{opt1}-\eqref{opt3}.
+%In this section, we will describe an efficient way to obtain stationary points of the Lagrangian function \eqref{genLagr} numerically. Following \cite{H08}, we will use conditions \eqref{opt1} and \eqref{opt3} in order to derive efficient algorithms to solve condition \eqref{opt2} by the Newton equation. For simplicity of notation, we will introduce the function $\mathcal{\hat L}$ to be the Lagrangian as a function of the control $u$ only, i.e.
+%\begin{align*}
+%\mathcal{\hat L}(u) = \mathcal{L}(y,u,\lambda)\big|_{y=y(u), \lambda=\lambda(u)}.
+%\end{align*}
+%Consequently the corresponding gradient and Hessian can be denoted in the following compact way,
+%\begin{align*}
+%\nabla \mathcal{\hat L}(u) = \nabla_u \mathcal{L}(y,u,\lambda)\big|_{y=y(u), \lambda=\lambda(u)}, \quad \nabla^2 \mathcal{\hat L}(u) = \nabla^2_u \mathcal{L}(y,u,\lambda)\big|_{y=y(u), \lambda=\lambda(u)}.
+%\end{align*}
+%
+%Since \eqref{opt2} is in general a nonlinear equation, finding the roots of $\nabla \hat{\mathcal L}(\cdot)$ can be achieved iteratively by Newton's method which reads,
+%\begin{align}
+%\label{Newtonsmeth}
+%u_{k+1} = u_{k} - (\nabla^2 \hat{\mathcal L}(u_k))^{-1} \nabla \hat{\mathcal L}(u_k).
+%\end{align}
+%Here, one usually starts with an initial guess for $u_0$ and iterates until convergence or a maximum number of iterations is obtained. When introducing the search direction $s_k := u_{k+1}-u_{k}$, we can reformulate \eqref{Newtonsmeth} and derive the so-called Newton equation,
+%\begin{align}
+%\label{Newtoneqn}
+%\nabla^2 \hat{\mathcal L}(u_k) s_k = - \nabla \hat{\mathcal L}(u_k),
+%\end{align}
+%which is a system of linear equations for the unknown search direction $s_k$. The optimization algorithm presented in this section will solve the Newton equation \eqref{Newtoneqn} by a truncated version of the conjugate gradient method, see Appendix \ref{CGapp}. We will present how the gradient and the Hessian of the Lagrangian function $\hat{\mathcal L}(\cdot)$ can be computed efficiently by so-called adjoint equations. Once the new search direction is obtained by solving \eqref{Newtoneqn}, the optimal step size in the direction $s_k$ is obtained by minimizing the cost function $f$ for a fixed state along $s_k$. This can be done by a simple line-search algorithm, for instance by an implementation of the Armijo line-search algorithm, see Appendix \ref{Armapp}. An overview of the described optimization loop is presented in \mbox{Algorithm \ref{alg:Opt}}.
+
+%In Algorithm \ref{alg:Opt}, we need to compute the gradient with respect to $u$ of the Lagrangian function \eqref{genLagr}. Therefore, we first recall condition \eqref{opt1} which is given by
+%\begin{align*}
+%\nabla_y \mathcal{L}(y,u,\lambda) = 0.
+%\end{align*}
+If we apply the gradient with respect to $y$ to the Lagrangian function \eqref{genLagr}, i.e. use relation \eqref{opt1}, we derive
+\begin{align}
+\label{adjoint1}
+c_y (y(u),u)^T \lambda = - \nabla_y \mathcal{J}(y(u),u),
+\end{align}
+which is called the \textit{adjoint equations} because from \eqref{adjoint1} we are able to determine the adjoint variable $\lambda$.
+
+Furthermore, from the condition \eqref{opt3} we derive the constraint $c(y,u) = 0$ and, therefore, we conclude by differentiation,
+\begin{align*}
+c_y(y(u),u) y_u(u) + c_u(y(u),u) = 0,
+\end{align*}
+which can be re-arranged to,
+\begin{align}
+\label{yu}
+y_u(u) = -c_y(y(u),u)^{-1} c_u(y(u),u).
+\end{align}
+The gradient in the right-hand side of \eqref{Newtoneqn_J} can, thus, be computed via
+\begin{align}
+\label{grad}
+\nabla \hat{\mathcal J}(u) &= y_u(u)^T \nabla_y \mathcal{J}(y(u),u) + \nabla_u \mathcal{J}(y(u),u) \nonumber \\
+&\stackrel{\eqref{yu}}{=} -c_u(y(u),u)^T c_y(y(u),u)^{-T} \nabla_y \mathcal{J}(y(u),u) + \nabla_u \mathcal{J}(y(u),u) \nonumber \\
+&\stackrel{\eqref{adjoint1}}{=} c_u(y(u),u)^T \lambda(u) + \nabla_u \mathcal{J}(y(u),u),
+\end{align}
+where $\lambda(u)$ is the solution to \eqref{adjoint1}. Note, that at that stage the state $y$ and also the adjoint $\lambda$ are assumed to be computed after a specific control $u$ has been chosen. We emphasize this be the notation $y(u)$ and $\lambda(u)$, respectively. A summary of the computation of $\nabla \mathcal{\hat J}(u)$ is stated in Algorithm \ref{alg:Adj1}.
+
+\begin{algorithm}[H]
+\caption{Computing $\nabla \mathcal{\hat J}(u)$ via adjoints, \cite{H08}}
+\label{alg:Adj1}
+\begin{algorithmic}[1]
+\STATE For a given control $u$, solve $c(y,u) = 0$ for the state $y(u)$
+\STATE Solve the adjoint equation $c_y(y(u),u)^T \lambda = -\nabla_y \mathcal{J}(y(u),u)$ for $\lambda(u)$
+\STATE Compute $\nabla \mathcal{\hat J}(u) = \nabla_u \mathcal{J}(y(u),u) + c_u(y(u),u)^T \lambda(u)$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Using adjoint equations for Hessian computation}
+\label{Hessadj}
+In order to compute the Hessian of $\hat{\mathcal J}$, we first note that equation \eqref{grad} can be written as,
+\begin{align}
+\label{grad_gen}
+\nabla \hat{\mathcal{J}}(u) = \nabla_u \mathcal{L}(y(u),u,\lambda(u)).
+\end{align}
+The differentiation of \eqref{grad_gen} then gives,
+\begin{align}
+\label{Hess1}
+\nabla^2 \hat{\mathcal J}(u) = \nabla_{uy} \mathcal{L}(y(u),u,\lambda(u)) y_u(u) + \nabla_{uu} \mathcal{L}(y(u),u,\lambda(u)) + \nabla_{u\lambda} \mathcal{L}(y(u),u,\lambda(u))\lambda_u(u),
+\end{align}
+where inner derivatives exist due to the dependence of $y$ and $\lambda$ on $u$. In order to compute \eqref{Hess1}, we only need to determine the derivative $\lambda_u(\cdot)$ since an expression for $y_u(\cdot)$ is given by \eqref{yu}.
+%Therefore, we use again that the condition \eqref{opt3} is equivalent to the constraint of the original problem, $c(y(u),u) = 0$, and we can conclude that the Jacobian of $y(\cdot)$ is the solution of,
+%\begin{align*}
+%c_y(y(u),u) y_u(u) + c_u(y(u),u) = 0.
+%\end{align*}
+%The last equation can be rearranged to,
+%\begin{align}
+%\label{yu}
+%y_u(u) = -c_y(y(u),u)^{-1} c_u(y(u),u).
+%\end{align
+%Secondly, we conclude from differentiating the condition $\nabla_y \mathcal{L}(y(u),u,\lambda(u)) = 0$ that,
+In order to derive an expression for $\lambda_u(\cdot)$, we use relation \eqref{opt2} and conclude by differentiation that,
+\begin{align*}
+\nabla_{yy}\mathcal{L}(y(u),u,\lambda(u)) y_u(u) + \nabla_{yu}\mathcal{L}(y(u),u,\lambda(u)) + \nabla_{y\lambda}\mathcal{L}(y(u),u,\lambda(u))\lambda_u(u) = 0
+\end{align*}
+and, therefore,
+\begin{align}
+\label{lambdau}
+\lambda_u(u) &= (\nabla_{y\lambda}\mathcal{L}(y(u),u,\lambda))^{-1} \left[ -\nabla_{yy}\mathcal{L}(y(u),u,\lambda)y_u(u) - \nabla_{yu}\mathcal{L}(y,u,\lambda) \right] \nonumber \\
+&= (\nabla_{y\lambda}\mathcal{L}(y(u),u,\lambda))^{-1} \left[ \nabla_{yy}\mathcal{L}(y(u),u,\lambda) c_y(y(u),u)^{-1} c_u(y(u),u)  - \nabla_{yu}\mathcal{L}(y,u,\lambda) \right],
+\end{align}
+where \eqref{yu} has been used to substitute $y_u(u)$.
+
+From the definition \eqref{genLagr}, we see that $\nabla_\lambda \mathcal{L}(y,u,\lambda) = c(y,u)^T$ and, therefore the second mixed derivatives are simply given by,
+\begin{align}
+\label{nabla2L}
+\nabla_{y\lambda} \mathcal{L}(y,u,\lambda) = c_y(y,u)^T, \quad \nabla_{u\lambda} \mathcal{L}(y,u,\lambda) = c_u(y,u)^T.
+\end{align}
+
+If we plug-in \eqref{yu} and \eqref{lambdau} into \eqref{Hess1} and use relation \eqref{nabla2L}, we end up with,
+\begin{align}
+\nabla^2 \hat{\mathcal L}(u) &= c_u(y(u),u)^T c_y(y(u),u)^{-T} \nabla_{yy}\mathcal{L}(y(u),u,\lambda(u)) c_y(y(u),u)^{-1} c_u(y(u),u) \nonumber \\
+& \quad - c_u(y(u),u)^T c_y(y(u),u)^{-T} \nabla_{yu}\mathcal{L}(y(u),u,\lambda(u)) \nonumber \\
+\label{hesseqn}
+& \quad - \nabla_{uy}\mathcal{L}(y(u),u,\lambda(u)) c_y(y(u),u)^{-1} c_u(y(u),u) + \nabla_{uu}\mathcal{L}(y(u),u,\lambda(u)),
+\end{align}
+which is obviously an identity that can be used to compute the Hessian. In an efficient implementation, however, we want to avoid the computation of inverses. Therefore, we define the following auxiliary variables,
+\begin{align}
+\label{defw}
+w &:= c_y(y(u),u)^{-1} c_u(y(u),u),\\
+ \label{defp}
+p &:= c_y(y(u),u)^{-T} \nabla_{yy}\mathcal{L}(y(u),u,\lambda(u)) c_y(y(u),u)^{-1} c_u(y(u),u) \nonumber \\
+  &\quad - c_y(y(u),u)^{-T} \nabla_{yu}\mathcal{L}(y(u),u,\lambda(u)) \nonumber \\
+  &= c_y(y(u),u)^{-T} \left(\nabla_{yy}\mathcal{L}(y(u),u,\lambda(u)) w - \nabla_{yu}\mathcal{L}(y(u),u,\lambda(u))\right)
+\end{align}
+which is equivalent to solving the systems for $w$ and $p$ respectively,
+\begin{align}
+\label{eqnw}
+c_y(y(u),u) w &= c_u(y(u),u),\\
+ \label{eqnp}
+c_y(y(u),u)^{T} p &=  \nabla_{yy}\mathcal{L}(y(u),u,\lambda(u)) w - \nabla_{yu}\mathcal{L}(y(u),u,\lambda(u)).
+\end{align}
+The computation of the Hessian can, thus, be obtained in three steps as shown in Algorithm \ref{alg:Adj2}. Note, that in Algorithm \ref{alg:Adj2} we don't compute the whole Hessian matrix but instead the Hessian times a given vector directly. This is primarily done because in the truncated CG algorithm of Appendix \ref{CGapp} the entire Hessian in not required but only the product of the Hessian times a vector.
+\begin{algorithm}[H]
+\caption{Computing the product $\nabla^2 \mathcal{\hat J}(u) \cdot v$ via adjoints, \cite{H08}}
+\label{alg:Adj2}
+\begin{algorithmic}[1]
+\STATE Assuming that for a given $u$ we have already computed $y(u), \lambda(u)$ in Algorithm \ref{alg:Adj1}
+\STATE Solve the equation $c_y(y(u),u)w = c_u(y(u),u)v$ for $w$
+\STATE Solve the equation $c_y(y(u),u)^T p = \nabla_{yy}\mathcal{L}(y(u),u,\lambda(u))w - \nabla_{yu}\mathcal{L}(y(u),u,\lambda(u))v$ for $p$
+\STATE Compute $\nabla^2 \mathcal{\hat J}(u)v = c_u(y(u),u)^T p - \nabla_{uy}\mathcal{L}(y(u),u,\lambda(u))w + \nabla_{uu}\mathcal{L}(y(u),u,\lambda(u))v$
+\end{algorithmic}
+\end{algorithm}
+Note, that in most applications, mixed derivatives of the Lagrangian function vanish.
+\section{Application: Optimal control of Burger's equation}
+\label{fullOrderControl}
+In order to apply the optimization algorithm described in Section \ref{optAdj}, we need to specify the cost function $f$ as well as the nonlinear PDE $c$ that is constraining the optimization problem \eqref{allgControl}. In this section, we will consider a test problem that has been widely used in many different articles and can, thus, be considered as a standard test problem, cf. \cite{H08,KV99}. We want to minimize the following cost functional,
+\begin{align}
+\label{minJ}
+\min_u \frac{1}{2} \int_0^T \int_0^L [y(x,t) - z(x,t)]^2 + \omega u^2(x,t) \ dx \ dt,
+\end{align}
+where $y$ is a solution the one-dimensional, unsteady Burger's equation with homogeneous Dirichlet boundary conditions and initial condition $y_0(x)$,
+\begin{equation}
+\label{Burgers2}
+\begin{split}
+y_t + \left( \frac{1}{2}y^2 - \nu y_x\right)_x = f + u&, \quad (x,t) \in (0,L) \times (0,T), \\
+y(t,0) = y(t,L) = 0&, \quad t \in (0,T), \\
+y(x,0) = y_0(x)&, \quad x \in (0,L).
+\end{split}
+\end{equation}
+Hereby, the function $z$ is a given function defined on $\Omega \times [0,T]$. We consider $z$ to be the \textit{desired state} of the optimization problem \eqref{minJ}-\eqref{Burgers2} because if we are able to control the solution of Burger's equation in such a way that the difference between $y$ and $z$ is small on the whole domain $\Omega \times [0,T]$, then the value of the objective function \eqref{minJ} is small. The parameter $\omega \in \mathbb{R}_+$ is called the \textit{control penalty}. Usually, $\omega$ is chosen to be small such that a relatively large control $u$ is allowed that drives the state $y$ into the desired state $z$. The control itself appears on the right-hand side of Burger's equation and can be chosen arbitrary as long as the initial and boundary conditions on $y$ are not violated.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{plots/desiredState}
+\caption{Uncontrolled and desired state for $\nu = 0.01$.}\label{desState}
+\end{figure}
+We now present a discretization of the cost functional \eqref{minJ} as well as Burger's equation \eqref{Burgers2} which is again in conservative form as in Section \ref{BurgersPODDEIM}. Therefore, we make the ansatz that the control $u$ can be approximated in a finite element way as the superposition of piecewise linear test functions $\phi_j$ as introduced in Appendix \ref{FEMDiscr_space}. This approach can be written as,
+\begin{align}
+ \label{ansatzu}
+ u(t,x) \approx \sum_{j=1}^N u_j(t) \phi_j(x),
+\end{align}
+where $u_j$ are the respective coefficients of $\phi_j$ that only depend on time, see for example \cite{FEMbook}. Note, that this ansatz also implies that the control is zero at the boundary of $\Omega$ and, therefore, does not change the bahavior of the solution $y$ at those points. Furthermore, we will choose $u(0,x) = 0$ as initial control which, again, does not affect the initial condition on $y$.
+
+In order to discretize \eqref{minJ}, the outer time integral has been approximated by a simple sum using a constant step size $\delta \! t$ for the discretization of the time interval $[0,T]$. We therefore obtain all time-dependent quantities at discrete time instances $t_i$, where $t_0 = 0$ and $t_{N_t} = T$. Recall, that in Appendix \ref{FEMDiscr_space} the state has been approximated in the following way, $y(t,x) \approx \sum_{j=1}^N y_j(t) \phi_j(x)$, a fully discrete version of the cost functional is given by,
+\begin{align}
+\label{minJ_discr}
+\min_{\mathbf{u}_0,...,\mathbf{u}_{N_t}} \mathcal{J}(\mathbf{y}_0,...,\mathbf{y}_{N_t},\mathbf{u}_0,...,\mathbf{u}_{N_t}) = \min_{\mathbf{u}_0,...,\mathbf{u}_{N_t}} \sum_{i=0}^{N_t} \delta \! t \left(\frac{1}{2}\mathbf{y}_i^T M \mathbf{y}_i - \mathbf{z}^T \mathbf{y}_i + \frac{\omega}{2} \mathbf{u}_i^T M \mathbf{u}_i  \right),
+\end{align}
+where the vector-valued quantities
+\begin{align*}
+\mathbf{y}_i = \begin{pmatrix}y_1(t_i) \\ \vdots \\ y_N(t_i) \end{pmatrix} \in \mathbb{R}^N, \quad \mathbf{u}_i = \begin{pmatrix}u_1(t_i) \\ \vdots \\ u_N(t_i) \end{pmatrix} \in \mathbb{R}^N, \quad \text{ for }t_i \in [0,T]
+\end{align*}
+are introduced and $M$ is the mass matrix as defined in Appendix \ref{FEMDiscr_space}. Note, that in \eqref{minJ_discr} the constant term $\mathbf{z}^T \mathbf{z}$ can be neglected since it does not influence the position of the minimum with respect to $u$. Furthermore, the missing subscript indicates that we have assumed that the desired state $z$ does not depent on time. The vector $\mathbf{z}$ tested against the hat functions $\phi_j$ is therefore given by,
+\begin{align*}
+\mathbf{z} = \begin{pmatrix} \int_0^L z(x) \phi_1(x) dx \\ \vdots \\ \int_0^L z(x) \phi_N(x) dx\\ \end{pmatrix} \approx h \begin{pmatrix} z(x_1) \\ \vdots \\ z(x_N)\\ \end{pmatrix}.
+\end{align*}
+The discretization of Burger's equation \eqref{Burgers2} with the control on the right-hand side has been obtained by a finite element approach in space and an implicit Euler method in time as described in Appendix \ref{FEMDiscr_space} and Appendix \ref{implEuler}, respectively. The resulting discrete constraint in the form $c(y,u) = 0$ is a vector-valued function with the components equal to,
+\begin{align}
+\label{Burgers2_discr}
+c_{i+1}(\mathbf{y}_i,\mathbf{y}_{i+1},\mathbf{u}_{i+1}) \equiv \frac{1}{\delta \! t} M \mathbf{y}_{i+1} - \frac{1}{\delta \! t} M \mathbf{y}_i + \frac{1}{2} B \mathbf{y}_{i+1}^2 + \nu C \mathbf{y}_{i+1} - \mathbf{f} - M \mathbf{u}_{i+1} = 0,
+\end{align}
+where $i=0,...,N_t-1$ and the constraint is given by $c := [c_1,...,c_{N_t}]^T$ which is a function of the state and the control at all discrete time instances.
+
+Note, that the only nonlinearity that remains is derived from the discretization of the convective term of Burger's equation. We will denote this nonlinearity by,
+\begin{align}
+ \label{fullNonlin}
+ \mathcal{N}(\mathbf{y}_{i+1}) := \frac{1}{2} B \mathbf{y}_{i+1}^2,
+\end{align}
+and point out the special treatment of the nonlinearity in the following application of the Newton-type method using adjoint techniques for the derivative computation as introduced in Section \ref{optAdj}.
+
+Therefore, we first note that after discretization in space and time, the cost function \eqref{minJ_discr} together with the constraint \eqref{Burgers2_discr} fit the framework of \eqref{allgControl}. We can, thus, build the fully discretized Lagrangian function according to the definition \eqref{genLagr}. The discrete Lagrangian of the full-order model is given by,
+\begin{align}
+\label{discLag}
+&\mathcal{L}(\mathbf{y}_0,...,\mathbf{y}_{N_t}, \mathbf{u}_0,...,\mathbf{u}_{N_t},\boldsymbol{\lambda}_1,...,\boldsymbol{\lambda}_{N_t}) \nonumber \\
+&\ = \sum_{i=0}^{N_t} \delta \! t \left( \frac{1}{2} \mathbf{y}_i^T M \mathbf{y}_i - \mathbf{z}^T\mathbf{y}_i + \frac{\omega}{2} \mathbf{u}_i^T M \mathbf{u}_i \right) \nonumber \\
+&\quad +  \sum_{i=0}^{N_t-1} \boldsymbol{\lambda}_{i+1}^T \left( \frac{1}{\delta \! t} M \mathbf{y}_{i+1} - \frac{1}{\delta \! t} M \mathbf{y}_i + \frac{1}{2} B \mathbf{y}_{i+1}^2 + \nu C \mathbf{y}_{i+1} - \mathbf{f} - M \mathbf{u}_{i+1}  \right),
+\end{align}
+where the adjoint variable $\boldsymbol{\lambda}_i$ at each time instance is a vector of dimension $N$.
+\subsection{Numerical results of gradient-based optimization approaches}
+TODO
+\subsection{Numerical results of Newton-type methods using adjoints}
+We want to apply the optimization algorithm \ref{alg:Opt} in order to minimize \eqref{minJ_discr} subject to \eqref{Burgers2_discr}. Therefore, we will need the corresponding Lagrangian function \eqref{discLag} as well as the gradient and the Hessian-times-vector product as described in the algorithms \ref{alg:Adj1} and \ref{alg:Adj2}, respectively. We will concentrate on the solution of the two adjoint equations and refer to Appendix \ref{FEMDiscr} for the numerical solution of Burger's equation.
+
+In the adjoint algorithm \ref{alg:Adj1} that computes the gradient of the cost functional \eqref{minJ_discr}, we mostly need to compute partial derivatives of the constraint \eqref{Burgers2_discr} and the cost functional itself with respect to the control $u$ and the state variable $y$. Since both, the constraint and the cost functional, depend on the control and the state at all time instances, the respective variables we need to consider are of the size $N \cdot N_t$,
+\begin{align*}
+\mathbf{\underline u} := \begin{pmatrix} \mathbf{u}_0 \\ \vdots \\ \mathbf{u}_{N_t} \end{pmatrix} \in \mathbb{R}^{(N \cdot N_t) \times 1}, \quad \mathbf{\underline y} := \begin{pmatrix} \mathbf{y}_0 \\ \vdots \\ \mathbf{y}_{N_t} \end{pmatrix} \in \mathbb{R}^{(N \cdot N_t) \times 1}.
+\end{align*}
+Therefore, at every outer iteration of the optimization loop, we first need to solve Burger's equation on the whole time interval. In Algorithm \ref{alg:Adj1_Burgers}, we summarize the concrete application of Algorithm \ref{alg:Adj1} to the full-order discrete optimal control problem with Burger's equation as a constraint. Thereby, the adjoint equation \eqref{adjoint1} reduces to an ordinary differential equation for the adjoint variable. Note, that we first need to solve the terminal condition \eqref{AdjFullOrder_term} for $\boldsymbol{\lambda}_{N_t}$ and then solve the set of equations \eqref{AdjFullOrder} backwards in time. Given the solution of \eqref{AdjFullOrder_term}-\eqref{AdjFullOrder}, the gradient of the cost function with respect to the control $u$ can be obtained according to \eqref{grad}.
+\begin{algorithm}[H]
+\caption{Algorithm \ref{alg:Adj1} applied to the full-order discrete Burger's equation}
+\label{alg:Adj1_Burgers}
+\begin{algorithmic}[1]
+\STATE From the initial condition $\mathbf{y}_0$ and the current control $\mathbf{u}_1,...,\mathbf{u}_{N_t}$, solve Burger's equation for $\mathbf{y}_1,...,\mathbf{y}_{N_t}$ as described in Appendix \ref{FEMDiscr}
+\STATE The adjoint equation \eqref{adjoint1} reads:
+\begin{subequations}
+\begin{align}
+\label{AdjFullOrder_term}
+\left(\frac{1}{\delta \! t}M + \mathcal{N}'(\mathbf{y}_{N_t}) +  \nu C\right)^T \boldsymbol{\lambda}_{N_t} &= -\delta \! t( M \mathbf{y}_{N_t} - \mathbf{ z} )\\
+\label{AdjFullOrder}
+\left(\frac{1}{\delta \! t}M + \mathcal{N}'(\mathbf{y}_{i}) + \nu C\right)^T \boldsymbol{\lambda}_i &= - (-\frac{1}{\delta \! t} M)^T \boldsymbol{\lambda}_{i+1} -\delta \! t( M \mathbf{y}_{i} - \mathbf{ z} ), \quad i = N_t-1,...,1
+\end{align}
+\end{subequations}
+\STATE The gradient is computed according to formula \eqref{grad}:
+\begin{align}
+\label{gradFullOrder}
+\nabla_u \hat{\mathcal J}(\mathbf{u}_0,...,\mathbf{u}_{N_t}) = \begin{pmatrix} \delta \! t \omega M \mathbf{u}_0 \\ \delta \! t \omega M \mathbf{u}_1 - M^T \boldsymbol{\lambda}_1 \\ \vdots \\ \delta \! t \omega M \mathbf{u}_{N_t} - M^T \boldsymbol{\lambda}_{N_t} \end{pmatrix}
+\end{align}
+\end{algorithmic}
+\end{algorithm}
+In \eqref{AdjFullOrder_term} and \eqref{AdjFullOrder} it is necessary to compute the first derivative of the nonlinear term \eqref{fullNonlin}. For an arbitrary vector $\mathbf{y} = [y_1,...,y_N]^T$ and a matrix $B \in \mathbb{R}^{N \times N}$, the first derivative of the nonlinear term $\mathcal{N}(\cdot)$ is given by,
+\begin{align*}
+\mathcal{N}'(\mathbf{y}) = \frac{d}{d\mathbf{y}}\left( \frac{1}{2} B \mathbf{y}^2 \right) = \begin{pmatrix} B_{1,1}y_1 & \hdots & B_{1,N}y_N \\
+                                   B_{2,1}y_1 & \hdots & B_{2,N}y_N \\
+                                      \vdots  &        &     \vdots \\
+                                   B_{N,1}y_1 & \hdots & B_{N,N}y_N \end{pmatrix} \in \mathbb{R}^{N \times N},
+\end{align*}
+which is again an $N \times N$ matrix.
+
+In order to solve the Newton equation \eqref{Newtoneqn_J} we also need to compute the Hessian $\nabla^2 \hat{\mathcal J}(u)$. Since this is a matrix of dimension $N \cdot N_t \times N \cdot N_t$, we solve the linear system \eqref{Newtoneqn_J} with the truncated CG method where we only need to compute the product of the Hessian times a vector, see Algorithm \ref{alg:serCG}. In Algorithm \ref{alg:Adj2_Burgers}, we present the application of the general Hessian-times-vector computation as derived in Section \ref{Hessadj} to the optimization of Burger's equation. Therefore, we define the arbitrary vector $\mathbf{\underline v} := (\mathbf{v}^T_0, ..., \mathbf{v}^T_{N_t} )^T$ and derive the equations \eqref{wFullOrder_init}-\eqref{wFullOrder} and \eqref{pFullOrder_term}-\eqref{pFullOrder} for the auxiliary variables $w$ and $p$ according to the respective general formulas \eqref{eqnw} and \eqref{eqnp}. It is important to note that the initial condition \eqref{wFullOrder_init} and the terminal condition \eqref{pFullOrder_term} follow directly from the genral equations \eqref{eqnw} and \eqref{eqnp} when the respective partial derivative is computed.
+\begin{algorithm}[H]
+\caption{Algorithm \ref{alg:Adj2} applied to the full-order discrete Burger's equation}
+\label{alg:Adj2_Burgers}
+\begin{algorithmic}[1]
+\STATE We assume that we have already computed $\mathbf{y}_0,...,\mathbf{y}_{N_t}, \mathbf{u}_0,...,\mathbf{u}_{N_t},\boldsymbol{\lambda}_1,...,\boldsymbol{\lambda}_{N_t}$ in \mbox{Algorithm \ref{alg:Adj1_Burgers}}
+\STATE Equation \eqref{eqnw} reads:
+\begin{subequations}
+\begin{align}
+\label{wFullOrder_init}
+\mathbf{w}_0 &= 0 \\
+\label{wFullOrder}
+\left( \frac{1}{\delta \! t}M + \mathcal{N}'(\mathbf{y}_{i+1}) + \nu C \right) \mathbf{w}_{i+1} &= - (-\frac{1}{\delta \! t} M) \mathbf{w}_i - M\mathbf{v}_{i+1} , \quad i = 0,...,N_t-1
+\end{align}
+\end{subequations}
+\STATE Equation \eqref{eqnp} reads:
+\begin{subequations}
+\begin{align}
+\label{pFullOrder_term}
+\left( \frac{1}{\delta \! t}M + \mathcal{N}'(\mathbf{y}_{N_t}) + \nu C \right)^T \mathbf{p}_{N_t} &= \delta \! t M \mathbf{w}_{N_t} + \text{diag}(\boldsymbol{\lambda}^T_{N_t} b_1,...,\boldsymbol{\lambda}^T_{N_t} b_N) \mathbf{w}_{N_t}\\
+\label{pFullOrder}
+\left( \frac{1}{\delta \! t}M + \mathcal{N}'(\mathbf{y}_{i}) + \nu C \right)^T \mathbf{p}_{i} &= - (-\frac{1}{\delta \! t} M)^T \mathbf{p}_{i+1} + \delta \! t M \mathbf{w}_{i} \nonumber \\
+&\quad + \text{diag}(\boldsymbol{\lambda}^T_{i} b_1,...,\boldsymbol{\lambda}^T_{i} b_N) \mathbf{w}_{i}, \quad i = N_t-1,...,1
+\end{align}
+\end{subequations}
+\STATE The Hessian times a vector $\mathbf{\underline v}$ is computed according to formula \eqref{hesseqn}:
+\begin{align}
+\label{HessFullOrder}
+\nabla^2 \hat{\mathcal J}(\mathbf{u}_0,...,\mathbf{u}_{N_t}) \cdot \mathbf{\underline v} = \begin{pmatrix} \delta \! t \omega M \mathbf{v}_0 \\ -M^T \mathbf{p}_1 + \delta \! t \omega M \mathbf{v}_1\\ \vdots \\ -M^T \mathbf{p}_{N_t} + \delta \! t \omega M \mathbf{v}_{N_t} \end{pmatrix}
+\end{align}
+\end{algorithmic}
+\end{algorithm}
+Note that in \eqref{pFullOrder_term}-\eqref{pFullOrder} as well as in \eqref{HessFullOrder} it is necessary to compute second partial derivatives of the Lagrangian function. Therefore, we first note that due to the definition of the Lagrangian, mixed second order derivatives vanish. Furthermore, we present the analytic computation of the second partial derivative of the quantity $\boldsymbol{\lambda}^T \mathcal{N}(\mathbf{y})$ with respect to the state variable $\mathbf{y}$,
+\newpage
+\begin{align*}
+\frac{d^2}{d\mathbf{y}^2} \left( \boldsymbol{\lambda}^T \mathcal{N}(\mathbf{y}) \right) \mathbf{w} &= \frac{d^2}{d\mathbf{y}^2} \left( \boldsymbol{\lambda}^T (\frac{1}{2} B \mathbf{y}^2) \right) \mathbf{w} \\
+&= \frac{d^2}{d\mathbf{y}^2} \left( \frac{1}{2} \sum_{k=1}^N \lambda_k \sum_{j=1}^N B_{k,j}y_j^2 \right) \mathbf{w} \\
+&= \frac{d}{d\mathbf{y}}\begin{pmatrix} \sum_{k=1}^N \lambda_k B_{k,1}y_1 \\ \vdots \\ \sum_{k=1}^N \lambda_k B_{k,N}y_N \end{pmatrix} \mathbf{w}\\
+&= \begin{pmatrix} \sum_{k=1}^N \lambda_k B_{k,1} & & \\ & \ddots & \\ & & \sum_{k=1}^N \lambda_k B_{k,N}\end{pmatrix}\mathbf{w} \\
+&= \text{diag}(\boldsymbol{\lambda}^T b_1,...,\boldsymbol{\lambda}^T b_N) \mathbf{w},
+\end{align*}
+where $\boldsymbol{\lambda} = (\lambda_1,...,\lambda_N)^T$, $\mathbf{y} = (y_1,..,y_N)^T$ ,and $b_1,...,b_N$ are the columns of the matrix $B$ such that $B = (b_1 |... | b_N)$.
+\begin{figure}[H]
+\centering
+\subfloat[$k=1$ (uncontrolled)]{\includegraphics[width=0.49\textwidth]{plots/controlFullk1}}\hfill
+\subfloat[$k=2$]{\includegraphics[width=0.49\textwidth]{plots/controlFullk2}}\\
+\subfloat[$k=5$ ]{\includegraphics[width=0.49\textwidth]{plots/controlFullk5}}\hfill
+\subfloat[$k=10$]{\includegraphics[width=0.49\textwidth]{plots/controlFullk10}}\\
+\caption{Full-order optimization.}\label{optFull}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\subfloat[$k=1$ (initial)]{\includegraphics[width=0.49\textwidth]{plots/uFullk1}}\hfill
+\subfloat[$k=2$]{\includegraphics[width=0.49\textwidth]{plots/uFullk2}}\\
+\subfloat[$k=5$ ]{\includegraphics[width=0.49\textwidth]{plots/uFullk5}}\hfill
+\subfloat[$k=10$]{\includegraphics[width=0.49\textwidth]{plots/uFullk10}}\\
+\caption{Full-order control.}\label{optFullu}
+\end{figure}

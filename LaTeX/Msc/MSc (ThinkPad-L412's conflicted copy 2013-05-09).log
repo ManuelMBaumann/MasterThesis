@@ -1,0 +1,1772 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.9)  6 MAY 2013 10:59
+entering extended mode
+ %&-line parsing enabled.
+**MSc.tex
+(./MSc.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
+ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
+9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
+skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
+orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
+, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
+rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+(/usr/share/texmf-texlive/tex/latex/memoir/memoir.cls
+Document Class: memoir 2009/09/21 v1.61803398b configurable book, report, artic
+le document class
+\onelineskip=\skip41
+\lxvchars=\skip42
+\xlvchars=\skip43
+\@memcnta=\count79
+\c@@memmarkcntra=\count80
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+Class memoir Info: An `ifetex' package is being emulated on input line 251.
+
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+\stockheight=\skip44
+\stockwidth=\skip45
+\trimtop=\skip46
+\trimedge=\skip47
+
+(/usr/share/texmf-texlive/tex/latex/etex-pkg/etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count81
+)
+(/usr/share/texmf-texlive/tex/latex/memoir/mem10.clo
+File: mem10.clo 2008/01/30 v0.3 memoir class 10pt size option
+)
+\binding=\skip48
+\spinemargin=\skip49
+\foremargin=\skip50
+\uppermargin=\skip51
+\lowermargin=\skip52
+\headdrop=\skip53
+\normalrulethickness=\skip54
+\headwidth=\skip55
+\c@storedpagenumber=\count82
+\memPD=\dimen102
+\m@mabparskip=\skip56
+\thanksmarkwidth=\skip57
+\thanksmarksep=\skip58
+\droptitle=\skip59
+\c@book=\count83
+\c@part=\count84
+\c@chapter=\count85
+\c@section=\count86
+\c@subsection=\count87
+\c@subsubsection=\count88
+\c@paragraph=\count89
+\c@subparagraph=\count90
+\beforechapskip=\skip60
+\midchapskip=\skip61
+\afterchapskip=\skip62
+\chapindent=\skip63
+\bottomsectionskip=\skip64
+\secindent=\skip65
+\beforesecskip=\skip66
+\aftersecskip=\skip67
+\subsecindent=\skip68
+\beforesubsecskip=\skip69
+\aftersubsecskip=\skip70
+\subsubsecindent=\skip71
+\beforesubsubsecskip=\skip72
+\aftersubsubsecskip=\skip73
+\paraindent=\skip74
+\beforeparaskip=\skip75
+\afterparaskip=\skip76
+\subparaindent=\skip77
+\beforesubparaskip=\skip78
+\aftersubparaskip=\skip79
+\pfbreakskip=\skip80
+\c@@ppsavesec=\count91
+\c@@ppsaveapp=\count92
+\ragrparindent=\dimen103
+\everylistparindent=\dimen104
+\parsepi=\skip81
+\topsepi=\skip82
+\itemsepi=\skip83
+\parsepii=\skip84
+\topsepii=\skip85
+\topsepiii=\skip86
+\itemsepii=\skip87
+\itemsepiii=\skip88
+\partopsepii=\skip89
+\partopsepiii=\skip90
+\m@msavetopsep=\skip91
+\m@msavepartopsep=\skip92
+\@enLab=\toks14
+\abstitleskip=\skip93
+\absleftindent=\skip94
+\abs@leftindent=\dimen105
+\absrightindent=\skip95
+\absparindent=\skip96
+\absparsep=\skip97
+\c@vslineno=\count93
+\c@poemline=\count94
+\c@modulo@vs=\count95
+\c@memfvsline=\count96
+\vleftskip=\skip98
+\vrightskip=\skip99
+\stanzaskip=\skip100
+\versewidth=\skip101
+\vgap=\skip102
+\vindent=\skip103
+\vleftmargin=\dimen106
+\c@verse=\count97
+\c@chrsinstr=\count98
+\beforepoemtitleskip=\skip104
+\afterpoemtitleskip=\skip105
+\c@poem=\count99
+\beforePoemTitleskip=\skip106
+\midPoemTitleskip=\skip107
+\afterPoemTitleskip=\skip108
+\col@sep=\dimen107
+\extrarowheight=\dimen108
+\NC@list=\toks15
+\extratabsurround=\skip109
+\backup@length=\skip110
+\TX@col@width=\dimen109
+\TX@old@table=\dimen110
+\TX@old@col=\dimen111
+\TX@target=\dimen112
+\TX@delta=\dimen113
+\TX@cols=\count100
+\TX@ftn=\toks16
+\heavyrulewidth=\dimen114
+\lightrulewidth=\dimen115
+\cmidrulewidth=\dimen116
+\belowrulesep=\dimen117
+\belowbottomsep=\dimen118
+\aboverulesep=\dimen119
+\abovetopsep=\dimen120
+\cmidrulesep=\dimen121
+\cmidrulekern=\dimen122
+\defaultaddspace=\dimen123
+\@cmidla=\count101
+\@cmidlb=\count102
+\@aboverulesep=\dimen124
+\@belowrulesep=\dimen125
+\@thisruleclass=\count103
+\@lastruleclass=\count104
+\@thisrulewidth=\dimen126
+\ctableftskip=\skip111
+\ctabrightskip=\skip112
+\abovecolumnspenalty=\count105
+\@linestogo=\count106
+\@cellstogo=\count107
+\@cellsincolumn=\count108
+\crtok=\toks17
+\@mincolumnwidth=\dimen127
+\c@newflo@tctr=\count109
+\@contcwidth=\skip113
+\@contindw=\skip114
+\abovecaptionskip=\skip115
+\belowcaptionskip=\skip116
+\subfloattopskip=\skip117
+\subfloatcapskip=\skip118
+\subfloatcaptopadj=\skip119
+\subfloatbottomskip=\skip120
+\subfloatlabelskip=\skip121
+\subfloatcapmargin=\dimen128
+\c@@contsubnum=\count110
+\m@mscap@capbox=\box26
+\m@mscap@fbox=\box27
+\sidecapsep=\dimen129
+\sidecapwidth=\dimen130
+\m@m@tempdima=\dimen131
+\m@mscapraise=\dimen132
+\sidecapraise=\dimen133
+\m@mscapmainwidth=\dimen134
+\m@mscaplkern=\dimen135
+\beforeepigraphskip=\skip122
+\afterepigraphskip=\skip123
+\epigraphwidth=\skip124
+\epigraphrule=\skip125
+LaTeX Info: Redefining \em on input line 7000.
+LaTeX Info: Redefining \emph on input line 7008.
+\tocentryskip=\skip126
+\tocbaseline=\skip127
+\cftparskip=\skip128
+\cftbeforebookskip=\skip129
+\cftbookindent=\dimen136
+\cftbooknumwidth=\dimen137
+\cftbeforepartskip=\skip130
+\cftpartindent=\skip131
+\cftpartnumwidth=\skip132
+\cftbeforechapterskip=\skip133
+\cftchapterindent=\skip134
+\cftchapternumwidth=\skip135
+\cftbeforesectionskip=\skip136
+\cftsectionindent=\skip137
+\cftsectionnumwidth=\skip138
+\cftbeforesubsectionskip=\skip139
+\cftsubsectionindent=\skip140
+\cftsubsectionnumwidth=\skip141
+\cftbeforesubsubsectionskip=\skip142
+\cftsubsubsectionindent=\skip143
+\cftsubsubsectionnumwidth=\skip144
+\cftbeforeparagraphskip=\skip145
+\cftparagraphindent=\skip146
+\cftparagraphnumwidth=\skip147
+\cftbeforesubparagraphskip=\skip148
+\cftsubparagraphindent=\skip149
+\cftsubparagraphnumwidth=\skip150
+\prechapterprecisshift=\dimen138
+\c@maxsecnumdepth=\count111
+\bibindent=\dimen139
+\bibitemsep=\skip151
+\indexcolsep=\skip152
+\indexrule=\skip153
+\indexmarkstyle=\toks18
+\@indexbox=\insert233
+\glossarycolsep=\dimen140
+\glossaryrule=\dimen141
+\sideparvshift=\skip154
+\sideins=\insert232
+\sidebartopsep=\skip155
+\sidebarhsep=\skip156
+\sidebarvsep=\skip157
+\sidebarwidth=\skip158
+\footmarkwidth=\skip159
+\footmarksep=\skip160
+\footparindent=\skip161
+\footinsdim=\skip162
+\footinsv@r=\insert231
+\@mpfootinsv@r=\insert230
+\m@m@k=\count112
+\m@m@h=\dimen142
+\m@mipn@skip=\skip163
+\c@pagenote=\count113
+\every@verbatim=\toks19
+\afterevery@verbatim=\toks20
+\verbatim@line=\toks21
+\tab@position=\count114
+\verbatim@in@stream=\read1
+\verbatimindent=\skip164
+\verbatim@out=\write3
+\bvboxsep=\skip165
+\c@memfbvline=\count115
+\c@bvlinectr=\count116
+\bvnumlength=\skip166
+\fb@frw=\dimen143
+\fb@frh=\dimen144
+\FrameRule=\dimen145
+\FrameSep=\dimen146
+\c@cp@cntr=\count117
+LaTeX Info: Redefining \: on input line 10864.
+LaTeX Info: Redefining \! on input line 10866.
+\c@ism@mctr=\count118
+\c@xsm@mctr=\count119
+\c@csm@mctr=\count120
+\c@ksm@mctr=\count121
+\c@xksm@mctr=\count122
+\c@cksm@mctr=\count123
+\c@msm@mctr=\count124
+\c@xmsm@mctr=\count125
+\c@cmsm@mctr=\count126
+\c@bsm@mctr=\count127
+\c@workm@mctr=\count128
+\c@sheetsequence=\count129
+\c@lastsheet=\count130
+\c@lastpage=\count131
+\c@figure=\count132
+\c@lofdepth=\count133
+\cftbeforefigureskip=\skip167
+\cftfigureindent=\skip168
+\cftfigurenumwidth=\skip169
+\c@table=\count134
+\c@lotdepth=\count135
+\cftbeforetableskip=\skip170
+\cfttableindent=\skip171
+\cfttablenumwidth=\skip172
+Package abstract [2008/07/23] emulated by memoir.
+Package appendix [2008/07/23] emulated by memoir.
+Package array [2008/07/23] emulated by memoir.
+Package booktabs [2008/07/23] emulated by memoir.
+Package ccaption [2008/07/23] emulated by memoir.
+Package changepage [2008/07/23] emulated by memoir.
+Package chngcntr [2008/07/23] emulated by memoir.
+Package chngpage [2008/07/23] emulated by memoir.
+Package crop emulated by memoir.
+Package dcolumn [2008/07/23] emulated by memoir.
+Package delarray [2008/07/23] emulated by memoir.
+Package enumerate [2008/07/23] emulated by memoir.
+Package epigraph [2008/07/23] emulated by memoir.
+Package ifmtarg [2008/07/23] emulated by memoir.
+Package ifetex [2008/07/23] emulated by memoir.
+Package index [2008/07/23] emulated by memoir.
+Package makeidx [2008/07/23] emulated by memoir.
+Package moreverb [2008/07/23] emulated by memoir.
+Package mparhack [2008/07/23] emulated by memoir.
+Package needspace [2008/07/23] emulated by memoir.
+Package newfile [2008/07/23] emulated by memoir.
+Package nextpage [2008/07/23] emulated by memoir.
+Package pagenote [2008/07/23] emulated by memoir.
+Package parskip [2008/07/23] emulated by memoir.
+Package patchcmd [2008/07/23] emulated by memoir.
+Package setspace [2008/07/23] emulated by memoir.
+Package shortvrb [2008/07/23] emulated by memoir.
+Package showidx [2008/07/23] emulated by memoir.
+Package tabularx [2008/07/23] emulated by memoir.
+Package titleref [2008/07/23] emulated by memoir.
+Package titling [2008/07/23] emulated by memoir.
+Package tocbibind [2008/07/23] emulated by memoir.
+Package tocloft [2008/07/23] emulated by memoir.
+Package verbatim [2008/07/23] emulated by memoir.
+Package verse [2008/07/23] emulated by memoir.
+
+(/usr/share/texmf-texlive/tex/latex/memoir/mempatch.sty
+Package: mempatch 2009/07/24 v6.0f Patches for memoir class v1.6180339
+)) (./style.tex
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen147
+\Gin@req@width=\dimen148
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+\epsfxsize=\dimen149
+\epsfysize=\dimen150
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip173
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks23
+\ex@=\dimen151
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen152
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count136
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count137
+\leftroot@=\count138
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count139
+\DOTSCASE@=\count140
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen153
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count141
+\c@MaxMatrixCols=\count142
+\dotsspace@=\muskip10
+\c@parentequation=\count143
+\dspbrk@lvl=\count144
+\tag@help=\toks24
+\row@=\count145
+\column@=\count146
+\maxfields@=\count147
+\andhelp@=\toks25
+\eqnshift@=\dimen154
+\alignsep@=\dimen155
+\tagshift@=\dimen156
+\tagwidth@=\dimen157
+\totwidth@=\dimen158
+\lineht@=\dimen159
+\@envbody=\toks26
+\multlinegap=\skip174
+\multlinetaggap=\skip175
+\mathdisplay@stack=\toks27
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texmf-texlive/tex/latex/amscls/amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks28
+\thm@bodyfont=\toks29
+\thm@headfont=\toks30
+\thm@notefont=\toks31
+\thm@headpunct=\toks32
+\thm@preskip=\skip176
+\thm@postskip=\skip177
+\thm@headsep=\skip178
+\dth@everypar=\toks33
+)
+(/usr/share/texmf-texlive/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen160
+\WF@size=\dimen161
+\c@WF@wrappedlines=\count148
+\WF@box=\box30
+\WF@everypar=\toks34
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texmf-texlive/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip179
+\LTright=\skip180
+\LTpre=\skip181
+\LTpost=\skip182
+\LTchunksize=\count149
+\LTcapwidth=\dimen162
+\LT@head=\box31
+\LT@firsthead=\box32
+\LT@foot=\box33
+\LT@lastfoot=\box34
+\LT@cols=\count150
+\LT@rows=\count151
+\c@LT@tables=\count152
+\c@LT@chunks=\count153
+\LT@p@ftn=\toks35
+)
+(/usr/share/texmf-texlive/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count154
+\rotFPtop=\skip183
+\rotFPbot=\skip184
+\rot@float@box=\box35
+\rot@mess@toks=\toks36
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/psfrag/psfrag.sty
+Package: psfrag 1998/04/11 v3.04 PSfrag (MCG)
+\pfg@pcount=\count155
+\pfg@scount=\count156
+\pfg@temp=\write4
+)
+(/usr/share/texmf-texlive/tex/latex/overpic/overpic.sty
+Package: overpic 1999/07/04 v0.52  Overwriting eps pictures
+
+Package: overpic v0.52 <1999/07/04> (RN)
+(/usr/share/texmf-texlive/tex/latex/eepic/epic.sty
+Enhancements to Picture Environment. Version 1.2 - Released June 1, 1986
+\@@multicnt=\count157
+\d@lta=\count158
+\@delta=\dimen163
+\@@delta=\dimen164
+\@gridcnt=\count159
+\@joinkind=\count160
+\@dotgap=\dimen165
+\@ddotgap=\dimen166
+\@x@diff=\count161
+\@y@diff=\count162
+\x@diff=\dimen167
+\y@diff=\dimen168
+\@dotbox=\box36
+\num@segments=\count163
+\num@segmentsi=\count164
+\@datafile=\read2
+)
+overpic: relative positioning in percent
+) (/usr/share/texmf-texlive/tex/latex/psnfss/pifont.sty
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(/usr/share/texmf-texlive/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup7
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count165
+))
+
+Class memoir Warning: You are using the caption package with the memoir 
+(memoir)              class. This may cause unexpected or inconsistent 
+(memoir)              results if you use any of memoir's captioning facilities.
+
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen169
+\captionmargin@=\dimen170
+\captionwidth=\dimen171
+\caption@indent=\dimen172
+\caption@parindent=\dimen173
+\caption@hangindent=\dimen174
+)
+\c@ContinuedFloat=\count166
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texmf-texlive/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2008/03/28 v1.2 longtable captions (AR)
+)
+Package caption Info: rotating package is loaded.
+Package caption Info: wrapfig package is loaded.
+)
+Package color Info: Redefining color yellow on input line 25.
+Package color Info: Redefining color red on input line 39.
+Package color Info: Redefining color magenta on input line 45.
+Package color Info: Redefining color blue on input line 66.
+Package color Info: Redefining color cyan on input line 68.
+Package color Info: Redefining color green on input line 78.
+Package color Info: Redefining color black on input line 90.
+Package color Info: Redefining color white on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks37
+\inpenc@posthook=\toks38
+
+(/usr/share/texmf-texlive/tex/latex/base/cp1250.def
+File: cp1250.def 2008/03/30 v1.1d Input encoding file
+))
+(/var/lib/texmf/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/share/texmf-texlive/tex/generic/babel/english.ldf
+Language: english 2005/03/30 v3.3o English support from the babel system
+
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count167
+\U@D=\dimen175
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+
+******************************************************
+Stock height and width: 845.04684pt by 597.50787pt
+Top and edge trims: 0.0pt and 0.0pt
+Page height and width: 845.04684pt by 597.50787pt
+Text height and width: 694.0pt by 426.0pt
+Spine and edge margins: 64.47955pt and 106.23698pt
+Upper and lower margins: 67.16919pt and 83.87766pt
+Headheight and headsep: 12.0pt and 24.0pt
+Footskip: 24.0pt
+Columnsep and columnseprule: 10.0pt and 0.0pt
+Marginparsep and marginparwidth: 7.0pt and 117.0pt
+Sidecapsep and sidecapwidth: 7.0pt and 117.0pt
+Sidebarhsep and sidebarwidth: 7.0pt and 117.0pt
+Sidebarvsep and sidebartopsep: 12.0pt and 0.0pt
+Sidebarheight: 596.39996pt
+******************************************************
+
+) (/usr/share/texmf-texlive/tex/latex/oberdiek/epstopdf.sty
+Package: epstopdf 2009/10/17 v2.4 Conversion with epstopdf on the fly (HO)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2009/10/17 v2.4 Base part for package epstopdf
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/grfext.sty
+Package: grfext 2007/09/30 v1.0 Managing graphics extensions (HO)
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+15.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 433.
+(/usr/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2009/10/26 v1.1 Configuration of epstopdf for TeX Live
+)))
+(/usr/share/texmf-texlive/tex/latex/mathcomp/mathcomp.sty
+Package: mathcomp 2001/01/07 v0.1f (TBo)
+
+(/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+)
+\symTC=\mathgroup8
+LaTeX Font Info:    Overwriting symbol font `TC' in version `bold'
+(Font)                  TS1/cmr/m/n --> TS1/cmr/bx/n on input line 25.
+LaTeX Font Info:    Redeclaring math symbol \dagger on input line 47.
+LaTeX Font Info:    Redeclaring math symbol \ddagger on input line 48.
+)
+(/usr/share/texmf/tex/latex/lm/lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+\c@KVtest=\count168
+\sf@farskip=\skip185
+\sf@captopadj=\dimen176
+\sf@capskip=\skip186
+\sf@nearskip=\skip187
+\c@subfigure=\count169
+\c@subfigure@save=\count170
+\c@subtable=\count171
+\c@subtable@save=\count172
+\sf@top=\skip188
+\sf@bottom=\skip189
+)
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen177
+\Hy@linkcounter=\count173
+\Hy@pagecounter=\count174
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `bookmarks' set `true' on input line 2864.
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+LaTeX Info: Redefining \url on input line 3428.
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+))
+\Fld@menulength=\count175
+\Field@Width=\dimen178
+\Fld@charsize=\dimen179
+\Field@toks=\toks39
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring OFF on input line 4397.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count176
+\c@Item=\count177
+)
+(/usr/share/texmf-texlive/tex/latex/memoir/memhfixc.sty
+Package: memhfixc 2009/02/06 v1.12 nameref/hyperref package fixes for memoir cl
+ass
+\c@memhycontfloat=\count178
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count179
+)
+(/usr/share/texmf-texlive/tex/latex/struktex/struktex.sty
+Package: struktex 2006/08/20 v8.3b Nassi Shneidermann Charts (Jobst Hoffmann)
+
+(/usr/share/texmf-texlive/tex/latex/struktex/struktxf.sty
+Package: struktxf 2006/08/20 v8.3b Fonts for Nassi Shneidermann Charts (Jobst H
+offmann)
+\symitalics=\mathgroup9
+LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 29.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
+(Font)                  U/msb/m/n --> U/msb/m/n on input line 29.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
+(Font)                  U/msb/m/n --> U/msb/m/n on input line 29.
+)
+(/usr/share/texmf-texlive/tex/latex/struktex/struktxp.sty
+Package: struktxp 2006/08/20 v8.3b Keywords for Nassi Shneidermann Charts (Jobs
+t Hoffmann)
+)
+(/usr/share/texmf-texlive/tex/latex/curves/curves.sty
+Package: curves 2009/08/31 1.53 Curves for LaTeX picture environment
+\;sc=\count180
+\;scp=\count181
+\;t=\count182
+\;cc=\count183
+\;cnd=\count184
+\;mcnd=\count185
+\;np=\count186
+\;overhang=\count187
+\;pbs=\count188
+\;pns=\count189
+\;psc=\count190
+\;rc=\count191
+\;rtc=\count192
+\;tc=\count193
+\csdiameter=\skip190
+\curvelength=\skip191
+\overhang=\skip192
+\;x=\skip193
+\;dx=\skip194
+\;ddx=\skip195
+\;y=\skip196
+\;dy=\skip197
+\;ddy=\skip198
+\;pl=\skip199
+\;ucd=\skip200
+\;csbox=\box37
+\;pt=\box38
+\;strline=\toks40
+\m;ssingcoord=\toks41
+\;negdash=\toks42
+\;oddcoord=\toks43
+\;wc=\count194
+\;X=\skip201
+\;Y=\skip202
+)
+\savelength@nss=\dimen180
+\gx@nss=\count195
+\gy@nss=\count196
+\gsize@nss=\count197
+\TextBox@nss=\box39
+\TextBoxHt@nss=\dimen181
+LaTeX Font Info:    Redeclaring math symbol \varnothing on input line 102.
+\descriptionindent=\skip203
+\descriptionwidth=\skip204
+\descriptionsep=\skip205
+\descriptionwidth@nss=\skip206
+\indentmeasure@nss=\dimen182
+\indentmeasureright@nss=\dimen183
+\thisindent@nss=\dimen184
+\thisindentright@nss=\dimen185
+\thislength@nss=\dimen186
+\CenterBox@nss=\box40
+)
+(/usr/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/share/texmf-texlive/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count198
+\float@exts=\toks44
+\float@box=\box41
+\@float@everytoks=\toks45
+\@floatcapt=\box42
+)
+\@float@every@algorithm=\toks46
+\c@algorithm=\count199
+)
+(/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count200
+\c@ALC@line=\count201
+\c@ALC@rem=\count202
+\c@ALC@depth=\count203
+\ALC@tlm=\skip207
+\algorithmicindent=\skip208
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count204
+\lst@gtempboxa=\box43
+\lst@token=\toks47
+\lst@length=\count205
+\lst@currlwidth=\dimen187
+\lst@column=\count206
+\lst@pos=\count207
+\lst@lostspace=\dimen188
+\lst@width=\dimen189
+\lst@newlines=\count208
+\lst@lineno=\count209
+\lst@maxwidth=\dimen190
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count210
+\lst@skipnumbers=\count211
+\lst@framebox=\box44
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/tools/afterpage.sty
+Package: afterpage 1995/10/27 v1.08 After-Page Package (DPC)
+\AP@output=\toks48
+\AP@partial=\box45
+\AP@footins=\box46
+)
+\c@theorem=\count212
+\c@mydef=\count213
+
+
+LaTeX Warning: Unused global option(s):
+    [12px,makeidx].
+
+(./MSc.aux
+
+LaTeX Warning: Label `zred' multiply defined.
+
+)
+\openout1 = `MSc.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 40.
+ (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 40.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count214
+\scratchdimen=\dimen191
+\scratchbox=\box47
+\nofMPsegments=\count215
+\nofMParguments=\count216
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count217
+\MPscratchDim=\dimen192
+\MPnumerator=\count218
+\everyMPtoPDFconversion=\toks50
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 40.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring OFF on input line 40.
+ (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count219
+)
+LaTeX Info: Redefining \ref on input line 40.
+LaTeX Info: Redefining \pageref on input line 40.
+ (./MSc.out)
+(./MSc.out)
+\@outlinefile=\write5
+\openout5 = `MSc.out'.
+
+\AtBeginShipoutBox=\box48
+
+Redoing nameref's sectioning
+Redoing nameref's label
+\c@lstlisting=\count220
+(./front.tex <logo_tudelft.png, id=131, 889.8846pt x 248.6088pt>
+File: logo_tudelft.png Graphic file (type png)
+
+<use logo_tudelft.png>
+Underfull \hbox (badness 10000) in paragraph at lines 3--10
+
+ []
+
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 16.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 27.
+
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 27.
+
+
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 27.
+
+
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 27.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 27.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 27.
+LaTeX Font Info:    Try loading font information for U+msa on input line 27.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 27.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+stmry on input line 27.
+
+(/usr/share/texmf-texlive/tex/latex/stmaryrd/Ustmry.fd)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 27.
+
+(/usr/share/texmf-texlive/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+Overfull \hbox (29.24408pt too wide) in paragraph at lines 27--28
+ [][] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/lmss/m/sl' tried instead on input line 63.
+LaTeX Font Info:    Try loading font information for TS1+lmss on input line 63.
+
+(/usr/share/texmf/tex/latex/lm/ts1lmss.fd
+File: ts1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TS1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `TS1/lmss/m/sl' tried instead on input line 63.
+ [1
+Non-PDF special ignored!
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo_tudelft.png>] [2]
+File: logo_tudelft.png Graphic file (type png)
+ <use logo_tudelft.png>
+Underfull \hbox (badness 10000) in paragraph at lines 77--84
+
+ []
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 161.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 161.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 161.
+) [3] [4
+
+] (./MSc.toc) (./ack.tex [1] [2]
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 5.
+
+(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
+File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)) [3
+
+] [4
+
+] (./intro.tex)
+(./chapter2.texpdfTeX warning (ext4): destination with the same identifier (nam
+e{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1 \chapter
+            {Model order reduction for nonlinear dynamical systems} [1
+
+]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1 \chapter
+            {Model order reduction for nonlinear dynamical systems} [2
+
+]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.24 \begin{align}
+                   [3]pdfTeX warning (ext4): destination with the same identifi
+er (name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.61 \end{align*}
+                  [4]
+Overfull \hbox (3.40297pt too wide) in paragraph at lines 89--89
+[] 
+ []
+
+[5] [6]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 161.
+ [7]
+Package epstopdf Info: Source file: <plots/DeimPoints.eps>
+(epstopdf)                    date: 2012-11-08 17:32:28
+(epstopdf)                    size: 15781 bytes
+(epstopdf)             Output file: <plots/DeimPoints-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-11-08 17:36:52
+(epstopdf)                    size: 7012 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/DeimPoints-eps-conver
+ted-to.pdf plots/DeimPoints.eps>
+(epstopdf)             \includegraphics on input line 184.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/DeimPoints-eps-converted-to.pdf, id=307, 670.505pt x 403.5075pt>
+File: plots/DeimPoints-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/DeimPoints-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/DeimApprox1D.eps>
+(epstopdf)                    date: 2012-11-08 17:34:55
+(epstopdf)                    size: 16519 bytes
+(epstopdf)             Output file: <plots/DeimApprox1D-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-11-08 17:36:53
+(epstopdf)                    size: 6349 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/DeimApprox1D-eps-conv
+erted-to.pdf plots/DeimApprox1D.eps>
+(epstopdf)             \includegraphics on input line 185.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/DeimApprox1D-eps-converted-to.pdf, id=308, 670.505pt x 403.5075pt>
+File: plots/DeimApprox1D-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/DeimApprox1D-eps-converted-to.pdf> [8 <./plots/DeimPoints-eps-conver
+ted-to.pdf> <./plots/DeimApprox1D-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <plots/FullModel_nu01.eps>
+(epstopdf)                    date: 2013-05-04 10:42:03
+(epstopdf)                    size: 328943 bytes
+(epstopdf)             Output file: <plots/FullModel_nu01-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2013-05-04 10:54:56
+(epstopdf)                    size: 55800 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/FullModel_nu01-eps-co
+nverted-to.pdf plots/FullModel_nu01.eps>
+(epstopdf)             \includegraphics on input line 235.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/FullModel_nu01-eps-converted-to.pdf, id=358, 637.38126pt x 472.76625pt>
+File: plots/FullModel_nu01-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/FullModel_nu01-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/FullModel_nu001.eps>
+(epstopdf)                    date: 2013-05-04 10:42:04
+(epstopdf)                    size: 638952 bytes
+(epstopdf)             Output file: <plots/FullModel_nu001-eps-converted-to.pdf
+>
+(epstopdf)                    date: 2013-05-04 10:59:23
+(epstopdf)                    size: 103207 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/FullModel_nu001-eps-c
+onverted-to.pdf plots/FullModel_nu001.eps>
+(epstopdf)             \includegraphics on input line 236.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/FullModel_nu001-eps-converted-to.pdf, id=359, 637.38126pt x 472.76625pt>
+File: plots/FullModel_nu001-eps-converted-to.pdf Graphic file (type pdf)
+<use plots/FullModel_nu001-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/FullModel_nu0001.eps>
+(epstopdf)                    date: 2013-05-04 10:42:06
+(epstopdf)                    size: 1252204 bytes
+(epstopdf)             Output file: <plots/FullModel_nu0001-eps-converted-to.pd
+f>
+(epstopdf)                    date: 2013-05-04 10:59:26
+(epstopdf)                    size: 196034 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/FullModel_nu0001-eps-
+converted-to.pdf plots/FullModel_nu0001.eps>
+(epstopdf)             \includegraphics on input line 237.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/FullModel_nu0001-eps-converted-to.pdf, id=360, 637.38126pt x 472.76625pt
+>
+File: plots/FullModel_nu0001-eps-converted-to.pdf Graphic file (type pdf)
+ <use plots/FullModel_nu0001-eps-converted-to.pdf> [9] [10 <./plots/FullModel_n
+u01-eps-converted-to.pdf> <./plots/FullModel_nu001-eps-converted-to.pdf> <./plo
+ts/FullModel_nu0001-eps-converted-to.pdf>] [11]
+Package epstopdf Info: Source file: <plots/PODplot_l.eps>
+(epstopdf)                    date: 2013-01-15 15:26:32
+(epstopdf)                    size: 1856033 bytes
+(epstopdf)             Output file: <plots/PODplot_l-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-01-15 15:26:37
+(epstopdf)                    size: 308529 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/PODplot_l-eps-convert
+ed-to.pdf plots/PODplot_l.eps>
+(epstopdf)             \includegraphics on input line 311.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/PODplot_l-eps-converted-to.pdf, id=430, 628.3475pt x 685.56125pt>
+File: plots/PODplot_l-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/PODplot_l-eps-converted-to.pdf>
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 312.
+) (./chapter3.tex [12 <./plots/PODplot_l-eps-converted-to.pdf>] [13
+
+] [14]
+Overfull \vbox (8.80003pt too high) has occurred while \output is active []
+
+
+[15] [16] [17] [18]
+
+LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
+(Font)              using `U/stmry/m/n' instead on input line 237.
+
+[19]
+
+LaTeX Warning: Reference ` pFullOrder_term' on page 20 undefined on input line 
+278.
+
+[20] [21]
+Package epstopdf Info: Source file: <plots/controlFullk1.eps>
+(epstopdf)                    date: 2013-03-28 18:29:21
+(epstopdf)                    size: 1269577 bytes
+(epstopdf)             Output file: <plots/controlFullk1-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 18:33:39
+(epstopdf)                    size: 204931 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/controlFullk1-eps-con
+verted-to.pdf plots/controlFullk1.eps>
+(epstopdf)             \includegraphics on input line 322.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/controlFullk1-eps-converted-to.pdf, id=684, 501.875pt x 348.30125pt>
+File: plots/controlFullk1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/controlFullk1-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/controlFullk2.eps>
+(epstopdf)                    date: 2013-03-28 18:37:09
+(epstopdf)                    size: 1268618 bytes
+(epstopdf)             Output file: <plots/controlFullk2-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 18:38:57
+(epstopdf)                    size: 204667 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/controlFullk2-eps-con
+verted-to.pdf plots/controlFullk2.eps>
+(epstopdf)             \includegraphics on input line 323.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/controlFullk2-eps-converted-to.pdf, id=685, 501.875pt x 348.30125pt>
+File: plots/controlFullk2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/controlFullk2-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/controlFullk5.eps>
+(epstopdf)                    date: 2013-03-28 18:38:09
+(epstopdf)                    size: 1256980 bytes
+(epstopdf)             Output file: <plots/controlFullk5-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 18:39:00
+(epstopdf)                    size: 197240 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/controlFullk5-eps-con
+verted-to.pdf plots/controlFullk5.eps>
+(epstopdf)             \includegraphics on input line 324.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/controlFullk5-eps-converted-to.pdf, id=686, 501.875pt x 348.30125pt>
+File: plots/controlFullk5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/controlFullk5-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/controlFullk10.eps>
+(epstopdf)                    date: 2013-03-28 18:38:51
+(epstopdf)                    size: 1252025 bytes
+(epstopdf)             Output file: <plots/controlFullk10-eps-converted-to.pdf>
+
+(epstopdf)                    date: 2013-03-28 18:39:02
+(epstopdf)                    size: 194260 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/controlFullk10-eps-co
+nverted-to.pdf plots/controlFullk10.eps>
+(epstopdf)             \includegraphics on input line 325.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/controlFullk10-eps-converted-to.pdf, id=687, 501.875pt x 348.30125pt>
+File: plots/controlFullk10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/controlFullk10-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/uFullk1.eps>
+(epstopdf)                    date: 2013-03-28 19:24:21
+(epstopdf)                    size: 1222706 bytes
+(epstopdf)             Output file: <plots/uFullk1-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 19:24:46
+(epstopdf)                    size: 149968 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/uFullk1-eps-converted
+-to.pdf plots/uFullk1.eps>
+(epstopdf)             \includegraphics on input line 331.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/uFullk1-eps-converted-to.pdf, id=688, 501.875pt x 372.39125pt>
+File: plots/uFullk1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/uFullk1-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/uFullk2.eps>
+(epstopdf)                    date: 2013-03-28 19:24:26
+(epstopdf)                    size: 1258652 bytes
+(epstopdf)             Output file: <plots/uFullk2-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 19:24:50
+(epstopdf)                    size: 199327 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/uFullk2-eps-converted
+-to.pdf plots/uFullk2.eps>
+(epstopdf)             \includegraphics on input line 332.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/uFullk2-eps-converted-to.pdf, id=689, 501.875pt x 372.39125pt>
+File: plots/uFullk2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/uFullk2-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/uFullk5.eps>
+(epstopdf)                    date: 2013-03-28 19:24:31
+(epstopdf)                    size: 1253107 bytes
+(epstopdf)             Output file: <plots/uFullk5-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 19:24:53
+(epstopdf)                    size: 196271 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/uFullk5-eps-converted
+-to.pdf plots/uFullk5.eps>
+(epstopdf)             \includegraphics on input line 333.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/uFullk5-eps-converted-to.pdf, id=690, 501.875pt x 372.39125pt>
+File: plots/uFullk5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/uFullk5-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/uFullk10.eps>
+(epstopdf)                    date: 2013-03-28 19:24:36
+(epstopdf)                    size: 1250353 bytes
+(epstopdf)             Output file: <plots/uFullk10-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 19:24:56
+(epstopdf)                    size: 194577 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/uFullk10-eps-converte
+d-to.pdf plots/uFullk10.eps>
+(epstopdf)             \includegraphics on input line 334.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/uFullk10-eps-converted-to.pdf, id=691, 501.875pt x 372.39125pt>
+File: plots/uFullk10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/uFullk10-eps-converted-to.pdf>) (./chapter4.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22 <./plots/controlFullk1-eps-converted-to.pdf> <./plots/controlFullk2-eps-co
+nverted-to.pdf> <./plots/controlFullk5-eps-converted-to.pdf> <./plots/controlFu
+llk10-eps-converted-to.pdf>] [23 <./plots/uFullk1-eps-converted-to.pdf> <./plot
+s/uFullk2-eps-converted-to.pdf> <./plots/uFullk5-eps-converted-to.pdf> <./plots
+/uFullk10-eps-converted-to.pdf>] [24
+
+]
+Overfull \hbox (33.9393pt too wide) in paragraph at lines 26--26
+[] 
+ []
+
+[25]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (8.80003pt too high) has occurred while \output is active []
+
+
+[26]
+Package epstopdf Info: Source file: <plots/controlRedk1.eps>
+(epstopdf)                    date: 2013-03-28 18:54:21
+(epstopdf)                    size: 1270366 bytes
+(epstopdf)             Output file: <plots/controlRedk1-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 18:55:08
+(epstopdf)                    size: 204703 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/controlRedk1-eps-conv
+erted-to.pdf plots/controlRedk1.eps>
+(epstopdf)             \includegraphics on input line 122.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/controlRedk1-eps-converted-to.pdf, id=783, 501.875pt x 372.39125pt>
+File: plots/controlRedk1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/controlRedk1-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/controlRedk2.eps>
+(epstopdf)                    date: 2013-03-28 18:54:36
+(epstopdf)                    size: 1268100 bytes
+(epstopdf)             Output file: <plots/controlRedk2-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 18:55:11
+(epstopdf)                    size: 205942 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/controlRedk2-eps-conv
+erted-to.pdf plots/controlRedk2.eps>
+(epstopdf)             \includegraphics on input line 123.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/controlRedk2-eps-converted-to.pdf, id=784, 501.875pt x 372.39125pt>
+File: plots/controlRedk2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/controlRedk2-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/controlRedk5.eps>
+(epstopdf)                    date: 2013-03-28 18:54:50
+(epstopdf)                    size: 1255158 bytes
+(epstopdf)             Output file: <plots/controlRedk5-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 18:55:14
+(epstopdf)                    size: 199065 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/controlRedk5-eps-conv
+erted-to.pdf plots/controlRedk5.eps>
+(epstopdf)             \includegraphics on input line 124.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/controlRedk5-eps-converted-to.pdf, id=785, 501.875pt x 372.39125pt>
+File: plots/controlRedk5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/controlRedk5-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/controlRedk10.eps>
+(epstopdf)                    date: 2013-03-28 18:55:02
+(epstopdf)                    size: 1251056 bytes
+(epstopdf)             Output file: <plots/controlRedk10-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 18:55:17
+(epstopdf)                    size: 195904 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/controlRedk10-eps-con
+verted-to.pdf plots/controlRedk10.eps>
+(epstopdf)             \includegraphics on input line 125.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/controlRedk10-eps-converted-to.pdf, id=786, 501.875pt x 372.39125pt>
+File: plots/controlRedk10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/controlRedk10-eps-converted-to.pdf>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27]
+Package epstopdf Info: Source file: <plots/uRedk1.eps>
+(epstopdf)                    date: 2013-03-28 19:31:42
+(epstopdf)                    size: 1222705 bytes
+(epstopdf)             Output file: <plots/uRedk1-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 19:36:22
+(epstopdf)                    size: 149963 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/uRedk1-eps-converted-
+to.pdf plots/uRedk1.eps>
+(epstopdf)             \includegraphics on input line 131.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/uRedk1-eps-converted-to.pdf, id=804, 501.875pt x 372.39125pt>
+File: plots/uRedk1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/uRedk1-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/uRedk2.eps>
+(epstopdf)                    date: 2013-03-28 19:33:53
+(epstopdf)                    size: 1258652 bytes
+(epstopdf)             Output file: <plots/uRedk2-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 19:36:25
+(epstopdf)                    size: 199426 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/uRedk2-eps-converted-
+to.pdf plots/uRedk2.eps>
+(epstopdf)             \includegraphics on input line 132.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/uRedk2-eps-converted-to.pdf, id=805, 501.875pt x 372.39125pt>
+File: plots/uRedk2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/uRedk2-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/uRedk5.eps>
+(epstopdf)                    date: 2013-03-28 19:35:23
+(epstopdf)                    size: 1265985 bytes
+(epstopdf)             Output file: <plots/uRedk5-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 19:36:27
+(epstopdf)                    size: 203635 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/uRedk5-eps-converted-
+to.pdf plots/uRedk5.eps>
+(epstopdf)             \includegraphics on input line 133.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/uRedk5-eps-converted-to.pdf, id=806, 501.875pt x 372.39125pt>
+File: plots/uRedk5-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/uRedk5-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <plots/uRedk10.eps>
+(epstopdf)                    date: 2013-03-28 19:36:15
+(epstopdf)                    size: 1262771 bytes
+(epstopdf)             Output file: <plots/uRedk10-eps-converted-to.pdf>
+(epstopdf)                    date: 2013-03-28 19:36:30
+(epstopdf)                    size: 201870 bytes
+(epstopdf)             Command: <epstopdf --outfile=plots/uRedk10-eps-converted
+-to.pdf plots/uRedk10.eps>
+(epstopdf)             \includegraphics on input line 134.
+Package epstopdf Info: Output file is already uptodate.
+
+<plots/uRedk10-eps-converted-to.pdf, id=807, 501.875pt x 372.39125pt>
+File: plots/uRedk10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use plots/uRedk10-eps-converted-to.pdf>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (8.80003pt too high) has occurred while \output is active []
+
+
+[28 <./plots/controlRedk1-eps-converted-to.pdf> <./plots/controlRedk2-eps-conve
+rted-to.pdf> <./plots/controlRedk5-eps-converted-to.pdf> <./plots/controlRedk10
+-eps-converted-to.pdf>]) (./chapter5.tex [29 <./plots/uRedk1-eps-converted-to.p
+df> <./plots/uRedk2-eps-converted-to.pdf> <./plots/uRedk5-eps-converted-to.pdf>
+ <./plots/uRedk10-eps-converted-to.pdf>] [30
+
+]) (./MSc.bbl [31] [32
+
+]
+bibitemlist
+) [33] [34
+
+] [35] [36] (./app1.tex
+Overfull \hbox (18.51302pt too wide) in paragraph at lines 27--27
+[] 
+ []
+
+[37
+
+]
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 41.
+
+
+LaTeX Font Warning: Command \normalsize invalid in math mode on input line 41.
+
+
+Overfull \hbox (3.00818pt too wide) in paragraph at lines 41--41
+[] 
+ []
+
+
+Overfull \hbox (11.37561pt too wide) in paragraph at lines 45--47
+\OT1/lmr/m/n/10.95 In or-der to for-mu-late the dis-cretiza-tion in vec-tor no-
+ta-tion, we de-fine $\OT1/lmr/bx/n/10.95 y\OT1/lmr/m/n/10.95 (\OT1/lmr/m/it/10.
+95 t\OT1/lmr/m/n/10.95 ) := [\OT1/lmr/m/it/10.95 y[]\OT1/lmr/m/n/10.95 (\OT1/lm
+r/m/it/10.95 t\OT1/lmr/m/n/10.95 )\OML/lmm/m/it/10.95 ; :::; \OT1/lmr/m/it/10.9
+5 y[]\OT1/lmr/m/n/10.95 (\OT1/lmr/m/it/10.95 t\OT1/lmr/m/n/10.95 )][]$
+ []
+
+[38]) (./app2.tex [39] [40
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [41]
+[42]
+
+LaTeX Font Warning: Font shape `OT1/lmss/bx/sc' undefined
+(Font)              using `OT1/lmss/bx/n' instead on input line 72.
+
+) (./app3.tex [43] [44
+
+])
+Underfull \hbox (badness 10000) in paragraph at lines 2--73
+
+ []
+
+
+Overfull \hbox (11.40799pt too wide) in paragraph at lines 2--73
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--73
+
+ []
+
+[45]
+\tf@toc=\write6
+\openout6 = `MSc.toc'.
+
+ (./MSc.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 13851 strings out of 493848
+ 196171 string characters out of 1152824
+ 340962 words of memory out of 3000000
+ 16427 multiletter control sequences out of 15000+50000
+ 165893 words of font info for 136 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 46i,22n,45p,1066b,769s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{algorithm.9} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{algorithm.7} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{algorithm.6} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{algorithm.10} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{algorithm.5} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{algorithm.4} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{algorithm.3} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{algorithm.2} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{algorithm.1} has been referenced but does not exist
+, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
+re/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmsc.enc}{/usr/share/texmf/
+fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmmi7.pfb></usr/share/texmf/fonts/type1/public/l
+m/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+i8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/font
+s/type1/public/lm/lmro9.pfb></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmssbx10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmsso10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmsy7.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on MSc.pdf (53 pages, 4535367 bytes).
+PDF statistics:
+ 1178 PDF objects out of 1200 (max. 8388607)
+ 301 named destinations out of 1000 (max. 500000)
+ 372 words of extra memory for PDF output out of 10000 (max. 10000000)
+

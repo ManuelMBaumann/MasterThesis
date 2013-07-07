@@ -1,0 +1,95 @@
+\chapter{Numerical solution of Burger's equation}
+\label{FEMDiscr}
+\section{Spacial discretization via the finite element method}
+\label{FEMDiscr_space}
+We consider Burger's equation \eqref{Burgers} together with homogeneous Dirichlet boundary conditions \eqref{BurgersBC} and initial value \eqref{BurgersIC} given by the function $y_0(x)$,
+\begin{align}
+\label{Burgers}
+&y_t + \left( \frac{1}{2} y^2 - \nu y_x \right)_x = f, \\
+\label{BurgersBC}
+&y(t,0) = y(t,L) = 0,\\
+\label{BurgersIC}
+&y(0,x) = y_0(x).
+\end{align}
+When we define the spatial grid as $\{0=x_0,...,x_{N+1}=L\}$ with constant step size $h$, the following FEM ansatz,
+\begin{align}
+\label{FEMansatz}
+y(t,x) \approx \sum_{i=1}^N y_i(t) \phi_i(x),
+\end{align}
+implicitly fulfills the boundary conditions \eqref{BurgersBC}. As test functions, the following \textit{hat functions} as proposed, for instance, in \cite{FEMbook} have been used:
+\begin{align*}
+\phi_i(x) = \begin{cases} \frac{x-x_{i-1}}{h}, & \text{ for } x \in [x_{i-1},x_i], \\ \frac{x_{i+1}-x}{h}, & \text{ for } x \in [x_i,x_{i+1}], \\ 0, & \text{ otherwise.}\end{cases}
+\end{align*}
+In order to derive the weak form of \eqref{Burgers}, let us first assume that a source function $f \neq 0$ is given. In the FEM-Galerkin method we then multiply \eqref{Burgers} by the test function $\phi_j$ and integrate over the domain $[0,L]$:
+\begin{align*}
+\int_0^L y_t(t,x) \phi_j(x) dx &= -\frac{1}{2} \int_0^L \left( y^2(t,x) \right)_x \phi_j(x) dx + \nu \int_0^L \left( y(t,x) \right)_{xx} \phi_j(x) dx + \int_0^L f(x) \phi_j(x) dx\\
+ &= -\frac{1}{2} \int_0^L \left( y^2(t,x) \right)_x \phi_j(x) dx - \nu \int_0^L y_x(t,x) \left( \phi_j(x) \right)_x dx + \int_0^L f(x) \phi_j(x) dx,
+\end{align*}
+using integration by part and the homogeneous Dirichlet boundary conditions. We now plug-in the approximation \eqref{FEMansatz} and assume further $y^2(t,x) \approx \sum_{i=1}^N y^2_i(t) \phi_i(x)$.
+\begin{align*}
+\int_0^L \sum_{i=1}^N \dot{y}_i(t) \phi_i(x) \ \phi_j(x) dx &= -\frac{1}{2} \int_0^L \sum_{i=1}^N y^2_i(t) (\phi_i(x))_x \ \phi_j(x) dx \\
+&\quad - \nu \int_0^L \sum_{i=1}^N y_i(t) (\phi_i(x))_x \ (\phi_j(x))_x dx + \int_0^L f(x) \phi_j(x) dx ,
+\end{align*}
+which is equivalent to
+\begin{align*}
+ \sum_{i=1}^N \dot{y}_i(t) \underbrace{\int_0^L \phi_i(x) \phi_j(x) dx}_{=:M_{i,j}} &= -\frac{1}{2} \sum_{i=1}^N y^2_i(t) \underbrace{\int_0^L  (\phi_i(x))_x \ \phi_j(x) dx}_{=:B_{i,j}} - \\
+ &\quad \nu \sum_{i=1}^N y_i(t) \underbrace{\int_0^L (\phi_i(x))_x \ (\phi_j(x))_x dx}_{=:C_{i,j}} + \int_0^L f(x) \phi_j(x) dx .
+\end{align*}
+It is important to note that the matrices $M,B,C$ are constant in time and their entries consist of polynomials which due to the fact that they are defined as hat function mostly cancel out. The matrices can be pre-computed and are tridiagonal:
+\begin{align*}
+M = \frac{h}{6} \small \begin{bmatrix} 4 & 1 & & & \\ 1 & 4 & 1 & & \\ & \ddots & \ddots & \ddots & \\ & & 1 & 4 & 1 \\ & & & 1 & 4\end{bmatrix}\normalsize, B = \small\begin{bmatrix} 0 & \frac{1}{2} & & & \\ -\frac{1}{2} & 0 & \frac{1}{2} & & \\ & \ddots & \ddots & \ddots & \\ & & -\frac{1}{2} & 0 & \frac{1}{2} \\ & & & -\frac{1}{2} & 0\end{bmatrix}\normalsize, C = \frac{1}{h} \small\begin{bmatrix} 2 & -1 & & & \\ -1 & 2 & -1 & & \\ & \ddots & \ddots & \ddots & \\ & & -1 & 2 & -1 \\ & & & -1 & 2\end{bmatrix}\normalsize.
+\end{align*}
+For the source term, we assumed a function $f(x)$ that does not depend on time and, thus, this vector can be pre-computed as well. Taking into account tat the linear ansatz function are only non-zero at two cells, the Trapezoidal rule \cite{B06} yields:
+\begin{align*}
+\int_0^L f(x) \phi_j(x) dx = \int_{x_{j-1}}^{x_{j}} f(x) \phi_j(x) dx + \int_{x_{j}}^{x_{j+1}} f(x) \phi_j(x) dx \approx \frac{h}{2} f(x_j) + \frac{h}{2} f(x_j) = h f(x_j).
+\end{align*}
+In order to formulate the discretization in vector notation, we define $\mathbf{y}(t) := [y_1(t),...,y_N(t)]^T$ and obtain the following ODE system:
+\begin{align}
+\label{afterFEM}
+M \mathbf{\dot y}(t) = -\frac{1}{2} B \mathbf{y}^2(t) - \nu C \mathbf{y}(t) + \mathbf{f},
+\end{align}
+where the source vector is given by
+\begin{align*}
+\mathbf{f} = \begin{bmatrix} \int_0^L f(x) \phi_1(x) dx \\ \vdots \\ \int_0^L f(x) \phi_N(x) dx\\ \end{bmatrix} \approx h \begin{bmatrix} f(x_1) \\ \vdots \\ f(x_N)\\ \end{bmatrix}.
+\end{align*}
+
+Suitable initial conditions when $y_0(x)$ is equal to a step function can be derived straight forward since the test functions are equal to $1$ at the grid points:
+\begin{align*}
+y_0(x) = \begin{cases} 1, & \text{ if } 0 \leq x \leq \frac{L}{2} \\ 0, & \text{ if } \frac{L}{2} < x \leq L \end{cases} \quad \Rightarrow \quad y_i(0) = \begin{cases} 1, & \text{ if } x_i \in [0,\frac{L}{2}] \\ 0, & \text{ if } x_i \in (\frac{L}{2},L] \end{cases}.
+\end{align*}
+\section{Time integration with the implicit Euler method}
+\label{implEuler}
+Since the ODE \eqref{afterFEM} is nonlinear, the application of the implicit Euler methods requires to solve for the root of a nonlinear equation using Newton's method at each time step.
+
+The implicit Euler method applied to \eqref{afterFEM} reads
+\begin{align*}
+M \frac{\mathbf{y}^{(n+1)} - \mathbf{y}^{(n)}}{\tau} = -\frac{1}{2} B (\mathbf{y}^{(n+1)})^2 - \nu C \mathbf{y}^{(n+1)} + \mathbf{f},
+\end{align*}
+where $\mathbf{y}^{(n)} = \mathbf{y}(t_n)$ and $\tau$ is the time step.
+
+A re-formulation leads to
+\begin{align*}
+ \mathbf{F}(\mathbf{y}^{(n+1)}) \equiv \frac{1}{\tau}M\mathbf{y}^{(n+1)} - \frac{1}{\tau}M\mathbf{y}^{(n)} + \frac{1}{2} B (\mathbf{y}^{(n+1)})^2 + \nu C \mathbf{y}^{(n+1)} - \mathbf{f}= 0,
+\end{align*}
+where Newton's method can be applied such that the root of the nonlinear function $\mathbf{F}$ is equal to the solution at the next time step $\mathbf{y}^{(n+1)}$ (see Algorithm \ref{alg:Euler}). In order to solve the linear system at line 6, we also need to derive the Jacobian of $\mathbf{F}$ which can be computed analytically by
+\begin{align*}
+J_F(\mathbf{y}^{(n+1)}) = \frac{1}{\tau} M + B .* \mathbf{y}^{(n+1)} + \nu C,
+\end{align*}
+where $B .* \mathbf{y}^{(n)}$ means that every row of the matrix $B$ is multiplied pointwise with the vector $\mathbf{y}^{(n)}$ such that the overall product is again a matrix of the appropriate dimension. The stopping criterium can be specified via a tolerance of the relative error of the Newton iteration (see line 7).
+\begin{algorithm}[H]
+\caption{Euler implicit with Newton's method}
+\label{alg:Euler}
+\begin{algorithmic}[1]
+\STATE Initialize $\mathbf{y}^{(1)} = \mathbf{y}_0, TOL$
+\FOR{$n = 1$ to $T$}
+\STATE $\mathbf{u}_{old} = \mathbf{y}^{(n)}$
+\STATE $err = 1$
+\WHILE{$err > TOL$}
+\STATE Solve $\mathbf{u}_{new} = \mathbf{u}_{old} - J_F^{-1} \mathbf{F}(\mathbf{u}_{old})$
+\STATE $err = \|\mathbf{u}_{new} - \mathbf{u}_{old}\|_2 / \|\mathbf{u}_{new}\|_2$
+\STATE Update iterate,  $\mathbf{u}_{old} = \mathbf{u}_{new}$
+\ENDWHILE
+\STATE $\mathbf{y}^{(n+1)} = \mathbf{u}_{new}$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm} 

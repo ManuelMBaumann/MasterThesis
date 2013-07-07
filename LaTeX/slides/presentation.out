@@ -1,0 +1,10 @@
+\BOOKMARK [2][]{Outline0.1}{What is Model Order Reduction \(MOR\) ?}{}% 1
+\BOOKMARK [2][]{Outline0.2}{The POD-DEIM method}{}% 2
+\BOOKMARK [3][]{Outline0.2.1.11}{Proper Orthogonal Decomposition \(POD\)}{Outline0.2}% 3
+\BOOKMARK [3][]{Outline0.2.2.12}{Discrete Empirical Interpolation Method \(DEIM\)}{Outline0.2}% 4
+\BOOKMARK [3][]{Outline0.2.3.16}{Application: MOR for Burgers' equation}{Outline0.2}% 5
+\BOOKMARK [2][]{Outline0.3}{PDE-constrained optimization}{}% 6
+\BOOKMARK [3][]{Outline0.3.1.26}{A Newton-type method}{Outline0.3}% 7
+\BOOKMARK [3][]{Outline0.3.2.29}{First-order methods: BFGS and SPG}{Outline0.3}% 8
+\BOOKMARK [2][]{Outline0.4}{Optimal Control for the reduced order Burgers' equation}{}% 9
+\BOOKMARK [2][]{Outline0.5}{Summary and future research}{}% 10

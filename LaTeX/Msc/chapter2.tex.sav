@@ -1,0 +1,404 @@
+\chapter{Model order reduction for nonlinear dynamical systems}
+In this chapter we present two methods for model order reduction of nonlinear dynamical systems. First, we present the method of proper orthogonal decomposition (POD) which derives a low-dimensional subspace $U_\ell$ such that a Galerkin projection onto that subspace still captures most of the dynamical behavior of the original system. An improvement of POD that also reduces the dimension of the involved nonlinearity is given by the discrete empirical interpolation method (DEIM). We end that chapter with an application of POD-DEIM to the nonlinear Burger's equation and present both approximation results and results of the gain in computational complexity.
+\section{Proper orthogonal decomposition (POD)}
+The focus of this chapter lies on nonlinear dynamical systems of the form
+\begin{align}
+ \label{NonLinSys}
+ \frac{d}{dt} \mathbf{y}(t) &= A \mathbf{y}(t) + \mathbf{F}(t,\mathbf{y}(t)), \\
+ \label{NonLinSysIC}
+ \mathbf{y}(0) &= \mathbf{y}_0,
+\end{align}
+which for example arise after spatial discretization of time-dependent nonlinear partial differential equations (PDEs). Therefore, we assume that the unknowns vector $\mathbf{y}$ is of dimension $n$ and the function $\mathbf{F}:[0,T] \times \mathbb{R}^n \rightarrow \mathbb{R}^n$ captures the nonlinearity of the dynamical behavior. We have chosen the form \eqref{NonLinSys} in order to stress the difference between a linear and a nonlinear term in the dynamical behavior. We will see that a POD-reduction leads directly to a dimension reduction of the linear term while the evaluation of the nonlinear term still depends on the full dimension $n$.
+\subsection{Optimality of the POD-basis}
+The overall aim of POD is the projection of the governing equations \eqref{NonLinSys}-\eqref{NonLinSysIC} onto a suitable subspace $\mathcal{U}$ of dimension $\ell \ll n$ which captures most of the dynamical behavior of the original system. In order to obtain this subspace, the so-called matrix of snapshots defined as
+\begin{align}
+\label{snapshots}
+Y := [\mathbf{y}(t_1), \mathbf{y}(t_2), ..., \mathbf{y}(t_{n_s})] \in \mathbb{R}^{n \times n_s},
+\end{align}
+plays a key role. The solution vector $\mathbf{y}$ at $n_s$ different time instances form the columns of the matrix $Y$. The integer $n_s$ is called the number of snapshots and typically, $n_s \ll n$.
+
+In this section, we will explain that a singular value decomposition (SVD) of the snapshot matrix \eqref{snapshots} can be used to obtain an optimal projection space. In more detail, we present a proof from \cite{V11} that shows that the optimal $\ell$-dimensional projection space is given by those $\ell$ singular vectors of $Y$ that correspond to the $\ell$ largest singular values. The singular value decomposition of a rectangular matrix $Y$ is given by the following well-known theorem:
+\begin{theorem}
+\emph{(Singular value decomposition, \cite{G96})}
+\label{svdthm}
+Let $Y \in \mathbb{R}^{n \times n_s}$ of rank $d$. Then there exists a decomposition of the form
+\begin{align}
+\label{svd}
+Y = U \bbmat D & 0 \\ 0 & 0 \ebmat V^T =: U \Sigma V^T,
+\end{align}
+with $U \in \mathbb{R}^{n \times n}, V \in \mathbb{R}^{n_s \times n_s}$ orthogonal and $D = diag(\sigma_1,...,\sigma_d) \in \mathbb{R}_+^{d \times d}$. The columns in $U = [\mathbf{u}_1,...,\mathbf{u}_n]$ are called the (left) singular vectors of $Y$ and for the singular values $\sigma_i$ it holds: $\sigma_1 \geq \sigma_2 \geq ... \geq \sigma_d > 0$.
+\end{theorem}
+\begin{proof}
+Can, for example, be found in \cite[Theorem 2.5.2]{G96}.
+\end{proof}
+Note that the following diagonalization holds
+\begin{align}
+\label{SVDalsEW}
+Y Y^T = (U \Sigma V^T) (U \Sigma V^T)^T = U \Sigma^2 U^T,
+\end{align}
+and, hence, the columns of $U$ are eigenvectors of $Y Y^T$ with eigenvalues $\lambda_i = \sigma_i^2 > 0, \ i=1,...,d$.
+
+We will next consider the optimization problem \eqref{optBasis} whose solution gives rise to the practical computation of the POD-basis. We seek for an orthonormal basis $\varphi_1,...,\varphi_\ell$ such that the components of the snapshots $\mathbf{y}(t_1),...,\mathbf{y}(t_{n_s})$ are maximized when expressed in this basis. Therefore, it is desired to find the basis $\varphi_1,...,\varphi_\ell$ and the following theorem states that the left singular vectors of $Y$ solve the optimization problem \eqref{optBasis}.
+%The next theorem shows that the solution to the optimization problem \eqref{optBasis} is given by the left singular vectors of the snapshot matrix \eqref{snapshots}. This is important since in \eqref{optBasis} we seek for an orthonormal basis $\varphi_1,...,\varphi_\ell$ such that the components of the snapshots $\mathbf{y}(t_1),...,\mathbf{y}(t_{n_s})$ are maximized when expressed in this basis. Therefore, it is desired to find the basis $\varphi_1,...,\varphi_\ell$ and the following theorem states that the left singular vectors of $Y$ solve \eqref{optBasis}.
+\begin{theorem}
+\emph{(POD basis, \cite{V11})}
+\label{podthm}
+Let $Y \in \mathbb{R}^{n \times n_s}$ be the snapshot matrix \eqref{snapshots} with rank $d \leq \min \{n,n_s\}$. Further, let $Y = U \Sigma V^T$ be the singular value decomposition of $Y$ with orthogonal matrices $U = [\mathbf{u}_1,...,\mathbf{u}_n]$ and $V = [\mathbf{v}_1,...,\mathbf{v}_{n_s}]$ as in \eqref{svd}. Then, for any $\ell \in \{1,...,d\}$ the solution to the optimization problem
+\begin{align}
+\label{optBasis}
+\max_{\varphi_1,...,\varphi_\ell} \sum_{i=1}^\ell \sum_{j=1}^{n_s} |\langle \mathbf{y}_j , \varphi_i \rangle|^2 \quad s.t. \quad \langle \varphi_i,\varphi_j\rangle = \delta_{i,j} \ \text{for } 1 \leq i,j \leq \ell
+\end{align}
+is given by the left singular vectors $\{ \mathbf{u}_i \}_{i=1}^\ell$. The vectors $\varphi_1,...,\varphi_\ell$ are called the POD basis of rank $\ell$. Hereby, $\delta_{i,j}$ denotes the Kronecker delta.
+\end{theorem}
+\begin{proof}
+The following proof is based on the ideas of \cite{V11}. Since \eqref{optBasis} is an equality constrained optimization problem, we consider the corresponding Lagrangian function
+\begin{align*}
+&\mathcal{L} : \mathbb{R}^n \times ... \times \mathbb{R}^n \times \mathbb{R}^{\ell \times \ell} \rightarrow \mathbb{R}\\
+&\mathcal{L}(\varphi_1,...,\varphi_\ell,\Lambda) = \sum_{i=1}^\ell \sum_{j=1}^{n_s} |\langle \mathbf{y}_j , \varphi_i \rangle|^2 + \sum_{i,j=1}^\ell \lambda_{ij} (\delta_{ij}-\langle \varphi_i,\varphi_j\rangle),
+\end{align*}
+where $\Lambda := (\lambda_{i,j})_{i,j=1}^\ell$. The first-order necessary optimality conditions of \eqref{optBasis} are then given by
+\begin{align*}
+\frac{\partial \mathcal{L}}{\partial \varphi_k}(\varphi_1,...,\varphi_\ell,\Lambda) &= 0, \quad \text{for } k \in \{1,...,\ell\}, \\
+\frac{\partial \mathcal{L}}{\partial \lambda_{i,j}}(\varphi_1,...,\varphi_\ell,\Lambda) &= 0, \quad \text{for } i,j \in \{1,...,\ell\},
+\end{align*}
+where the latter equation is equivalent to the constraint $\langle \varphi_i,\varphi_j\rangle = \delta_{i,j}$. In \cite[p. 5]{V11}, it is shown that the first condition leads to
+\begin{align}
+\label{zwschritt}
+Y Y^T \varphi_k = \frac{1}{2} \sum_{i=1}^\ell (\lambda_{i,k} + \lambda_{k,i}) \varphi_i, \quad \text{for all } k \in \{1,...,\ell\}.
+\end{align}
+The actual proof that the optimal vectors $\varphi_1,...,\varphi_\ell$ are given by the first $\ell$ left singular vectors of $Y$ is done by induction on $\ell$. First, let $\ell=1$. From \eqref{zwschritt}, it follows that $k=1$ and we get:
+\begin{align*}
+Y Y^T \varphi_1 = \lambda_{1,1} \varphi_1.
+\end{align*}
+From \eqref{SVDalsEW}, we have that this eigenequation can be expressed as an SVD with $\varphi_1$ being the first left singular vector of $Y$.
+
+Next, consider the case $\ell \geq 1$ and suppose
+\begin{align*}
+Y Y^T \varphi_k = \lambda_{k,k} \varphi_k, \quad \text{for all } k \in \{1,...,\ell\}.
+\end{align*}
+We want to show that the first-order necessary optimality conditions for a POD-basis of rank $\ell+1$ are given by
+\begin{align*}
+Y Y^T \varphi_k = \lambda_{k,k} \varphi_k, \quad \text{for all } k \in \{1,...,\ell+1\},
+\end{align*}
+and can, thus, be computed by an SVD of $Y$. Using the induction hypothesis, we only have to show that
+\begin{align*}
+Y Y^T \varphi_{\ell+1} = \lambda_{\ell+1,\ell+1} \varphi_{\ell+1}.
+\end{align*}
+Since $\{\varphi_i\}_{i=1}^{\ell+1}$ is a POD-basis, it holds that $\langle \varphi_{\ell+1},\varphi_i \rangle = 0$ for $1 \leq i \leq \ell$ and we get
+\begin{align*}
+0 &= \lambda_{i,i} \langle \varphi_{\ell+1},\varphi_i \rangle = \langle \varphi_{\ell+1}, Y Y^T \varphi_i \rangle = \langle Y Y^T  \varphi_{\ell+1}, \varphi_i \rangle \\
+ &= \frac{1}{2} \sum_{j=1}^{\ell+1} (\lambda_{j,\ell+1} + \lambda_{\ell+1,j}) \langle \varphi_j,\varphi_i \rangle = (\lambda_{i,\ell+1} + \lambda_{\ell+1,i}) \quad \Rightarrow \quad \lambda_{\ell+1,i} = - \lambda_{i,\ell+1}, \ i \in \{1,...,\ell\},
+\end{align*}
+where the symmetry of $Y Y^T$ guarantees the matrix to be self-adjoint in $\langle \cdot, \cdot \rangle_{\mathbb{R}^n}$.
+
+Inserting the last relation into \eqref{zwschritt}, we obtain
+\begin{align*}
+Y Y^T \varphi_{\ell+1} &= \frac{1}{2} \sum_{i=1}^{\ell+1} (\lambda_{i,\ell+1}+\lambda_{\ell+1,i}) \varphi_{i} = \frac{1}{2} \sum_{i=1}^{\ell} (\lambda_{i,\ell+1}+\lambda_{\ell+1,i}) \varphi_{i} + \lambda_{\ell+1,\ell+1} \varphi_{\ell+1} \\
+ &= \frac{1}{2} \sum_{i=1}^{\ell} \underbrace{(\lambda_{i,\ell+1}-\lambda_{i,\ell+1})}_{=0} \varphi_{i} + \lambda_{\ell+1,\ell+1} \varphi_{\ell+1} = \lambda_{\ell+1,\ell+1} \varphi_{\ell+1}
+\end{align*}
+
+We have shown that the first-order optimality conditions corresponding to \eqref{optBasis} are given by the $n \times n$ eigenvalue problems
+\begin{align*}
+Y Y^T \mathbf{u}_i = \lambda_i \mathbf{u}_i, \quad i = 1,...,\ell,
+\end{align*}
+where the vectors $\{\mathbf{u}_i\}_{i=1}^\ell$ are given by the left singular vectors of $Y$ due to \eqref{SVDalsEW}. The proof that $\{\mathbf{u}_i\}_{i=1}^\ell$ are a solution of \eqref{optBasis} can be found in \cite{V11}.
+\end{proof}
+For the practical usage of POD, we need to choose the dimension $\ell$ of the POD-basis. According to \cite{V11}, there exists no theoretical bound for the approximation error depending on $\ell$. Therefore, in practice the choice of $\ell$ has to be obtained heuristically. The ratio,
+\begin{align*}
+\varepsilon(\ell) = \frac{\sum_{i=1}^\ell \sigma_i^2}{\sum_{i=1}^n \sigma_i^2}, \quad 1 \leq \ell \leq n,
+\end{align*}
+ gives a good estimate for the relation of the energy of the reduced system and the total energy. Note that $\varepsilon(\cdot)$ is growing fast when the considered dynamical system is suitable for model order reduction. For instance, in the setting of Section \ref{BurgersPODDEIM} we present the distribution of the singular values for $\nu = 0.01$ in Figure \ref{singVal}. The numerical solution of the full-order model required a spatial discretization of $n = 80$ and a POD-dimension of $\ell = 9$ already leads to $\varepsilon(9) = 0.98$ which gives a motivation that most of the dynamical behavior of the full-order system can be captured by a POD reduced model of dimension $9$ which can also be seen in Figure \ref{PODplot}.
+\subsection{The projected reduced-order model}
+In the previous section we have shown that the optimal subspace $\mathcal{U}$ that captures most of the dynamical behavior of the original system is given by $\mathcal{U} = span \{\mathbf{u}_1,...,\mathbf{u}_\ell\}$, where $\{\mathbf{u}_i\}_{i=1}^\ell$ are the POD-basis vectors of dimension $\ell$. In order to construct the reduced-order model, we define the matrix $U_\ell := [\mathbf{u}_1,...,\mathbf{u}_\ell]$. Then, the following ansatz gives an $\ell$-dimensional approximation of the solution vector $\mathbf{y}$:
+\begin{align*}
+\mathbf{y}(t) \approx U_\ell \mathbf{\tilde y}(t), \quad \mathbf{\tilde y}(t) \in \mathbb{R}^\ell.
+\end{align*}
+A reduced-order model of \eqref{NonLinSys}-\eqref{NonLinSysIC} for $\mathbf{\tilde y}(t)$ can be derived by a Galerkin projection of \eqref{NonLinSys} onto $U_\ell$,
+\begin{align}
+\label{GalProj}
+\frac{d}{dt} \mathbf{\tilde y}(t) &= U_\ell^T A U_\ell \mathbf{\tilde y}(t) + U_\ell^T \mathbf{F}(t,U_\ell\mathbf{\tilde y}(t)) \nonumber \\
+ &=: \tilde A \mathbf{\tilde y}(t) + \mathbf{\tilde N}(\mathbf{\tilde y}),
+\end{align}
+with $\tilde A := U_\ell^T A U_\ell \in \mathbb{R}^{\ell \times \ell}$ and non-linearity $\mathbf{\tilde N}(\mathbf{\tilde y}) : = U_\ell^T \mathbf{F}(t,U_\ell\mathbf{\tilde y}(t))$.
+
+The corresponding initial condition is given by
+\begin{align*}
+\mathbf{\tilde y}(0) = U_\ell^T \mathbf{y}_0.
+\end{align*}
+\section{Discrete empirical interpolation method (DEIM)}
+\label{Deim_chap}
+In the previous sections, the POD-Galerkin approach \eqref{GalProj} has been derived to be a reduced-order model of the full order dynamical system \eqref{NonLinSys}-\eqref{NonLinSysIC}. The system \eqref{GalProj} is of the (small) dimension $\ell$ and the unknown $\mathbf{\tilde y}$ is an $\ell$-dimensional approximation of $\mathbf{y}$. However, the evaluation of the nonlinear term $\mathbf{\tilde N}(\mathbf{\tilde y})$ still has computational complexity that depends on the original problem size $n$ as the following consideration shows:
+\begin{align*}
+\mathbf{\tilde N}(\mathbf{\tilde y}) = \underbrace{U_\ell^T}_{\ell \times n} \underbrace{\mathbf{F}(U_\ell\mathbf{\tilde y}(t))}_{n \times 1}.
+\end{align*}
+The DEIM method is an efficient way to overcome this dependence on $n$ and is, therefore, an improvement of the POD algorithm, cf. \cite{DEIM}. For a more simple notation, let us denote from now on $\mathbf{f}(t) := \mathbf{F}(U_\ell\mathbf{\tilde y}(t))$. We are looking for a low-dimensional approximation
+\begin{align*}
+\mathbf{f}(t) \approx W \mathbf{c}(t),
+\end{align*}
+where $W := [\mathbf{w}_1,...,\mathbf{w}_m] \in \mathbb{R}^{n \times m}$ and coefficient vector $\mathbf{c}(t) \in \mathbb{R}^m$, similar to the POD-approach. Indeed, the projection space $span \{\mathbf{w}_1,...,\mathbf{w}_m\}$ is obtained by an SVD of the snapshot matrix of the nonlinearity
+\begin{align}
+\label{snapshotF}
+F := [\mathbf{f}(t_1), \mathbf{f}(t_2), ..., \mathbf{f}(t_{n_s})] \in \mathbb{R}^{n \times n_s}.
+\end{align}
+Since $\mathbf{f}(t) = W \mathbf{c}(t)$ is an overdetermined linear system of equations for $\mathbf{c}(t)$, we select $m$ distinguished rows from both sides of the system. Therefore, we define the matrix $\mathcal{P} = [\mathbf{e}_{\wp_1},...,\mathbf{e}_{\wp_m}] \in \mathbb{R}^{n \times m}$ with $\mathbf{e}_{\wp_i} = [0,...,0,1,0,...,0] \in \mathbb{R}^n$ having its non-zero entry at the $i$-th component. If $\mathcal{P}^T W$ is nonsingular, the coefficient vector $\mathbf{c}(t)$ can uniquely be determined from
+\begin{align*}
+\mathcal{P}^T \mathbf{f}(t) = (\mathcal{P}^T W) \mathbf{c}(t).
+\end{align*}
+Altogether, we derive an approximation of $\mathbf{f}(t)$ of the following form
+\begin{align}
+\label{approxF}
+\mathbf{f}(t) \approx W \mathbf{c}(t) = W (\mathcal{P}^T W)^{-1} \mathcal{P}^T \mathbf{f}(t) =: \mathbf{\hat f}(t),
+\end{align}
+where it is important to note that the matrix-vector multiplication $\mathcal{P}^T \mathbf{f}(t)$ is never computed in the standard way since this would imply a dependence of the computational complexity on $n$. Instead, a left multiplication with $\mathcal{P}^T$ is by construction equivalent to the selection of $m$ entries of the vector $\mathbf{f}(t)$ which has complexity $\mathcal{O}(m)$.
+
+The nonlinear term in \eqref{GalProj} can, thus, be computed via
+\begin{align*}
+\mathbf{\tilde N}(\mathbf{\tilde y}) &\approx U_\ell^T W (\mathcal{P}^T W)^{-1} \mathcal{P}^T \mathbf{F}(U_\ell \mathbf{\tilde y}(t))\\
+&\stackrel{(\ast)}{=}\underbrace{U_\ell^T W (\mathcal{P}^T W)^{-1}}_{\ell \times m} \underbrace{\mathbf{F}(\mathcal{P}^T U_\ell \mathbf{\tilde y}(t))}_{m \times 1},
+\end{align*}
+where we have assumed that the function $\mathbf{F}(\cdot)$ only acts pointwise on its input vector. Hence, it is possible in step $(\ast)$ to first select the $m$ components of the input vector and then evaluate the function $\mathbf{F}$. The resulting approximation of $\mathbf{\tilde N}(\mathbf{\tilde y})$ does not depend on the dimension $n$ of the full order system and, moreover, we note that the matrix $U_\ell^T W (\mathcal{P}^T W)^{-1}$ does not depend on time and can, thus, be pre-computed.
+
+It remains to present how the $m$ entries of $\mathbf{f}(t)$ have to be selected such that the approximation $\mathbf{\hat f}(t)$ in formula \eqref{approxF} is optimal. In \cite[Section 3.1]{DEIM}, algorithm \ref{alg:DEIM} is presented which for a given input basis $\mathbf{w}_1,...,\mathbf{w}_m$ successively builds the matrix $\mathcal{P}$. In the initialization step, the first index $\wp_1 \in \{1,...,n\}$ is selected corresponding to the largest component in magnitude of the first input basis vector $\mathbf{w}_1$. The loop over $i=2$ to $i=m$ selects the indices corresponding to the largest component of the residual $\mathbf{r}$ between the input basis $\mathbf{w}_i$ and its approximation within the subspace $span \{\mathbf{w}_1,...,\mathbf{w}_{i-1}\}$.
+\begin{algorithm}[H]
+\caption{The DEIM algorithm, \cite{DEIM}}
+\label{alg:DEIM}
+\begin{algorithmic}[1]
+\STATE \textbf{INPUT: } $\{\mathbf{w}_i\}_{i=1}^m \subset \mathbb{R}^n$  linear independent
+\STATE \textbf{OUTPUT: } $\vec \wp = [\wp_1,...,\wp_m]^T \in \mathbb{R}^m, \ \mathcal{P} \in \mathbb{R}^{n \times m}$
+\STATE $[|\rho|,\wp_1] = \max \{|\mathbf{w}_1|\}$
+\STATE $W = [\mathbf{w}_1], \mathcal{P} = [\mathbf{e}_{\wp_1}], \vec \wp = [\wp_1]$
+\FOR{$i = 2$ to $m$}
+\STATE Solve $(\mathcal{P}^T W) \mathbf{c} = \mathcal{P}^T \mathbf{w}_i$ for $\mathbf{c}$
+\STATE $\mathbf{r} = \mathbf{w}_i - W \mathbf{c}$
+\STATE $[|\rho|,\wp_i] = \max \{|\mathbf{r}|\}$
+\STATE $W \leftarrow [W \ \mathbf{w}_i], \mathcal{P} \leftarrow [\mathcal{P} \ \mathbf{e}_{\wp_i}], \vec \wp \leftarrow \begin{bmatrix} \vec \wp \\ \wp_i \end{bmatrix}$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+An illustrative example taken from \cite{DEIM} is given by the nonlinear parameterized function
+\begin{align}
+\label{1Dex}
+s(x,\mu) = (1-x) \cos(3 \pi \mu (x+1)) e^{-(1+x)\mu}, \quad x \in [-1,1], \mu \in [1,\pi],
+\end{align}
+where the DEIM algorithm has been applied based on $100$ equidistantly spaced points $x_i \in [-1,1]$ and $51$ snapshots for $\mu_j \in [1,\pi]$. Figure \ref{DeimPoints} shows on the left that the first DEIM indices obtained by Algorithm \ref{alg:DEIM} are chosen in a region where most of the dynamics of $s$ occur. In the right plot of Figure \ref{DeimPoints}, it can be seen that for $\mu = 3.1$ the approximation $\hat s$ based on DEIM dimension $m=10$ gives a good result compared to the $100$ dimensional original model.
+\begin{figure}[H]
+\centering
+\subfloat[First six POD bases with DEIM points.]{\includegraphics[width=0.49\textwidth]{plots/DeimPoints}}\hfill
+\subfloat[DEIM approximation of dimension $10$.]{\includegraphics[width=0.49\textwidth]{plots/DeimApprox1D}}
+\caption{The location of the DEIM indices of example \eqref{1Dex}.}\label{DeimPoints}
+\end{figure}
+%\subsubsection{Error bound for DEIM}
+\begin{theorem}
+\label{DEIMerrBound}
+\emph{(Error bound of DEIM approximation, \cite{DEIM})}
+\label{deimthm}
+Let $\mathbf{f} \in \mathbb{R}^n$ be an arbitrary vector. Let $\{\mathbf{w}_i\}_{i=1}^m$ be the first $m$ left singular vectors of the snapshot matrix \eqref{snapshotF} (POD-basis). From \eqref{approxF}, the DEIM approximation of order $m$ for $\mathbf{f}$ in the space $span \{\mathbf{u}_1,...,\mathbf{u}_m\}$ is
+\begin{align*}
+\mathbf{\hat f} = W(\mathcal{P}^T W)^{-1}\mathcal{P}^T \mathbf{f},
+\end{align*}
+where $W := [\mathbf{w}_1,...,\mathbf{w}_m] \in \mathbb{R}^{n \times m}$ and $\mathcal{P} := [\mathbf{e}_{\wp_1},...,\mathbf{e}_{\wp_m}] \in \mathbb{R}^{n \times m}$, with $\{\wp_1,...,\wp_m\}$ being obtained from Algorithm \ref{alg:DEIM} with input basis $\{\mathbf{w}_1,...,\mathbf{w}_m\}$. An error bound for $\mathbf{\hat f}$ is then given by
+\begin{align*}
+\|\mathbf{f} - \mathbf{\hat f}\|_2 \leq \mathcal{C} \cdot \mathcal{E}_*(\mathbf{f}),
+\end{align*}
+where
+\begin{align*}
+\mathcal{C} = \|(\mathcal{P}^T W)^{-1}\|_2, \quad \mathcal{E}_*(\mathbf{f}) = \|(I-W W^T)\mathbf{f}\|_2.
+\end{align*}
+The constant $\mathcal{C}$ is bounded by
+\begin{align*}
+\mathcal{C} \leq \frac{(1+\sqrt{2n})^{m-1}}{|\mathbf{e}^T_{\wp_1}\mathbf{w}_1|} = (1+\sqrt{2n})^{m-1} \|\mathbf{w}_1\|_\infty^{-1}.
+\end{align*}
+\end{theorem}
+\begin{proof}
+The proof is given in \cite[p. 2747-2749]{DEIM}.
+\end{proof}
+Theorem \ref{DEIMerrBound} not only gives an error bound on the approximation obtained by the DEIM algorithm, but the proof also points out that the choice of the DEIM indices in Algorithm \ref{alg:DEIM} in fact minimizes the growth of $\|(\mathcal{P}^T W)^{-1}\|_2$. Therefore, the algorithm is optimal in the sense that the approximation error is minimized.
+\section{Application: POD-DEIM for the unsteady Burger's equation}
+\label{BurgersPODDEIM}
+The following example is based on the considerations in \cite{KV99} where the one-dimensional Burger's equations together with homogeneous Dirichlet boundary conditions and a step function $y_0(x)$ as initial condition has been considered,
+\begin{equation}
+\label{Burgers1}
+\begin{split}
+y_t + \left( \frac{1}{2}y^2 - \nu y_x\right)_x = f &, \quad (x,t) \in (0,L) \times (0,T), \\
+y(t,0) = y(t,L) = 0&, \quad t \in (0,T), \\
+y(x,0) = y_0(x)&, \quad x \in (0,L).
+\end{split}
+\end{equation}
+Burger's equation is a fundamental partial differential equation (PDE) from fluid dynamics and is, for instance, used in gas dynamics. The formulation \eqref{Burgers1} is known to be the conservative form of Burger's equation. Note that the numerical solution highly depends on the viscosity parameter $\nu$: For small $\nu$, the nonlinear term influences the numerical solution more and the PDE is called \textit{stiff}. This requires a small time step for the time integration.
+
+For the numerical solution of the full-order system \eqref{Burgers1}, we used a finite element discretization in space using linear basis functions as described in  Appendix \ref{FEMDiscr_space}. This approach leads to the following system of ODEs
+\begin{align}
+\label{FEMdiscr}
+M \mathbf{\dot y}(t) = -\frac{1}{2} B \mathbf{y}^2(t) - \nu C \mathbf{y}(t) + \mathbf{f}
+\end{align}
+where $M$ is the mass matrix, $C$ is the stiffness matrix, $B$ represents the convective term and, for simplicity, we assume in the following considerations the source term to be equal to zero, i.e. $f \equiv 0$. At this point, we also need to specify the initial condition $y_0(x)$,
+\begin{align}
+ \label{FEMdiscr_init}
+ y_0(x) = \begin{cases} 1, & \text{ if } 0 \leq x \leq \frac{L}{2} \\ 0, & \text{ if } \frac{L}{2} < x \leq L \end{cases} \quad \Rightarrow \quad \mathbf{y}(0) = [1,...,1,0,...,0]^T \in \mathbb{R}^n.
+\end{align}
+
+The system \eqref{FEMdiscr}-\eqref{FEMdiscr_init} can be integrated in time using the implicit Euler method, see Appendix \ref{implEuler}.
+\begin{figure}[H]
+\centering
+\subfloat{\includegraphics[width=0.33\textwidth]{plots/FullModel_nu01}}\hfill
+\subfloat{\includegraphics[width=0.33\textwidth]{plots/FullModel_nu001}}\hfill
+\subfloat{\includegraphics[width=0.33\textwidth]{plots/FullModel_nu0001}}\hfill
+\caption{Numerical solution of the full-order Burger's equation for different viscosity parameters and initial condition \eqref{FEMdiscr_init}.}\label{FullNumSol}
+\end{figure}
+According to \cite{KV99} the POD-basis $\{\varphi_i\}_{i=1}^\ell$ can be obtained by solving the eigenvalue problem
+\begin{align}
+\label{PODviaEW}
+Y Y^T M \varphi = \sigma^2 \varphi,
+\end{align}
+where $Y$ is the matrix of snapshots as previously defined in \eqref{snapshots}.
+
+Since the mass matrix $M$ is symmetric and positive definite, there exists a Cholesky decomposition of the form $M = R^T R$ and the eigenequation \eqref{PODviaEW} can instead be solved by an SVD of the matrix $RY$,
+\begin{align*}
+R Y = U \Sigma V^T.
+\end{align*}
+After choosing a suitable POD-dimension $\ell \ll n$, let us define the matrix of left singular vectors, $U_{\ell} := [u_1,...,u_{\ell}]$. Then, the POD-basis is given by
+\begin{align}
+\label{Phidef}
+\Phi_{\ell} := R^{-1} U_{\ell}
+\end{align}
+and the following ansatz leads to a reduced system,
+\begin{align}
+\label{PODansatz}
+\mathbf{y}(t) \approx \mathbf{y}^{(\ell)}(t) = \Phi_{\ell} \mathbf{\tilde y}(t) \quad \text{with } \mathbf{\tilde y} \in \mathbb{R}^{\ell}.
+\end{align}
+The Galerkin projection of \eqref{FEMdiscr} onto $span \{\varphi_1,...,\varphi_\ell\}$ is given by
+\begin{align}
+\label{redSys}
+\mathbf{\dot{\tilde y}}(t) = -\frac{1}{2} B_{\ell} (\Phi_{\ell} \mathbf{\tilde y})^2 - \nu C_{\ell} \mathbf{\tilde y},
+\end{align}
+with the matrices
+\begin{align}
+\label{Bl}
+B_{\ell} &:= \Phi_{\ell}^T B \in \mathbb{R}^{\ell \times n},\\
+\label{Cl}
+C_{\ell} &:= \Phi_{\ell}^T C \Phi_{\ell} \in \mathbb{R}^{\ell \times \ell},
+\end{align}
+and the new mass matrix being equal to the $\ell \times \ell$ identity as the following calculation shows,
+\begin{align*}
+M_{\ell} &:= \Phi_{\ell}^T M \Phi_{\ell} = U_{\ell}^T U_{\ell} = I_{\ell} \in \mathbb{R}^{\ell \times \ell}.
+\end{align*}
+We will refer to \eqref{redSys} as the POD-reduced system. Note, that $\Phi_\ell \mathbf{\tilde y} \in \mathbb{R}^n$ is still of large dimension and, therefore, no dimension reduction for the nonlinearity has been obtained so far.
+
+The initial condition of the POD-reduced system is given as follows,
+\begin{align*}
+\Phi_{\ell} \mathbf{\tilde y}(0) &= \mathbf{y}(0), \\
+R^{-1} U_{\ell} \mathbf{\tilde y}(0) &= \mathbf{y}(0),
+\end{align*}
+and, therefore, the initial condition for \eqref{redSys} can be obtained by pre-multiplication of the full-size initial condition with the matrix product $\Phi_{\ell}^T M$ as shown below,
+\begin{align}
+\label{initRed}
+\mathbf{\tilde y}(0) &= U_{\ell}^T R \mathbf{y}(0) = \Phi_{\ell}^T R^T R \mathbf{y}(0) = \Phi_{\ell}^T M \mathbf{y}(0).
+\end{align}
+Note that the initial condition of the full-order system is given in \eqref{FEMdiscr_init} and, thus, the respective initial condition of the reduced model follows directly from \eqref{initRed}.
+
+As it has already been pointed out, the nonlinear term in \eqref{redSys} is still of large dimension $n$. Therefore, we apply the DEIM method in a next step in order to reduce the computational effort of evaluating the nonlinearity. Consider the snapshot matrix of the nonlinearity, \mbox{$F := [\mathbf{y}(t_1)^2,...,\mathbf{y}(t_{n_s})^2]$} and the corresponding singular value decomposition,
+\begin{align*}
+ F = U_f \Sigma_f V_f^T.
+\end{align*}
+Again, by choosing the DEIM-dimension $m$, we are able to define the matrix of left singular vectors, $U_{m} := [u^f_1,...,u^f_{m}]^T$, which is used as an input basis for algorithm \ref{alg:DEIM}. From \mbox{algorithm \ref{alg:DEIM}}, we obtain the projection matrix $\mathcal{P}$ and the nonlinear term becomes:
+\begin{align*}
+ \Phi_{\ell}^T B (\Phi_{\ell} \mathbf{\tilde y})^2 = \Phi_{\ell}^T B U_{m} (\mathcal{P}^T U_{m})^{-1} \mathcal{P}^T (\Phi_{\ell} \mathbf{\tilde y})^2 \stackrel{(*)}{=} \underbrace{\Phi_{\ell}^T B U_{m} (\mathcal{P}^T U_{m})^{-1}}_{\ell \times m}(\underbrace{\mathcal{P}^T \Phi_{\ell}}_{m \times \ell} \mathbf{\tilde y})^2,
+\end{align*}
+where the step $(*)$ is allowed since squaring is a componentwise operation.
+\begin{figure}[H]
+\centering
+\subfloat{\includegraphics[width=0.49\textwidth]{plots/singValues_bignu}}\hfill
+\subfloat{\includegraphics[width=0.49\textwidth]{plots/singValues_smallnu}}\hfill
+\caption{Distribution of the singular values for $\nu = 0.01$ (left) and $\nu = 0.001$ (right).}\label{singVal}
+\end{figure}
+The fully reduced POD-DEIM system is then given by
+\begin{align}
+\label{finalPODDEIM}
+\mathbf{\dot{\tilde y}} = -\frac{1}{2} \tilde B (\tilde F \mathbf{\tilde y})^2 - \nu \tilde C \mathbf{\tilde y} + \mathbf{\tilde f},
+\end{align}
+where
+\begin{align}
+\label{Bred}
+\tilde{B} &:= \Phi_\ell^T B U_f(\mathcal{P}^T U_f)^{-1} \in \mathbb{R}^{\ell \times m},\\
+\label{Cred}
+\tilde{C} &:= \Phi_\ell^T C \Phi_\ell \in \mathbb{R}^{\ell \times \ell},\\
+\label{Fred}
+\tilde{F} &:= \mathcal{P}^T \Phi_\ell \in \mathbb{R}^{m \times \ell}.
+\end{align}
+Note that in a fast implementation, both matrices $\tilde{B}$ and $\tilde{F} $ can be pre-computed such that the system \eqref{finalPODDEIM} is indeed of dimension $k \times k$ and no dependence on the original \mbox{size $n$} exists anymore. The reduced system \eqref{finalPODDEIM} as well as the full-order system \eqref{FEMdiscr} have been solved by the implicit Euler method, see Appendix \ref{implEuler}.
+\newpage
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{plots/PODplot_l.eps}\\
+  \caption{POD-DEIM approximations for different dimensions $\ell$ and $m = 15$, $\nu = 0.01$.}\label{PODplot}
+\end{figure}
+Figure \ref{PODplot} shows to convergence of the reduced model to the full-order solution: In each computation a fixed DEIM dimension of $m = 15$ has been used to approximate the nonlinear term of Burger's equation. If the dimension of the POD-basis $\ell$ and, thus, the size of the projected model is increased, we see from Figure \ref{PODplot} that the numerical solution of the reduced system converges towards a smooth solution that corresponds to the solution of the original model.
+\subsection{Approximation error}
+In order to show the convergence of the reduced POD-DEIM model to the full-order system, we computed both, the numerical solution of the full-order system $\mathbf{y}$ as well as the numerical solution of the reduced-order model which we denote by $\mathbf{y}^{(\ell)}$. The setup of the test calculations has been chosen in the same way as in the previous section, i.e. we choose a constant DEIM dimension, $m = 15$, and constant viscosity parameter $\nu = 0.01$ whereas the POD dimension $\ell$ of the projection space is increased. For $\Omega = [0,L] \times [0,T]$, with $L = T = 1$, we compute the relative error $e_{\ell}$ as an approximation of the $L_2(\Omega)$ norm:
+\begin{align*}
+e_{\ell} := \frac{\|\mathbf{y} - \mathbf{y}^{(\ell)}\|_{L_2(\Omega)}}{\|\mathbf{y}\|_{L_2(\Omega)}} \approx \frac{\sqrt{h \cdot \Delta t \cdot \sum_{i,j} [\mathbf{y}_i(t_j) - \mathbf{y}^{(\ell)}_i(t_j)]^2}}{\sqrt{h \cdot \Delta t \cdot \sum_{i,j} \mathbf{y}_i^2(t_j)}},
+\end{align*}
+where $h$ and $\Delta t$ are the step size in space and time, respectively. Figure \ref{relErr} shows the behavior of the relative error as the POD dimension $\ell$ increases. We see from the plot that from $\ell = 11$ on, the relative error is of the order $\mathcal{O}(10^{-4})$. Since the full-order system consists of $N=50$ grid points in space, we conclude that in this specify setup the reduced order model of approximately one fifth of the size of the original system already leads to results of a very good accuracy.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{plots/rel_Err_l.eps}\\
+  \caption{Relative error of the POD-DEIM approximation for a fixed number of DEIM basis $m = 15$.}\label{relErr}
+\end{figure}
+\subsection{The usage of POD-DEIM for parameter studies}
+In \cite{CS10}, the authors propose to use POD-DEIM also for parameter studies of a given dynamical system. In the case of Burger's equation, this mean that we simulate the full-order system twice for two different viscosity parameters $\nu_{left} = 0.001$ and $\nu_{right} = 0.1$, using $N=1000$ grid points in space which is necessary when dealing with very small values for $\nu$. The numerical solutions for both viscosity parameters are presented in Figure \ref{param_study_both}. It can be seen that the size of the viscosity parameter plays a crucial role for the propagation of the initial impulse in time: For large $\nu$, the solution becomes much more diffusive and, therefore, the initial condition vanishes very fast. For small $\nu$, the initial condition is propagated in time almost without losing height.
+%\begin{figure}[H]
+%\includegraphics[width=0.99\textwidth]{plots/param_study_both}
+%\caption{Full-order system for $\nu=0.001$ (left) and $\nu = 0.1$ (right).}\label{param_study_both}
+%\end{figure}
+The benefit of POD-DEIM for parameter studies is that a reduced model can be obtained for any parameter $\nu$ that lies within the interval $[\nu_{left},\nu_{right}]$ only from data of the full-order model corresponding to $\nu_{left}$ and $\nu_{right}$. Suppose we are interested in an approximation of the numerical solution for $100$ different viscosity parameter in $[\nu_{left},\nu_{right}]$, we only need to solve the full-order system twice and are able to obtain a reduced model from these data.
+
+The reduction is based on a singular value decomposition of the combined matrices
+\begin{align*}
+Y = [Y_{\ell} | Y_{r}], \quad F = [F_{\ell} | F_{r}],
+\end{align*}
+where $Y_{\ell}$ and $F_{\ell}$ are snapshot matrices of the solution and the nonlinearity corresponding to $\nu_{left}$ and $Y_{r}$ and $F_r$ correspond to $\nu_{right}$, respectively. The POD-basis is then derived in the same way as described in Section \ref{BurgersChap} based on the snapshot matrix $Y$ that contains information of the dynamical behavior of Burger's equation with viscosity parameter $\nu_{left}$ and $\nu_{right}$. Similarly, the DEIM projection matrix $\mathcal{P}$ is obtained from the matrix $F$.
+
+In Figure \ref{param_study_inner}, the POD-DEIM approximation for the viscosity parameter $\nu = 0.01$ using the dimensions $\ell = m = 45$ is presented as well as the full-order model of dimension $N = 1000$ for the same viscosity parameter. The plot shows the good quality of the reduced system. At this point, we want to stress that in order to obtain the POD-DEIM model in Figure \ref{param_study_inner}, the simulation of the full-order system with parameter $\nu = 0.01$  was not taken into account. Therefore, the derivation of a reduced model for any parameter $\nu \in [\nu_{left}, \nu_{right}]$ only requires the computational work of the numerical solution of the reduced system once the matrices $Y$ and $F$ are obtained.
+\begin{figure}[H]
+\includegraphics[width=0.99\textwidth]{plots/param_study_inner}
+\caption{Full-order system and POD-DEIM reduced model for $\nu=0.01$.}\label{param_study_inner}
+\end{figure}
+\subsection{Comparison POD with POD-DEIM}
+In the previous chapters, the main focus lies on the size of the reduced system and the quality of the approximation compared to the full-order system. In this section, we are interested in the speed-up of the computation when POD and POD-DEIM is applied. Therefore, we consider Burger's equation with viscosity parameter $\nu = 0.003$ on a spatial domain $[0,1]$ and end time $T = 4$. This requires a spatial and time discretization of $N = N_t =400$ points in order to obtain a stable numerical simulation. The reduced model with dimensions $\ell=m=45$ leads to an approximation of high accuracy (see Table \ref{Tab1}).
+
+The following quantities have been measured during the numerical simulation:
+\begin{itemize}
+  \item $t_s$ - The time which is required to pre-compute the matrices \eqref{Bl}, \eqref{Cl} in the case of pure POD and \eqref{Cl}, \eqref{Bred}, \eqref{Fred} in the case of POD-DEIM.
+  \item $t_{Eul}$ - The time for the time integration via the implicit Euler method and Newton's iteration.
+  \item $\bar e$ - The relative error in $L_2([0,1] \times [0,4])$.
+  \item $S_P$ - The overall speed-up which is defined as the ratio of the computational time for the full-order model and the reduced model.
+\end{itemize}
+In Table \ref{Tab1}, the speed-up of pure POD and POD-DEIM are compared: The application of POD of dimension $\ell = 45$ leads to a speed-up of the computation of approximately $3.5$ times the time of the original-size solution. If in addition DEIM is applied with dimension $m = 45$, we notice that the speed-up compared to the full-order model is $11.6$ which is approximately a speed-up of another $3.5$ times compared to the pure POD method. Therefore, in this setting the computational benefit of POD and POD-DEIM is almost of the same size. Note that both dimensions have been chosen in such a way that the relative error is of the order $\mathcal{O}(10^{-4})$ in both cases and, thus, the accuracy of the approximations is comparable for both cases.
+\begin{table}[H]
+\centering
+\begin{tabular}{l|c|c|c}
+& Full Order Model & POD & POD-DEIM \\
+\hline
+$t_s$ & - &  0.0018s& 0.0021s\\
+$t_{Eul}$ & 18.0785s& 5.1342s & 1.5189s\\
+$\bar e$ & - & 1.2805e-04 & 2.5057e-04\\
+$S_P$ & - &  3.5199 & 11.6801 \\
+\end{tabular}
+\caption{Comparison between POD and POD-DEIM for $\nu = 0.003$.} \label{Tab1}
+\end{table} 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\cline{1-10}
+ & \multicolumn{3}{ c| }{$\nu = 0.01$} & \multicolumn{3}{ c| }{$\nu = 0.001$}& \multicolumn{3}{ c| }{$\nu = 0.0001$}\\ \cline{2-10}
+ & Full & POD & DEIM & Full & POD & DEIM & Full & POD & DEIM \\ \cline{1-10}
+$n$/$\ell$/$m$ & $80$ &$(5,7) $&$(5,7,7)$ & $200$&$(15,17) $& $(15,17,17)$  & $800$&$(35,37) $& $(35,37,37)$ \\ \cline{1-10}
+$t_{setup}$    & -    &2       &3         & -&2&3 & -&2&3\\ \cline{1-10}
+$t_{Burger's}$   & 1    &2       &3         & 1&2&3 & 1&2&3\\ \cline{1-10}
+$\bar{e}$      & -    &2       &3         & -&2&3 & -&2&3\\ \cline{1-10}
+$S_P^{(1)}$    & -    &2       &3         & -&2&3 & -&2&3\\ \cline{1-10}
+$S_P^{(2)}$    & -    &2       &3         & -&2&3 & -&2&3\\ \cline{1-10}
+\end{tabular}
+\caption{Comparison between POD and POD-DEIM for different values of $\nu$.} \label{Tab2}
+\end{table} 

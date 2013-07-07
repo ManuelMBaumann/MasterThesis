@@ -1,0 +1,735 @@
+% This file was created with JabRef 2.7b.
+% Encoding: ISO8859_1
+
+@ARTICLE{AW10,
+  author = {Abdi, H. and Williams, L.J.},
+  title = {Principal component analysis},
+  journal = {Wiley Interdisciplinary Reviews: Computational Statistics},
+  year = {2010},
+  volume = {2},
+  pages = {433-459},
+  owner = {manuel},
+  timestamp = {2012.08.23}
+}
+
+@BOOK{A05,
+  title = {Approximation of Large-Scale Dynamical Systems (Advances in Design
+	and Control)},
+  publisher = {Society for Industrial and Applied Mathematics},
+  year = {2005},
+  author = {A. C. Antoulas},
+  address = {Philadelphia, PA, USA},
+  isbn = {0898715296},
+  owner = {Manuel},
+  timestamp = {2013.01.09}
+}
+
+@ARTICLE{BFS1,
+  author = {B. F. Armaly and F. Durst and J. C. F. Pereira and B. Schonung},
+  title = {Experimental and theoretical investigation of backward-facing step
+	flow},
+  journal = {J. Fluid Mech.},
+  year = {1983},
+  volume = {127},
+  pages = {473-496},
+  owner = {Manuel},
+  timestamp = {2013.02.09}
+}
+
+@PHDTHESIS{A00_diss,
+  author = {J. Atwell},
+  title = {Proper Orthogonal Decomposition for Reduced Order Control of Partial
+	Differential Equations},
+  school = {Virginia Polytechnic Institute and State University},
+  year = {2000},
+  owner = {Manuel},
+  timestamp = {2013.05.17}
+}
+
+@ARTICLE{BS,
+  author = {Z. Bai and D. Skoogh},
+  title = {Krylov {S}ubspace {T}echniques for {R}educed-{Order} {M}odeling of
+	{N}onlinear {D}ynamical {S}ystems},
+  journal = {Appl. Numer. Math},
+  year = {2002},
+  volume = {43},
+  pages = {9-44},
+  owner = {Manuel},
+  timestamp = {2013.01.09}
+}
+
+@ARTICLE{B13,
+  author = {M. Baumann},
+  title = {Model Order Reduction for Nonlinear Dynamical Systems},
+  journal = {Literature Study at TU Delft},
+  year = {2013},
+  owner = {Manuel},
+  timestamp = {2013.05.20}
+}
+
+@BOOK{BC03,
+  title = {Optimization Concepts and applications in Engineering},
+  publisher = {Prentice Hall},
+  year = {2003},
+  author = {A. D. Belegundu and T. R. Chandrupatla.},
+  owner = {manuel},
+  timestamp = {2013.05.16}
+}
+
+@ARTICLE{B12,
+  author = {P. Benner and T. Breiten},
+  title = {Two-sided moment matching methods for nonlinear model reduction},
+  journal = {Max Planck Institute Magdeburg Preprints},
+  year = {2012},
+  owner = {Manuel},
+  timestamp = {2013.01.20}
+}
+
+@ARTICLE{MBR00,
+  author = {E. G. Birgin and J. M. Martinez and M. Raydan},
+  title = {Nonmonotone spectral projected gradient methods on convex sets},
+  journal = {SIAM J. Optim.},
+  year = {2000},
+  volume = {10},
+  pages = {1196-1211},
+  owner = {Manuel},
+  timestamp = {2013.05.31}
+}
+
+@ARTICLE{BMR12,
+  author = {E. G. Birgin and J. M. Martínez and M. Raydan},
+  title = {Spectral Projected Gradient methods: Review and Perspectives},
+  journal = {Journal of Statistical Software},
+  year = {2012},
+  owner = {Manuel},
+  timestamp = {2013.06.02}
+}
+
+@MISC{Bart,
+  author = {T. van den Boom and B. De Schutter},
+  title = {\textit{Optimization in Systems and Control}},
+  note = {Lecture Notes for the Course SC4091, TU Delft, 2012},
+  owner = {Manuel},
+  timestamp = {2013.01.20}
+}
+
+@BOOK{B06,
+  title = {Numerik f{\"u}r Ingenieure, Physiker und Informatiker: f{\"u}r Bachelor
+	und Diplom},
+  publisher = {Spektrum Akademischer Verlag},
+  year = {2006},
+  author = {B{\"a}rwolff, G.},
+  series = {F{\"u}r Bachelor und Diplom},
+  isbn = {9783827416896},
+  url = {http://books.google.nl/books?id=m9KkGQAACAAJ}
+}
+
+@PHDTHESIS{Cha11,
+  author = {S. Chaturantabut},
+  title = {Nonlinear Model Reduction via Discrete Empirical Interpolation},
+  school = {Rice University},
+  year = {2011},
+  owner = {manuel},
+  timestamp = {2012.08.13}
+}
+
+@ARTICLE{CS10,
+  author = {S. Chaturantabut and D. Sorensen},
+  title = {Application of {POD} and {DEIM} on dimension reduction of non-linear
+	miscible viscous fingering in porous media},
+  journal = {Mathematical and Computer Modelling of Dynamical Systems},
+  year = {2010},
+  volume = {17},
+  pages = {337-353},
+  owner = {Manuel},
+  timestamp = {2012.11.07}
+}
+
+@ARTICLE{DEIM,
+  author = {Chaturantabut, S. and Sorensen, D.},
+  title = {Nonlinear {M}odel {R}eduction via {D}iscrete {E}mpirical {I}nterpolation},
+  journal = {SIAM J. Sci. Comput.},
+  year = {2010},
+  volume = {32},
+  pages = {2737-2764},
+  owner = {manuel},
+  timestamp = {2012.09.20}
+}
+
+@MISC{CW,
+  author = {Y. Chen and J. White},
+  title = {A {Q}audratic {M}ethod for {N}onlinear {M}odel {O}rder {R}eduction},
+  note = {URL: \url{http://www.physics.purdue.edu/quantum/files/chen\_mor\_icmsm2000.pdf}},
+  owner = {Manuel},
+  timestamp = {2013.01.10}
+}
+
+@BOOK{CM79,
+  title = {A Mathematical Introduction to Fluid Mechanics},
+  publisher = {Springer New York/Berlin/Heidelberg/Tokyo},
+  year = {1979},
+  author = {A. J. Chorin and J. E. Marsden},
+  owner = {manuel},
+  timestamp = {2013.05.16}
+}
+
+@ARTICLE{FNmodel,
+  author = {S. J. Cox and L. Ji},
+  title = {Discerning ionic currents and their kinetics from input impedance
+	data},
+  journal = {Bulletin of Mathematical Biology},
+  year = {2001},
+  volume = {63},
+  pages = {909-932},
+  owner = {manuel},
+  timestamp = {2012.08.06}
+}
+
+@BOOK{Dennis1996,
+  title = {Numerical Methods for Nonlinear Equations and Unconstrained Optimization},
+  publisher = {SIAM, Philadelphia},
+  year = {1996},
+  author = {J.E. Dennis and R.B. Schnabel},
+  owner = {manuel},
+  timestamp = {2013.05.23}
+}
+
+@BOOK{DS96,
+  title = {Numerical Methods for Nonlinear Equations and Unconstrained Optimization},
+  publisher = {SIAM, Philadelphia},
+  year = {1996},
+  author = {J.E. Dennis and R.B. Schnabel},
+  owner = {manuel},
+  timestamp = {2013.06.03}
+}
+
+@BOOK{FEMbook,
+  title = {Computational Differential Equations},
+  publisher = {Studentlitteratur},
+  year = {2008},
+  author = {K. Eriksson and D. Estep and P. Hansbo and C. Johnson},
+  owner = {Manuel},
+  timestamp = {2013.01.20}
+}
+
+@ARTICLE{BFS2,
+  author = {K. Gartling},
+  title = {A {T}est {P}roblem {F}or {Outflow} {B}oundary {C}onditions - {F}low
+	{O}ver a {B}ackward {F}acing {S}tep},
+  journal = {International Journal for Numerical Methods in Fluids},
+  year = {1990},
+  volume = {11},
+  pages = {953-967},
+  owner = {Manuel},
+  timestamp = {2013.02.09}
+}
+
+@BOOK{G96,
+  title = {Matrix Computations},
+  publisher = {Johns Hopkins University Press},
+  year = {1996},
+  author = {Golub, G.H. and Van Loan, C.F.},
+  series = {Johns Hopkins Studies in the Mathematical Sciences},
+  isbn = {9780801854149},
+  lccn = {96014291},
+  url = {http://books.google.nl/books?id=mlOa7wPX6OYC}
+}
+
+@ARTICLE{G12,
+  author = {M. Grepl},
+  title = {{M}odel {Order} {R}eduction of {P}arametrized {N}onlinear {R}eaction-{D}iffusion
+	{S}ystems},
+  journal = {Preprint, submitted to Computer and Chemical Engineering},
+  year = {2012},
+  owner = {Manuel},
+  timestamp = {2012.11.18}
+}
+
+@BOOK{HM03,
+  title = {Introduction to Shape Optimization: Theory, Approximation and Computation},
+  publisher = {Society for Industrial and Applied Mathematic},
+  year = {2003},
+  author = {J. Haslinger and R. Mäkinen},
+  owner = {manuel},
+  timestamp = {2013.05.16}
+}
+
+@BOOK{H10,
+  title = {Large-scale PDE-constrained Optimization in Applications},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2010},
+  author = {Hazra, S.B.},
+  series = {Lecture Notes in Applied and Computational Mechanics, 49},
+  isbn = {9783642015021},
+  lccn = {2009940445},
+  url = {http://books.google.nl/books?id=XT4EuN-EIkUC}
+}
+
+@TECHREPORT{H08,
+  author = {M. Heinkenschloss},
+  title = {Numerical solution of implicitly constrained optimization problems},
+  institution = {Department of Computational and Applied Mathematics, Rice University},
+  year = {2008},
+  owner = {Manuel},
+  timestamp = {2013.03.16}
+}
+
+@ARTICLE{MS07,
+  author = {L. Henning and D. Kuzmin and V. Mehrmann and M. Schmidt and A. Sokolov
+	and S. Turek},
+  title = {Flow {C}ontrol on the {B}asis of a {\sc Featflow-Matlab} {C}oupling},
+  journal = {Notes on Numerical Fluid Mechanics and Multidisciplinary Design},
+  year = {2007},
+  volume = {95},
+  pages = {325-338},
+  owner = {Manuel},
+  timestamp = {2013.01.30}
+}
+
+@BOOK{J03,
+  title = {Computational heat transfer},
+  publisher = {Taylor \& Francis Group},
+  year = {2003},
+  author = {Jaluria, Y. and Torrance, K.K.E.},
+  series = {Series in Computational and Physical Processes in Mechanics and Thermal
+	Sciences Series},
+  isbn = {9781560324775},
+  lccn = {2002066213},
+  url = {http://books.google.de/books?id=8Pv-D9U0yNoC}
+}
+
+@BOOK{K99,
+  title = {Iterative Methods for Optimization},
+  publisher = {SIAM, Philadelphia},
+  year = {1999},
+  author = {C.T. Kelley},
+  owner = {manuel},
+  timestamp = {2013.05.23}
+}
+
+@ARTICLE{BFS3,
+  author = {J. Kim and P. Moin},
+  title = {Application of a {F}ractional-{S}tep {M}ethod to {I}ncompressible
+	{N}avier-{S}tokes {E}quation},
+  journal = {Journal of Computational Physics},
+  year = {1985},
+  volume = {59},
+  pages = {308-314},
+  owner = {Manuel},
+  timestamp = {2013.02.09}
+}
+
+@ARTICLE{KunV03,
+  author = {Kunisch, K. and Volkwein, S.},
+  title = {Galerkin Proper Orthogonal Decomposition Methods for a General Equation
+	in Fluid Dynamics},
+  journal = {SIAM Journal on Numerical Analysis},
+  year = {2003},
+  volume = {40},
+  pages = {pp. 492-515},
+  number = {2},
+  abstract = {Error estimates for Galerkin proper orthogonal decomposition (POD)
+	methods for nonlinear parabolic systems arising in fluid dynamics
+	are proved. For the time integration the backward Euler scheme is
+	considered. The asymptotic estimates involve the singular values
+	of the POD snapshot set and the grid-structure of the time discretization
+	as well as the snapshot locations.},
+  copyright = {Copyright © 2003 Society for Industrial and Applied Mathematics},
+  issn = {00361429},
+  jstor_articletype = {research-article},
+  jstor_formatteddate = {2003},
+  language = {English},
+  publisher = {Society for Industrial and Applied Mathematics},
+  url = {http://www.jstor.org/stable/4100966}
+}
+
+@ARTICLE{KunV01,
+  author = {Kunisch, K. and Volkwein, S.},
+  title = {Galerkin proper orthogonal decomposition methods for parabolic problems},
+  journal = {Numerische Mathematik},
+  year = {2001},
+  volume = {90},
+  pages = {117-148},
+  note = {10.1007/s002110100282},
+  abstract = {In this work error estimates for Galerkin proper orthogonal decomposition
+	(POD) methods for linear and certain non-linear parabolic systems
+	are proved. The resulting error bounds depend on the number of POD
+	basis functions and on the time discretization. Numerical examples
+	are included.},
+  affiliation = {Institut für Mathematik, Karl-Franzens-Universität Graz, Heinrichstrasse
+	36, 8010 Graz, Austria; e-mail: {karl.kunisch, stefan.volkwein}@kfunigraz.ac.at
+	AT AT},
+  issn = {0029-599X},
+  issue = {1},
+  keyword = {Mathematics and Statistics},
+  publisher = {Springer Berlin / Heidelberg},
+  url = {http://dx.doi.org/10.1007/s002110100282}
+}
+
+@ARTICLE{KV99,
+  author = {K. Kunisch and S. Volkwein},
+  title = {Control of the {B}urgers {E}quation by a {Reduced}-{Order} {A}pproach
+	{U}sing {P}roper {O}rthogonal {D}ecomposition},
+  journal = {Journal of Optimization Theory and Applications},
+  year = {1999},
+  volume = {102},
+  pages = {345-371},
+  owner = {Manuel},
+  timestamp = {2012.10.16}
+}
+
+@ARTICLE{L02,
+  author = {Lall, S. and Marsden, J.E. and Glava\v{s}ki, S.},
+  title = {A subspace approach to balanced truncation for model order reduction
+	of nonlinear control systems},
+  journal = {International Journal of Robust and Nonlinear Control},
+  year = {2002},
+  volume = {12},
+  pages = {519-535},
+  owner = {Manuel},
+  timestamp = {2013.01.09}
+}
+
+@BOOK{L12,
+  title = {Constrained optimization and optimal control for partial differential
+	equations},
+  publisher = {Springer Basel},
+  year = {2012},
+  author = {Leugering, G. and Engell, S. and Griewank, A.},
+  series = {International series of numerical mathematics},
+  isbn = {9783034801331},
+  url = {http://books.google.nl/books?id=A98Xre0\_FvQC}
+}
+
+@ARTICLE{ManQR12,
+  author = {Manzoni, A. and Quarteroni, A. and Rozza, G.},
+  title = {Computational Reduction for Parametrized {PDE}s: Strategies and Applications},
+  journal = {Milan Journal of Mathematics},
+  year = {2012},
+  pages = {1-27},
+  note = {10.1007/s00032-012-0182-y},
+  issn = {1424-9286},
+  keyword = {Mathematics and Statistics},
+  publisher = {Birkhäuser Basel},
+  url = {http://dx.doi.org/10.1007/s00032-012-0182-y}
+}
+
+@BOOK{MATLAB12,
+  title = {version 8.0.0.783 (R2012b)},
+  publisher = {The MathWorks Inc.},
+  year = {2012},
+  author = {MATLAB},
+  address = {Natick, Massachusetts}
+}
+
+@ARTICLE{M04,
+  author = {V. Mehrmann},
+  title = {Kontrolltheorie},
+  journal = {Lecture Notes, Technical University of Berlin},
+  year = {2004},
+  owner = {Manuel},
+  timestamp = {2013.05.20}
+}
+
+@PHDTHESIS{M09,
+  author = {C. C. K. Mikkelsen},
+  title = {Numerical Methods for Large Lyapunov Equations},
+  school = {Purdue University, West Lafayette, Indiana},
+  year = {2009},
+  owner = {Manuel},
+  timestamp = {2013.02.10}
+}
+
+@BOOK{MP01,
+  title = {Applied Shape Optimization for Fluids},
+  publisher = {Oxford University Press},
+  year = {2001},
+  author = {B. Mohammadi and O. Pironneau},
+  owner = {manuel},
+  timestamp = {2013.05.16}
+}
+
+@MISC{Imm,
+  author = {H. B. Nielsen},
+  title = {{IMMOPTIBOX}. {A} {M}atlab toolbox for optimization and data fitting},
+  howpublished = {Informatics and Mathematical Modelling, Technical University of Denmark,
+	DTU},
+  year = {2005},
+  note = {\url{http://www.imm.dtu.dk/~hbn/immoptibox}},
+  owner = {Manuel},
+  timestamp = {2013.06.02}
+}
+
+@BOOK{NW06,
+  title = {Numerical Optimization},
+  publisher = {Springer Verlag, Berlin, Heidelberg, New York},
+  year = {2006},
+  author = {J. Nocedal and S.J. Wright},
+  edition = {second},
+  owner = {manuel},
+  timestamp = {2013.05.23}
+}
+
+@ARTICLE{Park199681,
+  author = {H.M. Park and D.H. Cho},
+  title = {The use of the {K}arhunen-{L}o{\`e}ve decomposition for the modeling
+	of distributed parameter systems},
+  journal = {Chemical Engineering Science},
+  year = {1996},
+  volume = {51},
+  pages = {81 - 98},
+  number = {1},
+  doi = {10.1016/0009-2509(95)00230-8},
+  issn = {0009-2509},
+  owner = {manuel},
+  timestamp = {2012.08.23},
+  url = {http://www.sciencedirect.com/science/article/pii/0009250995002308}
+}
+
+@BOOK{P98,
+  title = {Computational Methods for Electromagnetics},
+  publisher = {Wiley},
+  year = {1998},
+  author = {A.F. Peterson and S.L. Ray and R. Mittra},
+  series = {IEEE Press Series on Electromagnetic Wave Theory},
+  isbn = {9780780311220},
+  lccn = {97039612},
+  url = {http://books.google.de/books?id=ISVRAAAAMAAJ}
+}
+
+@BOOK{Polderman1998,
+  title = {Introduction to Mathematical Systems Theory: A Behavioral Approach},
+  publisher = {Springer-Verlag},
+  year = {1998},
+  author = {Polderman, J.W. and Willems, J.C.},
+  series = {Texts in Applied Mathematics Series},
+  isbn = {9780387982663},
+  lccn = {97020710},
+  owner = {manuel},
+  timestamp = {2012.11.23},
+  url = {http://books.google.nl/books?id=AbmTA1HbhKsC}
+}
+
+@BOOK{Rao09,
+  title = {Engineering Optimization: Theory and Practice},
+  publisher = {Wiley},
+  year = {2009},
+  author = {S. S. Rao},
+  edition = {Fourth},
+  owner = {Manuel},
+  timestamp = {2013.01.19}
+}
+
+@ARTICLE{R12,
+  author = {T. Reis},
+  title = {Model Order Reduction},
+  journal = {Lecture notes, University Hamburg},
+  year = {2012},
+  owner = {Manuel},
+  timestamp = {2012.10.31}
+}
+
+@ARTICLE{RK03,
+  author = {J. C. De Los Reyes and K. Kunisch},
+  title = {A comparison of algorithms for control constrained optimal control
+	of the {B}urgers equation},
+  journal = {CALCOLO},
+  year = {2004},
+  volume = {41},
+  pages = {203-225},
+  owner = {Manuel},
+  timestamp = {2013.05.21}
+}
+
+@ARTICLE{RT07,
+  author = {J. C. De Los Reyes and F. Tr\"oltzsch},
+  title = {Optimal control of the stationary {N}avier-{S}tokes equations with
+	mixed control-state constraints},
+  journal = {SIAM Journal on Control and Optimization},
+  year = {2007},
+  volume = {46},
+  pages = {604-629},
+  owner = {Manuel},
+  timestamp = {2013.05.08}
+}
+
+@ARTICLE{Row05,
+  author = {C. W. Rowley},
+  title = {Model Reduction for Fluids, using Balanced Proper Orthogonal Decomposition},
+  journal = {Int. J. on Bifurcation and Chaos},
+  year = {2005},
+  owner = {manuel},
+  timestamp = {2012.08.06}
+}
+
+@ARTICLE{SCDA08,
+  author = {P. Sarma and W.H. Chen and L.J. Durlofsky and K. Aziz},
+  title = {Production {O}ptimization with {A}djoint {M}odels under {N}onlinear
+	{C}ontrol-{S}tate {P}ath {I}nequality {C}onstraints},
+  journal = {SPE Reservoir Evaluation \& Engineering},
+  year = {2008},
+  volume = {11},
+  pages = {326-339},
+  number = {2},
+  month = {April},
+  owner = {Manuel},
+  timestamp = {2013.06.04}
+}
+
+@BOOK{SVR08,
+  title = {Model Order Reduction},
+  publisher = {Springer},
+  year = {2008},
+  author = {W. H. A. Schilders and H.A. van der Vorst and J. Rommes},
+  owner = {Manuel},
+  timestamp = {2013.05.17}
+}
+
+@PHDTHESIS{Sch07,
+  author = {Schmidt, M.},
+  title = {{Systematic Discretization of Input/Output Maps and other Contributions
+	to the Control of Distributed Parameter Systems}},
+  school = {{TU Berlin, Fakult\"at Mathematik}},
+  year = {2007},
+  address = {{Berlin, Germany}},
+  file = {:homes/numerik/heiland/diplarb/papers/Schmidt_PhD-1.pdf:PDF},
+  language = {English}
+}
+
+@MISC{ifiss,
+  author = {David Silvester and Howard Elman and Alison Ramage},
+  title = {{I}ncompressible {F}low and {I}terative {S}olver {S}oftware ({IFISS})
+	version 3.2},
+  month = {May},
+  year = {2012},
+  note = {\url{http://www.manchester.ac.uk/ifiss/}}
+}
+
+@ELECTRONIC{MOR_Delft,
+  author = {D. Sorensen},
+  year = {2010},
+  title = {Model Order Reduction for Dynamical Systems},
+  howpublished = {Lecture notes, Ph.D. Course at TU Delft},
+  organization = {Ph.D. Course at TU Delft},
+  url = {http://ta.twi.tudelft.nl/wagm/users/rojas/MOR/LectureNotes.html},
+  owner = {Manuel},
+  timestamp = {2013.01.12}
+}
+
+@MISC{MOR_Delft_url,
+  author = {D. Sorensen},
+  title = {{M}odel {O}rder {R}eduction for {D}ynamical {S}ystems},
+  howpublished = {\textit{Lecture notes, Ph.D. Course at TU Delft}},
+  year = {2010},
+  note = {URL: \url{http://ta.twi.tudelft.nl/wagm/users/rojas/MOR/LectureNotes.html}},
+  owner = {Manuel},
+  timestamp = {2013.01.19}
+}
+
+@ARTICLE{SN13,
+  author = {R. Stefanescu and I. M. Navon},
+  title = {{POD}/{DEIM} nonlinear model order reduction of an {ADI} implicit
+	shallow water equations model},
+  journal = {Journal of Computational Physics},
+  year = {2013},
+  volume = {237},
+  pages = {95-114},
+  owner = {Manuel},
+  timestamp = {2013.05.08}
+}
+
+@BOOK{S86,
+  title = {Introduction to Applied Mathematics},
+  publisher = {Wellesley-Cambridge Press},
+  year = {1986},
+  author = {Strang, G.},
+  isbn = {9780961408800},
+  lccn = {lc84052450},
+  url = {http://books.google.nl/books?id=845QAAAAMAAJ}
+}
+
+@BOOK{T05,
+  title = {Computational Electrodynamics: The Finite- Difference Time- Domain
+	Method},
+  publisher = {Artech House, Incorporated},
+  year = {2005},
+  author = {Taflove, A. and Hagness, S.C.},
+  series = {The Artech House antenna and propagation library},
+  isbn = {9781580538329},
+  lccn = {2005045273},
+  url = {http://books.google.de/books?id=n2ViQgAACAAJ}
+}
+
+@BOOK{Tre97,
+  title = {Numerical Linear Algebra},
+  publisher = {Society for Industrial and Applied Mathematics},
+  year = {1997},
+  author = {Trefethen, L.N. and David Bau, III},
+  series = {Miscellaneous Bks},
+  isbn = {9780898713619},
+  lccn = {96052458},
+  url = {http://books.google.ie/books?id=bj-Lu6zjWbEC}
+}
+
+@BOOK{TSH01,
+  title = {Control theory for linear systems},
+  publisher = {Springer London},
+  year = {2001},
+  author = {H.L. Trentelman and A.A. Stoorvogel and M. Hautus},
+  owner = {Manuel},
+  timestamp = {2013.05.20}
+}
+
+@BOOK{T10,
+  title = {Optimal Control of Partial Differential Equations: Theory, Methods,
+	and Applications},
+  publisher = {American Mathematical Society},
+  year = {2010},
+  author = {Tr{\"o}ltzsch, F.},
+  series = {Graduate Studies in Mathematics},
+  isbn = {9780821849040},
+  lccn = {2009037756},
+  url = {http://books.google.de/books?id=MmkqgJKrnDwC}
+}
+
+@ELECTRONIC{V11,
+  author = {Volkwein, S.},
+  year = {2011},
+  title = {Model Reduction using Proper Orthogonal Decomposition},
+  howpublished = {Lecture notes, University of Konstanz},
+  organization = {University of Konstanz},
+  note = {URL: \url{http://www.math.uni-konstanz.de/numerik/personen/volkwein/teaching/POD-Vorlesung.pdf}},
+  owner = {manuel},
+  timestamp = {2012.08.14}
+}
+
+@ELECTRONIC{V08,
+  author = {S. Volkwein},
+  year = {2008},
+  title = {Proper Orthogonal Decomposition: Applications in Optimization and
+	Control},
+  howpublished = {Lecture notes, University of Konstanz},
+  organization = {University of Konstanz},
+  note = {URL : \url{http://www.math.uni-konstanz.de/numerik/personen/volkwein/teaching/Lecture-Notes-Volkwein.pdf}},
+  owner = {Manuel},
+  timestamp = {2013.05.21}
+}
+
+@BOOK{W07,
+  title = {Funktionalanalysis},
+  publisher = {Springer-Verlag Berlin Heidelberg},
+  year = {2007},
+  author = {D. Werner},
+  owner = {Manuel},
+  timestamp = {2013.01.14}
+}
+
+@BOOK{W01,
+  title = {Principles of Computational Fluid Dynamics},
+  publisher = {Springer Berlin/Heidelberg/New York},
+  year = {2001},
+  author = {P. Wesseling},
+  owner = {manuel},
+  timestamp = {2013.05.16}
+}
+

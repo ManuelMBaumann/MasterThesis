@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+
+\bibitem{DEIM}
+S.~Chaturantabut and D.~Sorensen.
+\newblock Nonlinear {M}odel {R}eduction via {D}iscrete {E}mpirical
+  {I}nterpolation.
+\newblock {\em SIAM J. Sci. Comput.}, 32:2737--2764, 2010.
+
+\bibitem{H08}
+M.~Heinkenschloss.
+\newblock Numerical solution of implicitly constrained optimization problems.
+\newblock Technical report, Department of Computational and Applied
+  Mathematics, Rice University, 2008.
+
+\bibitem{KV99}
+K.~Kunisch and S.~Volkwein.
+\newblock Control of the {B}urgers {E}quation by a {Reduced}-{Order} {A}pproach
+  {U}sing {P}roper {O}rthogonal {D}ecomposition.
+\newblock {\em Journal of Optimization Theory and Applications}, 102:345--371,
+  1999.
+
+\end{thebibliography}

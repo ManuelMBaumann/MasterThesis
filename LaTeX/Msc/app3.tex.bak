@@ -1,0 +1,28 @@
+\chapter{Notation}
+Whenever I read a scientific publication I keep asking myself \textit{What is f ?} Therefore, the following list gives an overview of the names of variables that are used in this Master thesis.
+\\ \\
+\begin{tabular}[h]{c|l}
+    $y$           & State variable \\
+    $u$           & Control variable \\
+    $\lambda$     & Adjoint variable \\
+    $\nu$         & Viscosity parameter in Burgers' equation\\
+    $[0,T]$       & Time domain\\
+    $N$           & Spatial dimension of the full model\\
+    $\ell$        & POD-dimension \\
+    $m$           & DEIM-dimension \\
+    $\Omega$      & Spatial domain \\
+    $N_t$         & Time discretization size\\
+    $\mathcal{P}$  & DEIM projection matrix \\
+    $\mathcal{L}$ & Lagrangian function\\
+    $\mathcal{J}$ & Objective function\\
+    $\hat{\mathcal{J}}$&  The same objective function depending on the control only\\
+    $\omega$      & Control penalty, we choose $\omega \in (0,1)$\\
+    $M, B, C$     & Constant matrices derived from the spatial discretization of Burgers' equation\\
+    $I_N$         & Identity matrix of dimension $N \times N$\\
+    $S_P$         & The speedup is defined as the ratio of computation times\\
+    $\varepsilon_\mathcal{J}$         & Tolerance for change in objective function\\
+    $\varepsilon_\nabla$         & Tolerance for zero-gradient condition\\
+    $\varepsilon_\alpha$         & Tolerance of the Armijo line-search \\
+    $\varepsilon_{Newton}$         & Tolerance of the Newton-iteration during implicit Euler \\
+    $\eta_k$         & Truncation tolerance for CG-algorithm
+\end{tabular} 

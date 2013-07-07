@@ -1,0 +1,77 @@
+\chapter{Implementation issues}
+\section{The truncated conjugant gradient (CG) method}
+\label{CGapp}
+\begin{align}
+ \label{CGcond}
+ \|\nabla^2 \hat{\mathcal L}(u_k) + \nabla \hat{\mathcal L}(u_k)\|_2 \leq \eta_k \|\nabla\hat{\mathcal L}(u_k)\|_2,
+\end{align}
+$\eta_k \in (0,1)$
+
+We assume outer iteration $k$
+\begin{algorithm}[H]
+\caption{Function evaluation based version of the truncated CG algorithm in order to solve the Newton equation $\nabla^2 \hat{\mathcal L}(u_k) s_k = - \nabla \hat{\mathcal L}(u_k)$, \cite{H08}}
+\label{alg:serCG}
+\begin{algorithmic}
+\STATE \textbf{INPUT: } Function handle that evaluates the matrix-vector product $\nabla^2 \hat{\mathcal L}(u_k) \cdot v$, right-hand side $\nabla \hat{\mathcal L}(u_k)$, \texttt{MAXITER}, tolerance $\eta_k$
+\STATE \textbf{OUTPUT: } Solution of Newton's equation $s_k$
+\STATE Set $s_k = 0, p_k^{(0)} = r_k^{(0)} = - \nabla \hat{\mathcal L}(u_k)$
+\FOR{$i=0,1,2,...,$\texttt{MAXITER}}
+\IF{$\|r_k^{(i)}\|_2 < \eta_k \|r_k^{(0)}\|_2$}
+\IF{$i = 0$}
+\STATE $s_k =  -\nabla \hat{\mathcal L}(u_k)$ \quad \textit{\% Steepest descent direction}
+\RETURN
+\ENDIF
+\ENDIF
+\STATE Compute $q_k^{(i)} = \nabla^2 \hat{\mathcal L}(u_k) \cdot p_k^{(i)}$
+\IF{$(p_k^{(i)})^T q_k^{(i)} < 0 $}
+\IF{$i = 0$}
+\STATE $s_k =  -\nabla \hat{\mathcal L}(u_k)$ \quad \textit{\% Steepest descent direction}
+\RETURN
+\ENDIF
+\ENDIF
+\STATE Compute $\gamma_k^{(i)} =  \|r_k^{(i)}\|^2_2 / (p_k^{(i)})^T q_k^{(i)} $
+\STATE Update solution, $s_k = s_k + \gamma_k^{(i)} q_k^{(i)}$% \quad \textit{// Update solution}
+\STATE Compute $r_k^{(i+1)} = r_k^{(i)} - \gamma_k^{(i)} q_k^{(i)}$
+\STATE Compute $\beta_k^{(i)} = \|r_k^{(i+1)}\|_2^2 / \|r_k^{(i)}\|_2^2$
+\STATE Compute $p_k^{(i+1)} = r_k^{(i+1)} + \beta_k^{(i)} p_k^{(i)}$
+\ENDFOR
+%\STATE Choose initial guess $\mathbf{x}_0$
+%\STATE $\mathbf{r}_0 := \mathbf{b} - A (\mathbf{x}_0)$
+%\STATE $\mathbf{d}_0 := \mathbf{r}_0$
+%\IF {$\|\mathbf{r}_0\|_2 < tol$}
+%\RETURN
+%\ENDIF
+%\FOR{$k =  0,1,2,...,MAXITER$}
+%\STATE $\alpha_k := \frac{\mathbf{r}_k^T \mathbf{r}_k}{\mathbf{d}_k^T A (\mathbf{d}_k)}$
+%\STATE $\mathbf{x}_{k+1} := \mathbf{x}_k + \alpha_k \mathbf{d}_k$
+%\STATE $\mathbf{r}_{k+1} := \mathbf{r}_k - \alpha_k A (\mathbf{d}_k)$
+%\IF{$\|\mathbf{r}_{k+1}\|_2  < tol$}
+%\RETURN
+%\ENDIF
+%\STATE $\beta_k := \frac{\mathbf{r}^T_{k+1} \mathbf{r}_{k+1}}{\mathbf{r}^T_k \mathbf{r}_k}$
+%\STATE $\mathbf{d}_{k+1} := \mathbf{r}_{k+1} + \beta_k \mathbf{d}_k$
+%\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+\section{Armijo line-search}
+\label{Armapp}
+\begin{algorithm}[H]
+\caption{Armijo line-search algorithm, \cite{Rao09}}
+\label{alg:Armijo}
+\begin{algorithmic}[1]
+\STATE \textbf{INPUT: } initial point $u_0$, search direction $s$, $tol > 0$
+\STATE \textbf{OUTPUT: } optimal step size $\alpha$ in direction $s$
+\STATE Set $\alpha = 1$ and compute $f(u_0+\alpha s)$
+\WHILE{$f(u_0+\alpha s) > f(u_0) + tol \cdot \alpha \cdot s^T \nabla f(u_0)$}
+\STATE Set $\alpha := \alpha/2$
+\STATE Compute $f(u_0+\alpha s)$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+\newpage
+\section{\textsc{Matlab} code}
+The numerical test calculations for the POD-DEIM model of Burger's equation presented in Section \ref{BurgersPODDEIM} as well as the optimal control algorithm discussed in Section \ref{fullOrderControl} and Section \ref{redOptimalControl} have been implemented in \textsc{Matlab}. The code is freely accessible via
+\begin{center}
+\url{https://www.github.com/ManuelMBaumann/MasterThesis}
+\end{center}
+and can be used for further improvement or demonstration at any time. 

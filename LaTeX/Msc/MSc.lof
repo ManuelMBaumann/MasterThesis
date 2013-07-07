@@ -1,0 +1,52 @@
+\select@language {english}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces The location of the DEIM indices for example \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces \ref {1Dex}\unskip \@@italiccorr )}}.\relax }}{10}{figure.caption.8}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {First six POD bases with DEIM points.}}}{10}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {DEIM approximation of dimension $10$.}}}{10}{subfigure.1.2}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Numerical solution of the full-order Burgers' equation for different viscosity parameters $\nu = \{0.1, 0.01, 0.001\}$ and initial condition \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces \ref {FEMdiscr_init}\unskip \@@italiccorr )}}.\relax }}{12}{figure.caption.9}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Distribution of the singular values for $\nu = 0.01$ (left) and $\nu = 0.001$ (right).\relax }}{14}{figure.caption.10}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces POD-DEIM approximations for different dimensions $\ell $ and $m = 15$, $\nu = 0.01$.\relax }}{15}{figure.caption.11}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Relative error of the POD and POD-DEIM approximation for a fixed number of DEIM basis $m = 15$ (left) and a fixed number of POD basis $\ell = 15$ (right).\relax }}{16}{figure.caption.12}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Relative error of the POD-DEIM reduced model as a function of the reduced-model dimensions $\ell $ and $m$.\relax }}{17}{figure.caption.13}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Response of the full-order system and of the POD-DEIM reduced model for $\nu =0.01$.\relax }}{18}{figure.caption.14}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Dependence of the reduced models on the full-order dimension $N$.\relax }}{20}{figure.caption.16}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Uncontrolled and desired state for $\nu = 0.01$.\relax }}{31}{figure.caption.17}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The state $y$ at different stages $k$ of the optimization iteration.\relax }}{36}{figure.caption.19}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$k=0$ (uncontrolled)}}}{36}{subfigure.2.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$k=1$ }}}{36}{subfigure.2.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$k=2$}}}{36}{subfigure.2.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$k=3$ }}}{36}{subfigure.2.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$k=4$ }}}{36}{subfigure.2.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {$k=5$}}}{36}{subfigure.2.6}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The control $u$ at different stages $k$ of the optimization iteration.\relax }}{37}{figure.caption.20}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$k=0$ (initial)}}}{37}{subfigure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$k=1$ }}}{37}{subfigure.3.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$k=2$}}}{37}{subfigure.3.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$k=3$ }}}{37}{subfigure.3.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$k=4$ }}}{37}{subfigure.3.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {$k=5$}}}{37}{subfigure.3.6}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces State $y$ and corresponding optimal control $u$ after convergence for different control parameters $\omega = \{0.05, 0.005, 0.0005\}$ .\relax }}{37}{figure.caption.21}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Optimal state (upper left), desired state (upper right), adjoint state (lower left) and optimal control (lower right) for a bounded control $-2 \leq u \leq 2$ using the SPG Algorithm \ref {alg:SPG}.\relax }}{38}{figure.caption.22}
+\addvspace {10pt}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Optimal control of the POD-DEIM reduced Burgers' model using different dimensions.\relax }}{44}{figure.caption.23}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$\ell = m = 7$}}}{44}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\ell = m = 15$}}}{44}{subfigure.1.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$\ell = m = 7$ }}}{44}{subfigure.1.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$\ell = m = 15$}}}{44}{subfigure.1.4}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Discretization of the interval $[0,L]$ indicating only $3$ discrete positions for control.\relax }}{45}{figure.caption.24}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Optimal control (right) and corresponding state (left) for $\ell = m = 11$ and $n_c = 3$ control points.\relax }}{46}{figure.caption.25}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Error distribution of the optimal state obtained by the Newton-type method and a POD and POD-DEIM reduced model.\relax }}{47}{figure.caption.26}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$\ell = 5$}}}{47}{subfigure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$\ell = 15$}}}{47}{subfigure.4.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$\ell = 25$}}}{47}{subfigure.4.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$\ell = 5$}}}{47}{subfigure.4.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {$\ell = 15$}}}{47}{subfigure.4.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {$\ell = 25$}}}{47}{subfigure.4.6}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Comparison of the $L_2$-error of the POD and the POD-DEIM approximation when the projection dimensions are increased.\relax }}{48}{figure.caption.27}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}
+\addvspace {10pt}

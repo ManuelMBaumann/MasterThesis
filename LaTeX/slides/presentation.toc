@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.17pt}
+\beamer@sectionintoc {1}{What is Model Order Reduction (MOR) ?}{3}{0}{1}
+\beamer@sectionintoc {2}{The POD-DEIM method}{11}{0}{2}
+\beamer@subsectionintoc {2}{1}{Proper Orthogonal Decomposition (POD)}{11}{0}{2}
+\beamer@subsectionintoc {2}{2}{Discrete Empirical Interpolation Method (DEIM)}{12}{0}{2}
+\beamer@subsectionintoc {2}{3}{Application: MOR for Burgers' equation}{16}{0}{2}
+\beamer@sectionintoc {3}{PDE-constrained optimization}{25}{0}{3}
+\beamer@subsectionintoc {3}{1}{A Newton-type method}{26}{0}{3}
+\beamer@subsectionintoc {3}{2}{First-order methods: BFGS and SPG}{29}{0}{3}
+\beamer@sectionintoc {4}{Optimal Control for the reduced order Burgers' equation}{30}{0}{4}
+\beamer@sectionintoc {5}{Summary and future research}{40}{0}{5}
