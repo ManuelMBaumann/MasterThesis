@@ -1,3 +1,19 @@
+%%
+% Main file solving the optimal control problem
+%
+% \min_u \frac{1}{2} \int_0^T \int_0^L [y(t,x) - z(t,x)]^2 + \omega u^2(t,x) dx dt,
+%
+% where y is a solution to the nonlinear Burgers' equation
+%
+% y_t + ( \frac{1}{2}y^2 - \nu y_x )_x = f + u,  (x,t) \in (0,L) \times (0,T), 
+% y(t,0) = y(t,L) = 0,  t \in (0,T),
+% y(0,x) = y_0(x),  x \in (0,L).
+%
+% The optimization is done on a full-order, POD-, and POD-DEIM-reduced
+% model using the optimization algorithms Newton-type, BFGS and SPG.
+%
+%%
+
 close all
 clear all
 clf 
